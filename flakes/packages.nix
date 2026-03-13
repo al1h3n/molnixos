@@ -37,7 +37,7 @@
       vesktop # _64gram
 
       # Notes
-      obsidian notion-app-enhanced # notion-app only on macOS
+      obsidian appflowy # notion-app only on macOS, enhanced one is write screen.
 
       # Shell
       kitty eza yazi fzf

@@ -33,6 +33,7 @@ in {
   # 3. System configuration (hardware).
   system.stateVersion = variables.version;
   networking.hostName = variables.host;
+  security.polkit.enable = true;
   boot = {
     kernelPackages = pkgs."linuxPackages_${variables.kernel}";
     loader = {
@@ -108,6 +109,9 @@ systemd.settings.Manager = {
         thunar-archive-plugin
       ];
     };
+    # For GVFS
+    dconf.enable = true;
+    xfconf.enable = true;
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -135,7 +139,7 @@ systemd.settings.Manager = {
       gcc python3 pipx temurin-bin-8 temurin-bin-21 temurin-bin-25
     
       # Main tools.
-      git openssh font-manager libnotify
+      git openssh font-manager libnotify killall
       fastfetch btop neovim
     ];
   };

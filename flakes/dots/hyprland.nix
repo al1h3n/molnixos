@@ -23,7 +23,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    systemd.enable = false; # Might break hyprland autolaunch.
+    systemd.enable = true; # Might break hyprland autolaunch.
   };
 
   # Works by applying files to ~/.config/"string" directory.
