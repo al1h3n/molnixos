@@ -138,8 +138,8 @@ systemd.settings.Manager = {
       gcc python3 pipx temurin-bin-8 temurin-bin-21 temurin-bin-25
     
       # Main tools.
-      git openssh font-manager libnotify killall
-      fastfetch btop neovim
+      curl git openssh font-manager libnotify killall ffmpegthumbnailer
+      fastfetch countryfetch btop neovim
     ];
   };
 
