@@ -23,6 +23,7 @@ in {
       ./system/autolaunch.nix
       ./system/sudo.nix
       ./system/ly.nix
+      ./system/dns.nix
     ];
     
   
