@@ -18,7 +18,7 @@ rec {
   shared_root = /etc/nixos/shared;
   shared = shared_root + "/config"; # Source dotfiles folder.
   lshared = "/home/${username}/.local/share/molnios"; # Local shared firectory for all OS, reccomended to use.
-  media = shared_root + "/molnios-media/wallpapers"; # ! CHECK
+  media = lshared + "/molnios-media/wallpapers"; # ! CHECK
   hosts = "${shared}/hosts";
 
   cursor_name = "clay_white";
