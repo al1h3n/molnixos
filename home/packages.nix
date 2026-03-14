@@ -12,7 +12,6 @@
 
       # Utilities
       cpu-x cava
-      kdePackages.qt6ct
       # virt-manager
       openrgb piper
 
