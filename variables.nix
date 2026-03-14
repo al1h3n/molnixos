@@ -15,15 +15,15 @@ rec {
 
   zone = "Asia/Almaty";
   
-  shared_root = /etc/nixos/shared; # ! CHECK
+  shared_root = /etc/nixos/shared;
   shared = shared_root + "/config"; # Source dotfiles folder.
-  lshared = "~/.local/share/molnios"; # Local shared firectory for all OS, reccomended to use.
-  media = lshared + "/molnios-media/wallpapers";
+  lshared = "/home/${username}/.local/share/molnios"; # Local shared firectory for all OS, reccomended to use.
+  media = shared_root + "/molnios-media/wallpapers"; # ! CHECK
   hosts = "${shared}/hosts";
 
   cursor_name = "clay_white";
   cursors_dir = shared_root + "/cursors"; 
-  cursor = cursors_dir + "/${cursor_name}"; # ! CHECK
+  cursor = cursors_dir + "/${cursor_name}";
   browser = "firefox";
   icons = "${shared}/icons/MacTahoe-dark";
   theme_gtk = "Breeze-Dark";
