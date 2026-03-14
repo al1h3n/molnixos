@@ -33,7 +33,6 @@ in {
   # 3. System configuration (hardware).
   system.stateVersion = variables.version;
   networking.hostName = variables.host;
-  security.polkit.enable = true;
   boot = {
     kernelPackages = pkgs."linuxPackages_${variables.kernel}";
     supportedFilesystems = [ "ntfs" ];
@@ -129,7 +128,6 @@ systemd.settings.Manager = {
       NVD_BACKEND = "direct";
 
       JAVA_HOME = "${pkgs.temurin-bin-21}";
-      spotify-launcher = "spotify";
 
       GTK_THEME = variables.theme_gtk;
     };
