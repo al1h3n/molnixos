@@ -129,6 +129,7 @@ systemd.settings.Manager = {
       NVD_BACKEND = "direct";
 
       JAVA_HOME = "${pkgs.temurin-bin-21}";
+      spotify-launcher = "spotify";
 
       GTK_THEME = variables.theme_gtk;
     };

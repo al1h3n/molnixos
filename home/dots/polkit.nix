@@ -2,6 +2,10 @@
 # Replaces exec-once in hyprconfig for NixOS (path differs from Arch).
 { pkgs, ... }: {
   systemd.user.services.polkit-gnome = {
+    # wantedBy here (top-level) actually creates the symlink to enable the service.
+    # Install.WantedBy alone does NOT enable it in home-manager.
+    wantedBy = [ "graphical-session.target" ];
+
     Unit = {
       Description = "GNOME Polkit authentication agent";
       After = "graphical-session.target";
@@ -13,9 +17,6 @@
       Restart = "on-failure";
       RestartSec = 1;
       TimeoutStopSec = 10;
-    };
-    Install = {
-      WantedBy = [ "graphical-session.target" ];
     };
   };
 }
