@@ -11,7 +11,7 @@ For instance, location of hyprland configuration.
 
 ### ➡️ Where files will be saved?
 Configurations: `/etc/nixos"`<br>
-Shared dotfiles: `/etc/nixos/molniux"`<br>
+Shared dotfiles: `/etc/nixos/molnixos"`<br>
 User dotfiles: `~/.local/share/molnios-shared`<br>
 Configurations: `~/.config`
 
