@@ -1,4 +1,4 @@
-{ pkgs, variables, config ... }: {
+{ pkgs, variables, config, ... }: {
   home.packages = with pkgs;[
       hyprlock hyprshell
       brightnessctl
