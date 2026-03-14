@@ -15,7 +15,7 @@ rec {
 
   zone = "Asia/Almaty";
   
-  shared_root = /etc/nixos/shared;
+  shared_root = "/etc/nixos/shared"; 
   shared = shared_root + "/config"; # Source dotfiles folder.
   lshared = "/home/${username}/.local/share/molnios"; # Local shared firectory for all OS, reccomended to use.
   media = lshared + "/molnios-media/wallpapers"; # ! CHECK
