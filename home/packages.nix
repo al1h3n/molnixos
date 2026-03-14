@@ -11,7 +11,7 @@
       ffmpeg-headless imagemagick_light
 
       # Utilities
-      cpu-x
+      cpu-x cava
       kdePackages.qt6ct
       # virt-manager
       openrgb piper
