@@ -4,7 +4,7 @@
 rec {
 
   version = "25.11";
-  channel = "stable";
+  channel = "unstable";
   kernel = "zen";
 
   username = "al1h3n";
