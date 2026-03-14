@@ -1,5 +1,5 @@
 # ui.nix - GTK + Qt theming
-{ pkgs, conf, ... }:
+{ pkgs, config, ... }:
 let
   icons = import ./icons-lib.nix { inherit pkgs; };
 in {
@@ -13,6 +13,12 @@ in {
     gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
     gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
   };
+  dconf.settings."org/gnome/desktop/interface" = {
+    color-scheme = "prefer-dark";
+  };
+  home.activation.createDconf = config.lib.dag.entryBefore [ "dconfSettings" ] ''
+    mkdir -p $HOME/.config/dconf
+  '';
 
   # Qt
   qt = {
