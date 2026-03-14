@@ -36,6 +36,7 @@ in {
   security.polkit.enable = true;
   boot = {
     kernelPackages = pkgs."linuxPackages_${variables.kernel}";
+    supportedFilesystems = [ "ntfs" ];
     loader = {
       efi = {
         canTouchEfiVariables = true;
