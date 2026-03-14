@@ -13,7 +13,6 @@
       wl-clip-persist
       grim
       cliphist
-      polkit_gnome
       
       waybar # quickshell
       swaynotificationcenter
