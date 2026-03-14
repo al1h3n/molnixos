@@ -13,9 +13,6 @@ let
     "hyprland"
     "qbittorrent"
     # "sddm"
-    # "art"
-    # "gaming"
-
   ];
 in {
   imports = map (name: path + "/${name}.nix") dots;
