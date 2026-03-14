@@ -51,7 +51,7 @@
           
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.${variables.username} = import ./flakes/home.nix;
+            users.${variables.username} = import ./home/home.nix;
             backupFileExtension = "backup";
           };
         }

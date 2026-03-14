@@ -13,6 +13,8 @@ let
     "hyprland"
     "qbittorrent"
     # "sddm"
+    # "art"
+    # "gaming"
 
   ];
 in {

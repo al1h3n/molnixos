@@ -72,7 +72,7 @@ systemd.settings.Manager = {
     users.${variables.username} = {
       description = "User account created by MolnixOS configuration.";
       isNormalUser = true;
-      extraGroups = [ "wheel" "plugdev" "storage" "optical" ];
+      extraGroups = [ "wheel" "plugdev" "storage" "optical" "input" ];
       shell = pkgs.zsh;
     };
   };
@@ -81,8 +81,6 @@ systemd.settings.Manager = {
 
   services = {
     displayManager.ly.enable = true;
-
-    ratbagd.enable = true;
 
     gvfs.enable = true;
     udisks2.enable = true;

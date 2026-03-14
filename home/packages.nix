@@ -5,6 +5,7 @@
     username = variables.username;
     homeDirectory = "/home/${variables.username}";
     packages = with pkgs; [
+
       # Multimedia
       mpv songrec obs-studio
       ffmpeg-headless imagemagick_light
@@ -29,9 +30,11 @@
       # zed-editor
       
       # Gaming
-      gamemode
-      wine winetricks protontricks
-      prismlauncher
+      gamemode wine winetricks protontricks
+      prismlauncher steam
+
+      # Art
+      # krita blender
 
       # Social
       vesktop # _64gram
@@ -41,6 +44,9 @@
 
       # Shell
       kitty eza yazi fzf
+
+      # Office
+      # freeoffice
     ];
   };
 }
