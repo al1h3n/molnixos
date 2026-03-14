@@ -34,7 +34,6 @@ in {
       # QT_STYLE_OVERRIDE = "breeze-dark";
       # Not recommended by qt6ct.
       QT_FONT = "SF Pro Display:12";
-      XCURSOR_THEME = "MacTahoe";
       GTK_THEME = "Breeze-Dark";
     };
   };
