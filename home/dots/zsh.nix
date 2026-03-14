@@ -8,7 +8,7 @@
   };
   home = {
     packages = with pkgs;[
-      zinit
+      zinit zoxide
     ];
   };
   
