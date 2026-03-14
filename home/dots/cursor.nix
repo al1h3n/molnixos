@@ -1,24 +1,21 @@
-{ pkgs, config, variables, ... }:
-let
-  cursorTheme = pkgs.runCommand "clay-white-cursor" {} ''
-    mkdir -p $out/share/icons/${variables.cursor_name}
-    cp -r ${variables.cursor}/. $out/share/icons/${variables.cursor_name}/
-  '';
-in {
-  home = {
-    pointerCursor = {
-      name = variables.cursor_name; # Must match folder name inside the archive
-      package = cursorTheme;
-      size = 29;
-      gtk.enable = true;
-      x11.enable = true;
-    };
-    activation.linkCursor = config.lib.dag.entryAfter [ "writeBoundary" ] ''
-    mkdir -p $HOME/.local/share/icons/molniux
-    ln -sfn ${cursorTheme}/share/icons/${variables.cursor_name} $HOME/.local/share/icons/molniux/${variables.cursor_name}
-    '';
+{ config, variables, ... }: {
+  gtk.cursorTheme = {
+    name = variables.cursor_name;
+    size = 29;
   };
-  # environment.etc = {
-  #   "icons/molniux/${variables.cursor_name}".source = "${cursorTheme}/share/icons/${variables.cursor_name}";
-  # };
+
+  # Sets cursor for Hyprland + all Wayland/X11 apps.
+  home.sessionVariables = {
+    XCURSOR_THEME = variables.cursor_name;
+    XCURSOR_SIZE = "29";
+  };
+
+  home.activation.linkCursor = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p $HOME/.local/share/icons
+    if [ -d "${variables.cursor}" ]; then
+      ln -sfn "${variables.cursor}" $HOME/.local/share/icons/${variables.cursor_name}
+    else
+      echo "Warning: cursor not found at ${variables.cursor}, skipping."
+    fi
+  '';
 }
