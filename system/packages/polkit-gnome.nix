@@ -1,5 +1,5 @@
+# polkit-gnome.nix - GNOME polkit authentication agent.
 { pkgs, ... }: {
-  security.polkit.enable = true;
   environment.systemPackages = [ pkgs.polkit_gnome ];
 
   # polkit-gnome agent as a systemd user service (runs for all users)
@@ -8,7 +8,6 @@
     wantedBy = [ "graphical-session.target" ];
     wants = [ "graphical-session.target" ];
     after = [ "graphical-session.target" ];
-
     serviceConfig = {
       Type = "simple";
       ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
