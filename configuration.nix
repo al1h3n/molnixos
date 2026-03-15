@@ -24,6 +24,7 @@ in {
       ./system/sudo.nix
       ./system/ly.nix
       ./system/dns.nix
+      ./system/polkit.nix
     ];
     
   
