@@ -16,6 +16,8 @@
       
       waybar # quickshell
       swaynotificationcenter
+
+      hyprpolkitagent
   ];
 
   # Enabling Hyprland.

@@ -12,6 +12,7 @@ let
     "feh"
     "hyprland"
     "qbittorrent"
+    "polkit-hypr"
     # "sddm"
   ];
 in {
