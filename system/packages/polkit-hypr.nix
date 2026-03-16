@@ -1,3 +1,3 @@
-{ ... }: {
-  services.hyprpolkitagent.enable = true;
+{ pkgs, ... }: {
+  environment.systemPackages = [ pkgs.hyprpolkitagent ];
 }
