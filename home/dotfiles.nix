@@ -13,6 +13,7 @@ let
     "hyprland"
     "qbittorrent"
     "polkit-hypr"
+    "waypaper"
     # "sddm"
   ];
 in {
