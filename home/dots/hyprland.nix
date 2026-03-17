@@ -8,6 +8,7 @@
       (rofi.override {
       plugins = [ rofi-emoji rofi-calc ];})
       
+      (tesseract5.override { enableLanguages = [ "eng" "rus" "chi_sim" ]; })
       swww 
       waypaper mpvpaper
       wl-clip-persist

@@ -11,7 +11,7 @@
       ffmpeg-headless imagemagick_light
 
       # Utilities
-      cpu-x cava
+      cpu-x cava tealdeer zenity pay-respects
       # virt-manager
       openrgb piper
 
