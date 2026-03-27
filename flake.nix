@@ -1,6 +1,6 @@
 # flake.nix
 {
-  description = "Local (user) configuration for MolnixOS";
+  description = "Local (user) configuration for MolniOS";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
@@ -15,6 +15,7 @@
     };
 
     # NUR - Nix User Repository, for packages that aren't in nixpkgs. Similar to AUR.
+    # Used for Firefox extensions.
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";

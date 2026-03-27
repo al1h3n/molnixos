@@ -11,6 +11,7 @@ in {
       # 1.1. Base configuration.
       ./hardware-configuration.nix
       ./hardware/hardware-basic.nix
+      ./hardware/mouse.nix
 
       # 1.2. GPU/iGPU.
       ./hardware/nvidia.nix # Choose or adjust GPU configuration (custom folder)
@@ -72,7 +73,7 @@ systemd.settings.Manager = {
   users = {
     defaultUserShell = pkgs.zsh;
     users.${variables.username} = {
-      description = "User account created by MolnixOS configuration.";
+      description = "User account created by MolniOS configuration.";
       isNormalUser = true;
       extraGroups = [ "wheel" "plugdev" "storage" "optical" "input" ];
       shell = pkgs.zsh;
