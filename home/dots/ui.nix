@@ -11,7 +11,13 @@ in {
       package = pkgs.kdePackages.breeze-gtk;
     };
     gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
-    gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
+    gtk4 = {
+      extraConfig.gtk-application-prefer-dark-theme = true;
+      theme = {                              # ← add this
+        name = "Breeze-Dark";
+        package = pkgs.kdePackages.breeze-gtk;
+      };
+    };
   };
   dconf.settings."org/gnome/desktop/interface" = {
     color-scheme = "prefer-dark";

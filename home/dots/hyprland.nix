@@ -26,6 +26,7 @@
     enable = true;
     xwayland.enable = true;
     systemd.enable = true; # Might break hyprland autolaunch.
+    settings = {};
   };
 
   xdg.configFile."hypr/hyprland.conf".source =
