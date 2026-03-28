@@ -42,8 +42,7 @@
 
       # Notes
       obsidian appflowy # notion-app only on macOS, enhanced one is write screen.
-      notion-app-electron
-
+      
       # Shell
       kitty eza yazi fzf
 

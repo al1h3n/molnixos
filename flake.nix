@@ -42,32 +42,6 @@
     hmSource = if variables.channel == "stable" 
       then inputs.home-manager-stable 
       else inputs.home-manager;
-
-    overlay-notion = final: prev: {
-    notion-app-electron = final.stdenv.mkDerivation rec {
-      pname = "notion-app-electron";
-      version = "latest";
-
-      src = final.fetchFromGitHub {
-        owner = "notion-enhancer";
-        repo = "notion-app-electron";
-        rev = "main";
-        sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
-      };
-
-      nativeBuildInputs = with final; [ makeWrapper ];
-      buildInputs = with final; [ electron ];
-
-      installPhase = ''
-        mkdir -p $out/bin $out/share/notion-app-electron
-
-        cp -r * $out/share/notion-app-electron
-
-        makeWrapper ${final.electron}/bin/electron $out/bin/notion-app-electron \
-          --add-flags "$out/share/notion-app-electron"
-      '';
-      };
-    };
   in {
     nixosConfigurations.main = pkgsSource.lib.nixosSystem {
       system = variables.system;
