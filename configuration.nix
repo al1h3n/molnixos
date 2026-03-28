@@ -93,6 +93,8 @@ systemd.settings.Manager = {
       enable = true;
       interval = "daily";
     };
+
+    hardware.openrgb.enable = true; # OpenRGB
   };
 
   programs = {

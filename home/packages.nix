@@ -13,9 +13,8 @@
       inputs.yt-x.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       # Utilities
-      cpu-x cava tealdeer zenity bat pay-respects file
+      cpu-x cava tealdeer zenity bat pay-respects file piper openrgb-with-all-plugins
       # virt-manager
-      openrgb piper
 
       # Studying.
       (anki.withAddons [
