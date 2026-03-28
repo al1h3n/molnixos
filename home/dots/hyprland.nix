@@ -23,8 +23,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    systemd.enable = true; # Might break hyprland autolaunch.
-    settings = {};
+    systemd.enable = false; # Might break hyprland autolaunch.
   };
 
   xdg.configFile."hypr/hyprland.conf".source =

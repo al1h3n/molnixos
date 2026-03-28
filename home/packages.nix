@@ -10,7 +10,7 @@
       mpv songrec obs-studio
       ffmpeg-headless imagemagick_light
       yt-dlp
-      inputs.yt-x.packages.${pkgs.system}.default
+      inputs.yt-x.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       # Utilities
       cpu-x cava tealdeer zenity bat pay-respects
