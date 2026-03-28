@@ -13,7 +13,7 @@
       inputs.yt-x.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       # Utilities
-      cpu-x cava tealdeer zenity bat pay-respects
+      cpu-x cava tealdeer zenity bat pay-respects file
       # virt-manager
       openrgb piper
 
