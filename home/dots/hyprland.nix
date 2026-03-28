@@ -12,7 +12,7 @@
       swww 
       waypaper mpvpaper
       wl-clip-persist
-      grim slurp xdg-user-dirs wl-clipboard
+      grim slurp xdg-user-dirs wl-clipboard playerctl
       cliphist
       
       waybar # quickshell
