@@ -12,13 +12,11 @@
       swww 
       waypaper mpvpaper
       wl-clip-persist
-      grim
+      grim slurp xdg-user-dirs wl-clipboard
       cliphist
       
       waybar # quickshell
       swaynotificationcenter
-
-      hyprpolkitagent
   ];
 
   # Enabling Hyprland.

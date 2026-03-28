@@ -22,14 +22,20 @@
     };
 
     # Apple Fonts, SF Pro NUR package.
-      apple-fonts = {
-        url = "github:Lyndeno/apple-fonts.nix";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
+    apple-fonts = {
+      url = "github:Lyndeno/apple-fonts.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # yt-x to watch YouTube in shell.
+    yt-x = {
+      url = "github:Benexl/yt-x";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nur, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;

@@ -1,6 +1,6 @@
 # Packages for home-manager.
 
-{ pkgs, variables, ... }: {
+{ pkgs, variables, inputs, ... }: {
   home = {
     username = variables.username;
     homeDirectory = "/home/${variables.username}";
@@ -9,9 +9,11 @@
       # Multimedia
       mpv songrec obs-studio
       ffmpeg-headless imagemagick_light
+      yt-dlp
+      inputs.yt-x.packages.${pkgs.system}.default
 
       # Utilities
-      cpu-x cava tealdeer zenity pay-respects
+      cpu-x cava tealdeer zenity bat pay-respects
       # virt-manager
       openrgb piper
 

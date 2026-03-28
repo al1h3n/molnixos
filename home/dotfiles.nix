@@ -14,6 +14,7 @@ let
     "qbittorrent"
     "polkit-hypr"
     "waypaper"
+    "rofi"
     # "sddm"
   ];
 in {
