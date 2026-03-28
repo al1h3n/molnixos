@@ -12,7 +12,7 @@ let
     "feh"
     "hyprland"
     "qbittorrent"
-    "polkit-hypr"
+    # "polkit-hypr"
     "waypaper"
     "rofi"
     # "sddm"

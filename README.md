@@ -15,5 +15,10 @@ Shared dotfiles: `/etc/nixos/molnixos"`<br>
 User dotfiles: `~/.local/share/molnios-shared`<br>
 Configurations: `~/.config`
 
+### ↔️ How to switch from one polkit to another one?
+Let's take as an example `hyprpolkitagent` -> `polkit-gnome`<br>
+1. Comment `polkit-hypr` in `dotfiles.nix`<br>
+2. Uncomment `polkit-gnome.nix` in `system/polkit.nix`
+
 ### 🕝 When to install?
-Install MolnixOS right after you had installed nixOS. 
+Install MolnixOS right after you had installed nixOS.

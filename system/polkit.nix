@@ -2,7 +2,7 @@
 # Switch between polkit-hypr.nix and polkit-gnome.nix by commenting/uncommenting.
 { ... }: {
   imports = [
-    # ./packages/polkit-gnome.nix
+    ./packages/polkit-gnome.nix
   ];
 
   security.polkit.enable = true;
