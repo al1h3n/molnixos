@@ -38,7 +38,7 @@
       # krita blender
 
       # Social
-      vesktop # _64gram
+      vesktop telegram-desktop # _64gram
 
       # Notes
       obsidian appflowy # notion-app only on macOS, enhanced one is write screen.
