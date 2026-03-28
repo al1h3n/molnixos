@@ -46,7 +46,7 @@
     nixosConfigurations.main = pkgsSource.lib.nixosSystem {
       system = variables.system;
       modules = [
-        { nixpkgs.overlays = [ nur.overlays.default overlay-notion ]; }
+        { nixpkgs.overlays = [ nur.overlays.default ]; }
         hmSource.nixosModules.home-manager
         ./configuration.nix
         {
