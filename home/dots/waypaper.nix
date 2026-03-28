@@ -1,8 +1,8 @@
 { variables, ... }: {
   xdg.configFile."waypaper/config.ini".text = ''
     [Settings]
-    folder = ${variables.media}/video
-    wallpaper = ${variables.media}/video/ps.mp4
+    folder = ${variables.media}
+    wallpaper = ${variables.media}/static/f1.jpg
     post_command = bash ${variables.lshared}/scripts/borderline.sh $wallpaper
     number_of_columns = 5
     swww_transition_type = random
