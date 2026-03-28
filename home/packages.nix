@@ -47,9 +47,6 @@
 
       # Office
       # freeoffice
-
-      # For OmniRoute - free AI. npm install -g omniroute
-      nodejs
     ];
   };
 }
