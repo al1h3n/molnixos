@@ -47,6 +47,9 @@
 
       # Office
       # freeoffice
+
+      # For OmniRoute - free AI. npm install -g omniroute
+      opencode nodejs-slim
     ];
   };
 }
