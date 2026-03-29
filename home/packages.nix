@@ -17,10 +17,12 @@
       # virt-manager
 
       # Studying.
-      (anki.withAddons [
-        ankiAddons.passfail2
-        ankiAddons.anki-connect
-      ])
+      (anki.withAddons (with ankiAddons; [
+        passfail2
+        anki-connect
+        review-heatmap
+        # more-overview-stats not exist on nixOS
+      ]))
 
       # Music
       spotify
