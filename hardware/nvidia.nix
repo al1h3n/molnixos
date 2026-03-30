@@ -24,4 +24,10 @@
     # If you have an older GPU (e.g., GTX 900 series or older), you might need a legacy driver:
     # package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
   };
+
+  systemd.services.libvirtd.environment = {
+    __EGL_VENDOR_LIBRARY_DIRS = "/run/opengl-driver/share/glvnd/egl_vendor.d";
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+  };
 }
