@@ -26,6 +26,7 @@ in {
       ./system/ly.nix
       ./system/dns.nix
       ./system/polkit.nix
+      ./system/virtualization.nix
     ];
     
   
@@ -75,7 +76,7 @@ systemd.settings.Manager = {
     users.${variables.username} = {
       description = "User account created by MolniOS configuration.";
       isNormalUser = true;
-      extraGroups = [ "wheel" "plugdev" "storage" "optical" "input" ];
+      extraGroups = [ "wheel" "plugdev" "storage" "optical" "input" "libvirtd" ];
       shell = pkgs.zsh;
     };
   };

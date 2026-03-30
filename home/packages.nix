@@ -14,7 +14,6 @@
 
       # Utilities
       cpu-x cava tealdeer zenity bat pay-respects file piper openrgb-with-all-plugins
-      # virt-manager
 
       # Studying.
       (anki.withAddons (with ankiAddons; [

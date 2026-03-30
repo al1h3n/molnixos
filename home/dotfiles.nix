@@ -16,6 +16,7 @@ let
     "waypaper"
     "rofi"
     # "sddm"
+    "virt-manager"
   ];
 in {
   imports = map (name: path + "/${name}.nix") dots;
