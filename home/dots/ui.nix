@@ -13,7 +13,7 @@ in {
     gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
     gtk4 = {
       extraConfig.gtk-application-prefer-dark-theme = true;
-      theme = {                              # ← add this
+      theme = {
         name = "Breeze-Dark";
         package = pkgs.kdePackages.breeze-gtk;
       };
@@ -47,16 +47,17 @@ in {
     };
   };
 
-  # Qt5/Qt6 icon theme config
+  # Qt5/Qt6 icon theme config.
+  # Change to icon_theme to apply icons (look pixelated).
   xdg.configFile."qt5ct/qt5ct.conf".text = ''
     [Appearance]
-    icon_theme=MacTahoe
+    icon_themes=MacTahoe
     style=Breeze
     color_scheme_path=/usr/share/color-schemes/BreezeDark.colors
   '';
   xdg.configFile."qt6ct/qt6ct.conf".text = ''
     [Appearance]
-    icon_theme=MacTahoe
+    icon_themes=MacTahoe
     style=Breeze
     color_scheme_path=/usr/share/color-schemes/BreezeDark.colors
   '';
