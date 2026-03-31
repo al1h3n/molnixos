@@ -55,4 +55,7 @@ rec {
   waypaper = "${shared}/waypaper";
   waypaper_style = "${shared}/waypaperstyle";
 
+  peazip = "${shared}/peazip";
+  prismlauncher = "${shared}/prismlauncher";
+
 }
