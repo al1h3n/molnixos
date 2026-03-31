@@ -37,7 +37,7 @@ in {
   };
 
   home = {
-    packages = [ pkgs.qt6ct icons.mactahoe pkgs.kdePackages.breeze pkgs.kdePackages.breeze-gtk ];
+    packages = [ pkgs.qt6Packages.qt6ct icons.mactahoe pkgs.kdePackages.breeze pkgs.kdePackages.breeze-gtk ];
     sessionVariables = {
       QT_QPA_PLATFORMTHEME = "breeze";
       # QT_STYLE_OVERRIDE = "breeze-dark";
