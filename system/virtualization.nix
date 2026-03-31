@@ -24,4 +24,15 @@
     '';
     };
   };
+  systemd.services.libvirtd-network-default = {
+    description = "libvirt default network autostart - MolniOS";
+    after = [ "libvirtd.service" ];
+    requires = [ "libvirtd.service" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "oneshot";
+    script = ''
+      ${pkgs.libvirt}/bin/virsh net-autostart default
+      ${pkgs.libvirt}/bin/virsh net-start default || true
+    '';
+  };
 }
