@@ -7,13 +7,13 @@
     packages = with pkgs; [
 
       # Multimedia
-      mpv songrec obs-studio
+      songrec obs-studio
       ffmpeg-headless imagemagick_light
       yt-dlp
       inputs.yt-x.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       # Utilities
-      cpu-x cava tealdeer zenity bat pay-respects file piper openrgb-with-all-plugins
+      cpu-x cava tealdeer zenity pay-respects piper openrgb-with-all-plugins
 
       # Studying.
       (anki.withAddons (with ankiAddons; [
@@ -44,7 +44,7 @@
       obsidian appflowy # notion-app only on macOS, enhanced one is write screen.
       
       # Shell
-      kitty eza yazi fzf
+      kitty
 
       # Office
       # freeoffice

@@ -145,6 +145,8 @@ systemd.settings.Manager = {
       # Main tools.
       curl git openssh font-manager libnotify killall ffmpegthumbnailer
       fastfetch countryfetch btop neovim
+      mpv peazip file
+      bat eza yazi fzf # CLI tools - useful for multiple accounts.
     ];
   };
 
