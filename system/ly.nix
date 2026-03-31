@@ -37,7 +37,9 @@
       clear_password = false;
       
       # 3. Information
-      battery_id = "BAT0";
+
+      # Might be irritating.
+      # battery_id = "BAT0";
       
       bigclock = "en";
       bigclock_seconds = true;
