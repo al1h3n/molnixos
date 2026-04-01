@@ -40,7 +40,7 @@
 
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, spicetify, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;
