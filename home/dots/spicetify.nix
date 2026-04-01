@@ -13,7 +13,6 @@ in {
 
   programs.spicetify = {
     enable = true;
-    customApps = with spicePkgs.apps; [ marketplace ];
     extensions = with spicePkgs.extensions; [
       shufflePlus
       autoSkipVideo
