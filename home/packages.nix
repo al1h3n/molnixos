@@ -22,6 +22,7 @@
         review-heatmap
         # more-overview-stats not exist on nixOS
       ]))
+      dialect # Translator
 
       # Music
       spotify

@@ -20,6 +20,7 @@ let
     "rofi"
     # "sddm"
     "virt-manager"
+    "spicetify"
   ];
 in {
   imports = map (name: path + "/${name}.nix") dots;

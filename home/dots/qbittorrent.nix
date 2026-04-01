@@ -10,7 +10,7 @@ let
   fluent-light = fetchMica "light";
   fluent-dark = fetchMica "dark";
 in {
-  home.packages = [ pkgs.qbittorrent ];
+  home.packages = [ pkgs.qbittorrent-enhanced ];
   xdg.configFile."qBittorrent/qBittorrent.conf"= {
     source = variables.qbittorrent;
     force = true;

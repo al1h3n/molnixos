@@ -33,9 +33,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # spicetify - spotify marketplace.
+    spicetify = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, spicetify, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;
