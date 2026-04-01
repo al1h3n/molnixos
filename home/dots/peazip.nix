@@ -69,6 +69,6 @@ sh
 1
 [keep log of tasks]
 0
-    "
+    ";
   };
 }
