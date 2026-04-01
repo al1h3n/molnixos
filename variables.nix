@@ -60,6 +60,6 @@ rec {
 
   peazip = "${shared}/peazip";
   prismlauncher = "${shared}/prismlauncher";
-  spicetify = "${shared}/spicetify"
+  spicetify = "${shared}/spicetify";
 
 }
