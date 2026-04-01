@@ -1,6 +1,5 @@
 { pkgs, lib, config, inputs, variables, ... }:
 let
-  spicePkgs = inputs.spicetify.legacyPackages.${pkgs.system};
   marketplaceData = builtins.fromJSON (builtins.readFile variables.spicetify);
   snippetCSS = lib.concatMapStrings
     (key:
@@ -13,11 +12,6 @@ in {
 
   programs.spicetify = {
     enable = true;
-    extensions = with spicePkgs.extensions; [
-      shufflePlus
-      autoSkipVideo
-      keyboardShortcut
-    ];
   };
 
   # Real symlink → editing the JSON doesn't require nixos-rebuild
