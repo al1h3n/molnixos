@@ -40,8 +40,7 @@ in {
     packages = [ pkgs.qt6Packages.qt6ct icons.mactahoe pkgs.kdePackages.breeze pkgs.kdePackages.breeze-gtk ];
     sessionVariables = {
       QT_QPA_PLATFORMTHEME = "breeze";
-      # QT_STYLE_OVERRIDE = "breeze-dark";
-      # Not recommended by qt6ct.
+      QT_STYLE_OVERRIDE = "breeze-dark"; # Not recommended by qt6ct.
       QT_FONT = "SF Pro Display:12";
       GTK_THEME = "Breeze-Dark";
     };
@@ -51,13 +50,13 @@ in {
   # Change to icon_theme to apply icons (look pixelated).
   xdg.configFile."qt5ct/qt5ct.conf".text = ''
     [Appearance]
-    icon_themes=MacTahoe
+    icon_theme=We10X
     style=Breeze
     color_scheme_path=/usr/share/color-schemes/BreezeDark.colors
   '';
   xdg.configFile."qt6ct/qt6ct.conf".text = ''
     [Appearance]
-    icon_themes=MacTahoe
+    icon_theme=We10X
     style=Breeze
     color_scheme_path=/usr/share/color-schemes/BreezeDark.colors
   '';
