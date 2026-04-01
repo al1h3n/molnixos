@@ -1,13 +1,4 @@
-{ pkgs, lib, config, inputs, variables, ... }:
-let
-  marketplaceData = builtins.fromJSON (builtins.readFile variables.spicetify);
-  snippetCSS = lib.concatMapStrings
-    (key:
-      let entry = builtins.fromJSON marketplaceData.${key};
-      in entry.code or ""
-    )
-    (builtins.fromJSON marketplaceData."marketplace:installed-snippets");
-in {
+{ pkgs, lib, config, inputs, variables, ... }: {
   imports = [ inputs.spicetify.homeManagerModules.default ];
 
   programs.spicetify = {
