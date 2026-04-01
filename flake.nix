@@ -27,17 +27,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # yt-x to watch YouTube in shell.
+    # yt-x to watch YouTube in shell. Do NOT accept updates.
     yt-x = {
       url = "github:Benexl/yt-x";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # spicetify - spotify marketplace.
-    spicetify = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # spicetify = {
+    #   url = "github:Gerg-L/spicetify-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
   };
 
