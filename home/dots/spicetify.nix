@@ -18,7 +18,6 @@ in {
       autoSkipVideo
       keyboardShortcut
     ];
-    customCss = snippetCSS; # Snippets CSS injected directly from your backup JSON at eval time
   };
 
   # Real symlink → editing the JSON doesn't require nixos-rebuild
