@@ -17,16 +17,19 @@ rec {
   
   shared_root = "/etc/nixos/shared"; 
   shared = shared_root + "/config"; # Source dotfiles folder.
-  lshared = "/home/${username}/.local/share/molnios"; # Local shared firectory for all OS, reccomended to use.
-  media = lshared + "/molnios-media/wallpapers"; # ! CHECK
-  hosts = "${shared}/hosts";
+
+  lshare = "/home/${username}/.local/share";
+  lshared = "${lshare}/molnios"; # Local shared firectory for all OS, reccomended to use.
+  media = "${lshared}/molnios-media/wallpapers"; # ! CHECK
 
   cursor_name = "clay_white";
   cursors_dir = shared_root + "/cursors"; 
   cursor = cursors_dir + "/${cursor_name}";
-  browser = "firefox";
   icons = "${shared}/icons/MacTahoe-dark";
   theme_gtk = "Breeze-Dark";
+
+  browser = "firefox";
+  hosts = "${shared}/hosts";
 
   zsh = "${shared}/.zshrc";
   zsh_theme = "${shared}/.p10k.zsh";
