@@ -9,20 +9,20 @@
   xdg.configFile."spicetify/marketplace-backup.json".source =
     config.lib.file.mkOutOfStoreSymlink variables.spicetify;
 
-  home.activation.spicetifyMarketplaceRestore =
-    lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      BACKUP="$HOME/.config/spicetify/marketplace-backup.json"
-      PREFS="$HOME/.config/spotify/prefs"
+  # home.activation.spicetifyMarketplaceRestore =
+  #   lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  #     BACKUP="$HOME/.config/spicetify/marketplace-backup.json"
+  #     PREFS="$HOME/.config/spotify/prefs"
 
-      if [ -f "$BACKUP" ] && [ -f "$PREFS" ]; then
-        echo "Spicetify: syncing marketplace backup → Spotify prefs..."
-        MERGED=$(${pkgs.jq}/bin/jq -s '.[0] * .[1]' "$PREFS" "$BACKUP" 2>/dev/null)
-        if [ -n "$MERGED" ]; then
-          echo "$MERGED" > "$PREFS"
-          echo "Spicetify: marketplace state restored."
-        fi
-      else
-        echo "Spicetify: prefs or backup not found, skipping marketplace restore."
-      fi
-    '';
+  #     if [ -f "$BACKUP" ] && [ -f "$PREFS" ]; then
+  #       echo "Spicetify: syncing marketplace backup → Spotify prefs..."
+  #       MERGED=$(${pkgs.jq}/bin/jq -s '.[0] * .[1]' "$PREFS" "$BACKUP" 2>/dev/null)
+  #       if [ -n "$MERGED" ]; then
+  #         echo "$MERGED" > "$PREFS"
+  #         echo "Spicetify: marketplace state restored."
+  #       fi
+  #     else
+  #       echo "Spicetify: prefs or backup not found, skipping marketplace restore."
+  #     fi
+  #   '';
 }
