@@ -9,7 +9,7 @@
       plugins = [ rofi-emoji rofi-calc ];})
       
       (tesseract5.override { enableLanguages = [ "eng" "rus" "chi_sim" ]; })
-      swww 
+      awww 
       waypaper mpvpaper
       wl-clip-persist
       grim slurp xdg-user-dirs wl-clipboard playerctl
