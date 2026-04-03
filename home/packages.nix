@@ -50,7 +50,7 @@
       prismlauncher steam
 
       # Art
-      # krita blender
+      krita # blender
 
       # Social
       vesktop telegram-desktop # _64gram
