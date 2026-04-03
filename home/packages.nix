@@ -15,6 +15,20 @@
       # Utilities
       cpu-x cava tealdeer zenity pay-respects piper openrgb-with-all-plugins
 
+      # Cool utilities for no reason.
+      cool-retro-term # RMB to change profile
+      genact # Random logs.
+      hollywood # Crazy ass random hacker stuff
+      cbonsai
+      lavat # Lava lamp.
+      pipes-rs # Infinite pipes
+      cmatrix unimatrix
+      # rusty-rain # Better cmatrix, no in nixOS packages now.
+      mapscii # Map
+      toilet # Rich print
+      tty-clock termdown
+      globe-cli
+
       # Studying.
       (anki.withAddons (with ankiAddons; [
         passfail2
