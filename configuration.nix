@@ -145,7 +145,8 @@ systemd.settings.Manager = {
     
       # Main tools.
       curl git openssh font-manager libnotify killall ffmpegthumbnailer
-      fastfetch countryfetch btop neovim micro
+      fastfetch countryfetch btop neovim
+      micro
       mpv peazip file
       superfile
       bat eza yazi fzf ripgrep fd # fd - find, ripgrep [rg] - grep.
