@@ -1,5 +1,5 @@
 # ui.nix - GTK + Qt theming
-{ pkgs, config, ... }: {
+{ config, lib, pkgs, ... }: {
   # GTK
   gtk = {
     enable = true;
