@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, variables, ... }: {
   security.sudo = {
       enable = true;
       extraRules = [
@@ -34,6 +34,18 @@
             }
             {
               command = "/run/current-system/sw/bin/nix-channel";
+              options = ["NOPASSWD"];
+            }
+            {
+              command = "/run/current-system/sw/bin/nixos-rebuild";
+              options = ["NOPASSWD"];
+            }
+            {
+              command = "/run/current-system/sw/bin/home-manager";
+              options = ["NOPASSWD"];
+            }
+            {
+              command = "/home/${variables.username}/.nix-profile/bin/home-manager";
               options = ["NOPASSWD"];
             }
           ];
