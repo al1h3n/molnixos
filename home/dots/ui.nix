@@ -27,7 +27,7 @@
   qt = {
     enable = true;
     # platformTheme.name = "breeze";
-    platformTheme.name = "qt6ct";
+    platformTheme.name = "qt6ct"; # QT_QPA_PLATFORMTHEME but for local.
     style = {
       name = "breeze-dark";
       package = pkgs.kdePackages.breeze;
@@ -36,7 +36,7 @@
 
   home = {
     sessionVariables = {
-      QT_QPA_PLATFORMTHEME = "breeze";
+      QT_QPA_PLATFORMTHEME = "qt6ct";
       # QT_STYLE_OVERRIDE = "breeze-dark"; # Not recommended by qt6ct.
       QT_FONT = "SF Pro Display:12";
       GTK_THEME = "Breeze-Dark";
