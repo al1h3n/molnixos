@@ -29,7 +29,8 @@ in {
   # Qt
   qt = {
     enable = true;
-    platformTheme.name = "breeze";
+    # platformTheme.name = "breeze";
+    platformTheme.name = "qt6ct";
     style = {
       name = "breeze-dark";
       package = pkgs.kdePackages.breeze;
@@ -37,26 +38,42 @@ in {
   };
 
   home = {
-    packages = [ pkgs.qt6Packages.qt6ct icons.mactahoe pkgs.kdePackages.breeze pkgs.kdePackages.breeze-gtk ];
     sessionVariables = {
       QT_QPA_PLATFORMTHEME = "breeze";
-      QT_STYLE_OVERRIDE = "breeze-dark"; # Not recommended by qt6ct.
+      # QT_STYLE_OVERRIDE = "breeze-dark"; # Not recommended by qt6ct.
       QT_FONT = "SF Pro Display:12";
       GTK_THEME = "Breeze-Dark";
     };
   };
 
+  # Packages.
+  home.packages = lib.concatLists [
+
+    # Icons.
+    [ icons.we10x ]
+
+    (with pkgs; [
+      # qt6ct
+      qt6.qtstyleplugin-kvantum
+      qt6Packages.qt6ct
+
+      # Breeze theme.
+      kdePackages.breeze
+      kdePackages.breeze-gtk
+    ])
+  ];
+
   # Qt5/Qt6 icon theme config.
   # Change to icon_theme to apply icons (look pixelated).
   xdg.configFile."qt5ct/qt5ct.conf".text = ''
     [Appearance]
-    icon_theme=We10X
+    icon_theme=MacTahoe
     style=Breeze
     color_scheme_path=/usr/share/color-schemes/BreezeDark.colors
   '';
   xdg.configFile."qt6ct/qt6ct.conf".text = ''
     [Appearance]
-    icon_theme=We10X
+    icon_theme=MacTahoe
     style=Breeze
     color_scheme_path=/usr/share/color-schemes/BreezeDark.colors
   '';
