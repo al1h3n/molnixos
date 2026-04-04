@@ -1,8 +1,5 @@
 # ui.nix - GTK + Qt theming
-{ pkgs, config, ... }:
-let
-  icons = import ./icons-lib.nix { inherit pkgs; };
-in {
+{ pkgs, config, ... }: {
   # GTK
   gtk = {
     enable = true;
@@ -47,12 +44,7 @@ in {
   };
 
   # Packages.
-  home.packages = lib.concatLists [
-
-    # Icons.
-    [ icons.we10x ]
-
-    (with pkgs; [
+  home.packages = with pkgs; [
       # qt6ct
       qt6.qtstyleplugin-kvantum
       qt6Packages.qt6ct
@@ -60,7 +52,6 @@ in {
       # Breeze theme.
       kdePackages.breeze
       kdePackages.breeze-gtk
-    ])
   ];
 
   # Qt5/Qt6 icon theme config.

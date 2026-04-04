@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  icons = import ./icons-lib.nix { inherit pkgs; };
+  icons = import ./icons-src.nix { inherit pkgs; };
 in {
   home.packages = [ icons.we10x icons.mactahoe ];
   xdg.dataFile."icons/We10X-black-dark".source = "${icons.we10x}/share/icons/We10X-black-dark";
