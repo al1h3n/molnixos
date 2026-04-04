@@ -44,14 +44,15 @@
   };
 
   # Packages.
-  home.packages = with pkgs; [
-      # qt6ct
-      qt6.qtstyleplugin-kvantum
-      qt6Packages.qt6ct
+  home.packages = lib.concatLists [
+    (with pkgs.qt6Packages; [
+      qt6ct qtstyleplugin-kvantum
+    ])
 
-      # Breeze theme.
+    (with pkgs; [
       kdePackages.breeze
       kdePackages.breeze-gtk
+    ])
   ];
 
   # Qt5/Qt6 icon theme config.
