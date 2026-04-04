@@ -67,6 +67,7 @@ systemd.settings.Manager = {
   };
 
   # 4. Individual user configuration (software + informaiton).
+  documentation.nixos.enable = false;
   time = {
     timeZone = variables.zone;
     hardwareClockInLocalTime = true;
@@ -144,7 +145,7 @@ systemd.settings.Manager = {
     
       # Main tools.
       curl git openssh font-manager libnotify killall ffmpegthumbnailer
-      fastfetch countryfetch btop neovim
+      fastfetch countryfetch btop neovim micro
       mpv peazip file
       superfile
       bat eza yazi fzf ripgrep fd # fd - find, ripgrep [rg] - grep.
