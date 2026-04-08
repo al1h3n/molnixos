@@ -60,7 +60,10 @@ in {
 
 systemd = {
   settings.Manager.DefaultTimeoutStopSec = "10s";
-  services.libvirtd.serviceConfig.TimeoutStopSec = "10s";
+  services = {
+    libvirtd.serviceConfig.TimeoutStopSec = "10s";
+    "user@".serviceConfig.TimeoutStopSec = "10s";
+  };
 };
 
   services.xserver = {
