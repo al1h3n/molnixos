@@ -5,8 +5,8 @@
     wallpaper = ${variables.media}/static/f1.jpg
     post_command = bash ${variables.lshared}/scripts/borderline.sh $wallpaper
     number_of_columns = 5
-    awww_transition_type = random
-    awww_transition_fps = 144
+    swww_transition_type = random
+    swww_transition_fps = 144
     mpvpaper_options = -s -o "--loop --mute --no-osd-bar --no-input-default-bindings" ALL $video
     stylesheet = ${variables.lshared}/config/waypaperstyle
     fill = stretch
