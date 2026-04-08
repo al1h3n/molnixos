@@ -8,7 +8,7 @@
 
       # Multimedia
       songrec obs-studio
-      ffmpeg-headless imagemagick_light
+      ffmpeg-headless imagemagickBig
       yt-dlp
       inputs.yt-x.packages.${pkgs.stdenv.hostPlatform.system}.default
 
