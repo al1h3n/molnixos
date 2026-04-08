@@ -14,7 +14,9 @@ in {
       ./hardware/mouse.nix
 
       # 1.2. GPU/iGPU.
-      ./hardware/nvidia.nix # Choose or adjust GPU configuration (custom folder)
+      ./hardware/nvidia/propietary.nix
+      # ./hardware/vmware.nix
+      # Choose or adjust GPU configuration (custom folder)
     
       # 1.3. Updating schedule.
       ./system/updates.nix

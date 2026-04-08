@@ -62,4 +62,7 @@ rec {
   prismlauncher = "${shared}/prismlauncher";
   spicetify = "${shared}/spicetify";
 
+  fish = "${shared}/config.fish";
+  fish_theme = "${shared}/tide.fish";
+
 }

@@ -10,7 +10,7 @@
 
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
+    powerManagement.finegrained = true;
 
     # Use the proprietary closed-source driver.
     # (Set to true ONLY if you have an RTX 2000 series or newer AND want the open-source kernel modules).
@@ -21,6 +21,7 @@
 
     # Select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+    # production - LTS, stable - default.
     # If you have an older GPU (e.g., GTX 900 series or older), you might need a legacy driver:
     # package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
   };
