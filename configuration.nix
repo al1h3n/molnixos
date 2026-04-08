@@ -22,6 +22,7 @@ in {
       ./system/updates.nix
 
       # 1.4. System files.
+      ./system/grub.nix
       ./system/hosts.nix 
       ./system/autolaunch.nix
       ./system/sudo.nix
@@ -42,20 +43,7 @@ in {
   boot = {
     kernelPackages = pkgs."linuxPackages_${variables.kernel}";
     supportedFilesystems = [ "ntfs" ];
-    loader = {
-      efi = {
-        canTouchEfiVariables = true;
-      };
-      grub = {
-        enable = true;
-        efiSupport = true;
-        device = "nodev";
-        useOSProber = true;
-        extraConfig = ''
-          GRUB_DISABLE_OS_PROBER=false
-        '';
-      };
-    };
+    loader.efi.canTouchEfiVariables = true;
   };
 
 systemd = {
