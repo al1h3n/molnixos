@@ -10,7 +10,7 @@
 
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = true;
+    powerManagement.finegrained = false;
 
     # Use the proprietary closed-source driver.
     # (Set to true ONLY if you have an RTX 2000 series or newer AND want the open-source kernel modules).
