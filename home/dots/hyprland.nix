@@ -15,7 +15,7 @@
       grim slurp xdg-user-dirs wl-clipboard playerctl
       cliphist
       
-      waybar # quickshell
+      jq waybar # quickshell
       swaynotificationcenter
   ];
 
