@@ -4,7 +4,7 @@
     folder = ${variables.media}/static
              ${variables.media}/video
     wallpaper = ${variables.media}/static/adventurer.png
-    post_command = "sh ${variables.lshared}/scripts/borderline.sh $wallpaper"
+    post_command = pkill mpvpaper;pkill mpv;sh ${variables.lshared}/scripts/borderline.sh $wallpaper
     number_of_columns = 5
     swww_transition_type = random
     swww_transition_fps = 144
