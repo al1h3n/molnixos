@@ -13,6 +13,25 @@
 
   programs.firefox = {
     enable = true;
+
+    preferences = {
+      "extensions.allowPrivateBrowsingByDefault" = true;
+
+      # Fission (site isolation)
+      "fission.autostart" = true;
+
+      # HTTP pipelining (legacy networking tweaks)
+      "network.http.pipelining" = true;
+      "network.http.proxy.pipelining" = true;
+      "network.http.pipelining.maxrequests" = 30;
+
+      # Rendering / paint behavior
+      "nglayout.initialpaint.delay" = 0;
+
+      # DNS
+      "network.dns.ecg" = true;
+    };
+
     profiles = {
       personal = {
         id = 0;
