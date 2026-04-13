@@ -51,6 +51,10 @@
 
       # Art
       krita # blender
+      losslesscut-bin # To remove part of videos without losing quality.
+
+      # AI, upscaling
+      upscayl
 
       # Social
       vesktop telegram-desktop # _64gram
@@ -60,6 +64,9 @@
       
       # Shell
       kitty
+
+      # Sharing files
+      localsend
 
       # Office
       # freeoffice
