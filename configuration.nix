@@ -116,24 +116,25 @@ in {
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.variables = {
-    __VERSION = config.system.nixos.version;
-    __STATE = config.system.stateVersion;
-    SHARED_PATH = variables.shared;
-    SHARED_MEDIA_PATH = variables.media; # Wallpapers.
-    L_PATH = variables.lshared;
+  environment = {
+    variables = {
+      __VERSION = config.system.nixos.version;
+      __STATE = config.system.stateVersion;
+      SHARED_PATH = variables.shared;
+      SHARED_MEDIA_PATH = variables.media; # Wallpapers.
+      L_PATH = variables.lshared;
 
-    __EGL_VENDOR_LIBRARY_DIRS = "/run/opengl-driver/share/glvnd/egl_vendor.d";
+      __EGL_VENDOR_LIBRARY_DIRS = "/run/opengl-driver/share/glvnd/egl_vendor.d";
 
-    WLR_NO_HARDWARE_CURSORS = "1"; # If your cursor becomes invisible
-    NIXOS_OZONE_WL = "1";
-    ELECTRON_OZONE_PLATFORM_HINTS = "auto";
-    NVD_BACKEND = "direct";
+      WLR_NO_HARDWARE_CURSORS = "1"; # If your cursor becomes invisible
+      NIXOS_OZONE_WL = "1";
+      ELECTRON_OZONE_PLATFORM_HINTS = "auto";
+      NVD_BACKEND = "direct";
 
-    JAVA_HOME = "${pkgs.temurin-bin-21}";
+      JAVA_HOME = "${pkgs.temurin-bin-21}";
 
-    GTK_THEME = variables.theme_gtk;
-  };
+      GTK_THEME = variables.theme_gtk;
+    };
 
     systemPackages = with pkgs; [
       # Programming compilers.
