@@ -10,11 +10,11 @@ in {
   imports = [
       # 1.1. Base configuration.
       ./hardware-configuration.nix
-      ./hardware/hardware-basic.nix
+      ./hardware
       ./hardware/mouse.nix
 
       # 1.2. GPU/iGPU.
-      ./hardware/nvidia/propietary.nix
+      ./hardware/nvidia
       # ./hardware/vmware.nix
       # Choose or adjust GPU configuration (custom folder)
     
@@ -30,6 +30,7 @@ in {
       ./system/dns.nix
       ./system/polkit.nix
       ./system/virtualization.nix
+      ./system/xdg.nix
     ];
     
   
@@ -115,23 +116,24 @@ in {
 
   nixpkgs.config.allowUnfree = true;
 
-  environment = {
-    variables = {
-      __VERSION = config.system.nixos.version;
-      __STATE = config.system.stateVersion;
-      SHARED_PATH = variables.shared;
-      SHARED_MEDIA_PATH = variables.media; # Wallpapers.
-      L_PATH = variables.lshared;
+  environment.variables = {
+    __VERSION = config.system.nixos.version;
+    __STATE = config.system.stateVersion;
+    SHARED_PATH = variables.shared;
+    SHARED_MEDIA_PATH = variables.media; # Wallpapers.
+    L_PATH = variables.lshared;
 
-      WLR_NO_HARDWARE_CURSORS = "1"; # If your cursor becomes invisible
-      NIXOS_OZONE_WL = "1";
-      ELECTRON_OZONE_PLATFORM_HINTS = "auto";
-      NVD_BACKEND = "direct";
+    __EGL_VENDOR_LIBRARY_DIRS = "/run/opengl-driver/share/glvnd/egl_vendor.d";
 
-      JAVA_HOME = "${pkgs.temurin-bin-21}";
+    WLR_NO_HARDWARE_CURSORS = "1"; # If your cursor becomes invisible
+    NIXOS_OZONE_WL = "1";
+    ELECTRON_OZONE_PLATFORM_HINTS = "auto";
+    NVD_BACKEND = "direct";
 
-      GTK_THEME = variables.theme_gtk;
-    };
+    JAVA_HOME = "${pkgs.temurin-bin-21}";
+
+    GTK_THEME = variables.theme_gtk;
+  };
 
     systemPackages = with pkgs; [
       # Programming compilers.
