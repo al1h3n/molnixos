@@ -17,9 +17,11 @@ in {
   };
 
   # Themes.
-  xdg.configFile."qBittorrent/themes/catppuccin-frappe.qbtheme".source = frappe;
-  xdg.configFile."qBittorrent/themes/catppuccin-macchiato.qbtheme".source = macchiato;
-  xdg.configFile."qBittorrent/themes/catppuccin-mocha.qbtheme".source = mocha;
-  xdg.configFile."qBittorrent/themes/fluent-light.qbtheme".source = fluent-light;
-  xdg.configFile."qBittorrent/themes/fluent-dark.qbtheme".source = fluent-dark;
+  xdg.configFile = {
+    "qBittorrent/themes/catppuccin-frappe.qbtheme".source = frappe;
+    "qBittorrent/themes/catppuccin-macchiato.qbtheme".source = macchiato;
+    "qBittorrent/themes/catppuccin-mocha.qbtheme".source = mocha;
+    "qBittorrent/themes/fluent-light.qbtheme".source = fluent-light;
+    "qBittorrent/themes/fluent-dark.qbtheme".source = fluent-dark;
+  };
 }

@@ -3,7 +3,7 @@
 
 { variables, ... }: {
   imports =[
-    ./packages.nix
+    ./user.nix
     ./dotfiles.nix
     # ./variable-links.nix
   ];
