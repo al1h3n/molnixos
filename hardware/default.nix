@@ -1,4 +1,4 @@
-# hardware.nix
+# Default hardware configurations.
 { pkgs, lib, variables, ... }: {
 
   # CPU

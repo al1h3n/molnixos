@@ -1,4 +1,6 @@
+# Uses virt-manager (with libvirtd) for VMs creation.
 { pkgs, ... }: {
+  environment.systemPackages = with pkgs; [ virt-manager virt-viewer ];
   virtualisation.libvirtd = {
     enable = true;
     qemu = {
