@@ -20,7 +20,8 @@ in {
     # theme = spicePkgs.themes.defaultDynamic;
     # Or something like spicePkgs.themes.catppuccin
 
-    theme = liquify;
+    customThemes.Liquify = liquify;
+    theme = spicePkgs.themes.Liquify;
     colorScheme = "Base";
 
     # Optional: add extensions
@@ -44,7 +45,7 @@ in {
       # focusMode
     ];
 
-    enabledSnippets = with spicePkgs.snippets; [
+    enabledSnippets = with spicePkgs.nippets; [
       hideLyricsButton
     ];
   };
