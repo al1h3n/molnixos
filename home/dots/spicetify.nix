@@ -20,9 +20,7 @@ in {
       shuffle # Proper shuffle with zero bias.
       autoSkipVideo
       hidePodcasts
-      keyboardShortcut
       volumePercentage
-      trashbin # Remove artists from playing.
       betterGenres # Song genre.
 
       aiBandBlocker # Skip AI slop.
@@ -31,12 +29,15 @@ in {
       spicyLyrics # Better lyrics.
       copyLyrics
       history # History of playing.
-      sessionStats
-      # focusMode
+      
+
+      # Irritating but useful.
+      # sessionStats # On right side, pretty big.
+      # trashbin # Remove artists from playing, weird .JPG icon.
     ];
 
     enabledSnippets = with spicePkgs.snippets; [
-      hideLyricsButton
+      # hideLyricsButton
     ];
   };
 }
