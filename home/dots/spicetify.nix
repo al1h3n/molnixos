@@ -1,14 +1,18 @@
-{
-  inputs.spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+{ inputs, pkgs, ... }:
+let
+  spicePkgs = inputs.spicetify.legacyPackages.${pkgs.system};
+in {
+  programs.spicetify = {
+    enable = true;
 
-  outputs = { self, nixpkgs, spicetify-nix, ... }: {
-    homeConfigurations.yourUser = nixpkgs.lib.homeManagerConfiguration {
-      modules = [
-        spicetify-nix.homeManagerModules.spicetify
-        {
-          programs.spicetify.enable = true;
-        }
-      ];
-    };
+    # Optional: pick a theme
+    theme = spicePkgs.themes.catppuccin;
+    colorScheme = "mocha";
+
+    # Optional: add extensions
+    enabledExtensions = with spicePkgs.extensions; [
+      adblock
+      shuffle
+    ];
   };
 }

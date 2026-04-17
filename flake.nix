@@ -33,14 +33,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # spicetify = {
-    #   url = "github:Gerg-L/spicetify-nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    spicetify = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, spicetify, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;
@@ -51,9 +51,10 @@
     nixosConfigurations.main = pkgsSource.lib.nixosSystem {
       system = variables.system;
       modules = [
-        { nixpkgs.overlays = [ nur.overlays.default ]; }
-        hmSource.nixosModules.home-manager
         ./configuration.nix
+        hmSource.nixosModules.home-manager
+        { nixpkgs.overlays = [ nur.overlays.default ]; }
+        spicetify.homeManagerModules.spicetify
         {
           home-manager = {
             extraSpecialArgs = {
