@@ -2,6 +2,12 @@
 { inputs, pkgs, ... }:
 let
   spicePkgs = inputs.spicetify.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+
+  liquify = pkgs.fetchFromGitHub {
+    owner = "NMWplays";
+    repo = "Liquify";
+    rev = "main";
+  };
 in {
   # packages = with pkgs; [ spotify ];
   programs.spicetify = {
@@ -11,9 +17,12 @@ in {
     enabledCustomApps = with spicePkgs.apps; [ marketplace ];
 
     # Theme.
-    theme =
+    theme = defaultDynamic;
     # Or something like spicePkgs.themes.catppuccin
-    colorScheme = "mocha";
+
+    # customThemes.Liquify = liquify;
+    # theme = spicePkgs.themes.Liquify;
+    # colorScheme = "Base";
 
     # Optional: add extensions
     enabledExtensions = with spicePkgs.extensions; [
