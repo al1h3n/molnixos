@@ -49,7 +49,6 @@
       else inputs.home-manager;
   in {
     nixosConfigurations.main = pkgsSource.lib.nixosSystem {
-      system = variables.system;
       modules = [
         ./configuration.nix
         hmSource.nixosModules.home-manager

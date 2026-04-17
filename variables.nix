@@ -9,8 +9,6 @@ rec {
 
   username = "al1h3n";
   host = "MolniPC";
-  os_name = "nix";
-  system = "x86_64-linux";
   os_name_custom = "MolnixOS";
 
   zone = "Asia/Almaty";
