@@ -35,7 +35,7 @@ in {
       # focusMode
     ];
 
-    enabledSnippets = with spicePkgs.nippets; [
+    enabledSnippets = with spicePkgs.snippets; [
       hideLyricsButton
     ];
   };
