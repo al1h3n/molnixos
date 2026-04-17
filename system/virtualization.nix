@@ -1,5 +1,5 @@
 # Uses libvirtd as backend.
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   virtualisation.libvirtd = {
     enable = true;
     qemu = {
@@ -25,15 +25,20 @@
     '';
     };
   };
-  systemd.services.libvirtd-network-default = {
-    description = "libvirt default network autostart - MolniOS";
-    after = [ "libvirtd.service" ];
-    requires = [ "libvirtd.service" ];
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig.Type = "oneshot";
-    script = ''
-      ${pkgs.libvirt}/bin/virsh net-autostart default
-      ${pkgs.libvirt}/bin/virsh net-start default || true
-    '';
+  systemd.services = {
+    libvirtd.serviceConfig = {
+      LoadCredentialEncrypted = lib.mkForce [];
+    };
+    libvirtd-network-default = {
+      description = "libvirt default network autostart - MolniOS";
+      after = [ "libvirtd.service" ];
+      requires = [ "libvirtd.service" ];
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig.Type = "oneshot";
+      script = ''
+        ${pkgs.libvirt}/bin/virsh net-autostart default
+        ${pkgs.libvirt}/bin/virsh net-start default || true
+      '';
+    };
   };
 }
