@@ -38,9 +38,6 @@
       ]))
       dialect # Translator
 
-      # Music
-      spotify
-
       # Coding
       vscodium
       # zed-editor
