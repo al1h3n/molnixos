@@ -17,7 +17,7 @@ in {
     enabledCustomApps = with spicePkgs.apps; [ marketplace ];
 
     # Theme.
-    theme = defaultDynamic;
+    theme = spicePkgs.themes.defaultDynamic;
     # Or something like spicePkgs.themes.catppuccin
 
     # customThemes.Liquify = liquify;
