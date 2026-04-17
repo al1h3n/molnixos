@@ -30,7 +30,7 @@ in {
       ./system/dns.nix
       ./system/polkit.nix
       ./system/virtualization.nix
-      ./system/xdg.nix
+      # ./system/xdg.nix
     ];
     
   
