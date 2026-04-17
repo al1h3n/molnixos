@@ -54,7 +54,6 @@
         ./configuration.nix
         hmSource.nixosModules.home-manager
         { nixpkgs.overlays = [ nur.overlays.default ]; }
-        spicetify.homeManagerModules.spicetify
         {
           home-manager = {
             extraSpecialArgs = {
@@ -65,6 +64,7 @@
             useUserPackages = true;
             users.${variables.username} = import ./home/home.nix;
             backupFileExtension = "backup";
+            sharedModules = [ spicetify.homeManagerModules.spicetify ];
           };
         }
       ];
