@@ -17,12 +17,11 @@ in {
     enabledCustomApps = with spicePkgs.apps; [ marketplace ];
 
     # Theme.
-    theme = spicePkgs.themes.defaultDynamic;
+    # theme = spicePkgs.themes.defaultDynamic;
     # Or something like spicePkgs.themes.catppuccin
 
-    # customThemes.Liquify = liquify;
-    # theme = spicePkgs.themes.Liquify;
-    # colorScheme = "Base";
+    theme = liquify;
+    colorScheme = "Base";
 
     # Optional: add extensions
     enabledExtensions = with spicePkgs.extensions; [
@@ -32,7 +31,6 @@ in {
       hidePodcasts
       keyboardShortcut
       volumePercentage
-      loopyLoop # Select a part to loop.
       trashbin # Remove artists from playing.
       betterGenres # Song genre.
 
@@ -44,6 +42,10 @@ in {
       history # History of playing.
       sessionStats
       # focusMode
+    ];
+
+    enabledSnippets = with spicePkgs.snippets; [
+      hideLyricsButton
     ];
   };
 }
