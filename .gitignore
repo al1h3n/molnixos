@@ -25,6 +25,7 @@ tmp/
 *.swp
 *.cache
 *.pid
+*.lock
 
 # Images (optional — remove if needed)
 *.png
@@ -55,7 +56,6 @@ tmp/
 .DS_Store
 Thumbs.db
 desktop.ini
-hardware-configuration.nix
 
 # =========================
 # LANGUAGE / TOOL SPECIFIC
