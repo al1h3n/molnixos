@@ -21,7 +21,7 @@
   mactahoe = pkgs.stdenv.mkDerivation {
     name = "mactahoe-icons";
     src = builtins.fetchTarball {
-      url = "https://github.com/vinceliuice/MacTahoe-icon-theme/archive/main.tar.gz";
+      url = "https://github.com/vinceliuice/MacTahoe-icon-theme/archive/master.tar.gz"; # Might be main as well.
     };
     nativeBuildInputs = [ pkgs.gtk3 pkgs.gtk4 ];
     dontCheckForBrokenSymlinks = true;
