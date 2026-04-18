@@ -28,6 +28,7 @@ in {
       ./system/sudo.nix
       ./system/ly.nix
       ./system/dns.nix
+      ./system/time.nix
       ./system/polkit.nix
       ./system/virtualization.nix
       # ./system/xdg.nix
