@@ -3,7 +3,7 @@
     ./propietary.nix
     # ./nouveau.nix
   ];
-  extraPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     nvidia-vaapi-driver  # bridges NVDEC → VAAPI
   ];
   environment.variables = {

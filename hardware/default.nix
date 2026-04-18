@@ -36,7 +36,8 @@
 
   # NetworkManager packages
   environment.systemPackages = with pkgs; [
-    networkmanagerapplet  # nm-applet tray icon
+    networkmanagerapplet  # nm-applet tray icon.
+    libvdpau-va-gl # For spicetify GPU acceleration.
   ];
 
   # GPU
@@ -44,9 +45,6 @@
     enable = true;
     enable32Bit = true;
   };
-  extraPackages = with pkgs; [
-    libvdpau-va-gl # For spicetify GPU acceleration.
-  ];
 
   # Add user to groups
   users.users.${variables.username} = {
