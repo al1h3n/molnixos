@@ -1,11 +1,10 @@
-{ ... }: {
+{ pkgs, ... }: {
   imports = [
     ./propietary.nix
     # ./nouveau.nix
   ];
   extraPackages = with pkgs; [
     nvidia-vaapi-driver  # bridges NVDEC → VAAPI
-    libvdpau-va-gl
   ];
   environment.variables = {
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
