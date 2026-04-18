@@ -17,18 +17,18 @@ in {
     # Optional: add extensions
     enabledExtensions = with spicePkgs.extensions; [
       adblock
-      shuffle # Proper shuffle with zero bias.
+      # shuffle # Proper shuffle with zero bias.
       autoSkipVideo
       hidePodcasts
       # volumePercentage
-      betterGenres # Song genre.
+      # betterGenres # Song genre.
 
-      aiBandBlocker # Skip AI slop.
-      powerBar # macOS bar for search
-      copyToClipboard # Copy song name.
-      spicyLyrics # Better lyrics.
-      copyLyrics
-      history # History of playing.
+      # aiBandBlocker # Skip AI slop.
+      # powerBar # macOS bar for search
+      # copyToClipboard # Copy song name.
+      # spicyLyrics # Better lyrics.
+      # copyLyrics
+      # history # History of playing.
       
 
       # Irritating but useful.
