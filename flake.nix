@@ -33,6 +33,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Spicetify - adjust your Spotify with marketplace and plugins.
     spicetify = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
