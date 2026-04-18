@@ -11,7 +11,7 @@ in {
     enabledCustomApps = with spicePkgs.apps; [ marketplace ];
 
     # Theme - nix eval --impure --json --expr 'builtins.attrNames ((builtins.getFlake "github:Gerg-L/spicetify-nix").legacyPackages.x86_64-linux.themes)'
-    theme = spicePkgs.themes.text;
+    # theme = spicePkgs.themes.text;
 
     # Optional: add extensions
     enabledExtensions = with spicePkgs.extensions; [
