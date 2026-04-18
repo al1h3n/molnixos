@@ -8,11 +8,10 @@ in {
     enable = true;
 
     # Marketplace.
-    enabledCustomApps = with spicePkgs.apps; [ marketplace ];
+    # enabledCustomApps = with spicePkgs.apps; [ marketplace ];
 
-    # Theme.
-    # theme = spicePkgs.themes.defaultDynamic;
-    # Or something like spicePkgs.themes.catppuccin
+    # Theme - nix eval --impure --json --expr 'builtins.attrNames ((builtins.getFlake "github:Gerg-L/spicetify-nix").legacyPackages.x86_64-linux.themes)'
+    # E.g. theme = spicePkgs.themes.defaultDynamic;
 
     # Optional: add extensions
     # enabledExtensions = with spicePkgs.extensions; [
@@ -39,6 +38,7 @@ in {
     #   # trashbin # Remove artists from playing, weird .JPG icon.
     # ];
 
+    # Snippets - nix eval --impure --json --expr 'builtins.attrNames ((builtins.getFlake "github:Gerg-L/spicetify-nix").legacyPackages.x86_64-linux.snippets)'
     # enabledSnippets = with spicePkgs.snippets; [
     #   hideLyricsButton
     #   sonicDancing
