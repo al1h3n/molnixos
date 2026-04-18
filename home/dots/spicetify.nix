@@ -20,7 +20,7 @@ in {
       shuffle # Proper shuffle with zero bias.
       autoSkipVideo
       hidePodcasts
-      volumePercentage
+      # volumePercentage
       betterGenres # Song genre.
 
       aiBandBlocker # Skip AI slop.
