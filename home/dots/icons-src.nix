@@ -9,7 +9,6 @@
     dontCheckForBrokenSymlinks = true;
     installPhase = ''
       mkdir -p $out/share/icons
-      # Patch the script so it can find bash in the Nix sandbox
       patchShebangs install.sh
       ./install.sh -d $out/share/icons -t black
       for theme in $out/share/icons/*; do

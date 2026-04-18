@@ -30,7 +30,6 @@ in {
       volumePercentage
       betterGenres # Song genre.
       aiBandBlocker # Skip AI slop.
-      powerBar # macOS bar for search
       copyToClipboard # Copy song name.
       copyLyrics
       history # History of playing.
@@ -42,9 +41,5 @@ in {
     ];
 
     # Snippets - nix eval --impure --json --expr 'builtins.attrNames ((builtins.getFlake "github:Gerg-L/spicetify-nix").legacyPackages.x86_64-linux.snippets)'
-    enabledSnippets = with spicePkgs.snippets; [
-      fixProgressBar
-      fixNowPlayingIcon
-    ];
   };
 }
