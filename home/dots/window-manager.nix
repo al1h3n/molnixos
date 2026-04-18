@@ -15,6 +15,8 @@
       grim slurp xdg-user-dirs wl-clipboard playerctl
       cliphist
       
+      yad # Create windows.
+
       jq waybar # quickshell
       swaynotificationcenter
   ];
