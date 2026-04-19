@@ -64,11 +64,11 @@
         # Home-manager module.
         hmSource.nixosModules.home-manager
 
-        # NUR (AUR for nixOS).
-        { nixpkgs.overlays = [ nur.overlays.default ]; }
-
-        # LazySpotify.
-        (final: prev: { lazyspotify = final.callPackage ./pkgs/lazyspotify.nix { src = inputs.lazyspotify; }; })
+        # Overlays.
+        { nixpkgs.overlays = [
+          nur.overlays.default
+          (final: prev: { lazyspotify = final.callPackage ./pkgs/lazyspotify.nix { src = inputs.lazyspotify; }; })
+        ]; }
 
         {
           home-manager = {
