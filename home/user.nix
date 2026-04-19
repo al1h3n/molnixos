@@ -42,6 +42,9 @@
       vscodium
       # zed-editor
       
+      # Music.
+      lazyspotify
+
       # Gaming
       gamemode wine winetricks protontricks
       prismlauncher steam

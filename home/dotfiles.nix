@@ -22,7 +22,6 @@ let
     # "sddm"
     "virt-manager"
     "spicetify"
-    "lazyspotify"
   ];
 in {
   imports = map (name: path + "/${name}.nix") dots;
