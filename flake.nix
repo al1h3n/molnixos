@@ -39,15 +39,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-	# LazySpotify - Spotify in terminal.
-    lazyspotify = {
-       url = "github:dubeyKartikay/lazyspotify";
-       flake = false; # repo has no flake.nix
-     };
+	  # LazySpotify - Spotify in terminal.
+    # lazyspotify = {
+    #    url = "github:dubeyKartikay/lazyspotify";
+    #    flake = false; # repo has no flake.nix
+    #  };
 
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, spicetify, lazyspotify, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, spicetify, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;
@@ -67,7 +67,7 @@
         # Overlays.
         { nixpkgs.overlays = [
           nur.overlays.default
-          (final: prev: { lazyspotify = final.callPackage ./pkgs/lazyspotify.nix { src = inputs.lazyspotify; }; })
+          # (final: prev: { lazyspotify = final.callPackage ./pkgs/lazyspotify.nix { src = inputs.lazyspotify; }; })
         ]; }
 
         {

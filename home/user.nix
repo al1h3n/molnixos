@@ -43,7 +43,7 @@
       # zed-editor
       
       # Music.
-      lazyspotify
+      # lazyspotify # Only with Premium subscription.
 
       # Gaming
       gamemode wine winetricks protontricks

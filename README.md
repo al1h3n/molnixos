@@ -20,5 +20,9 @@ Let's take as an example `hyprpolkitagent` -> `polkit-gnome`<br>
 1. Comment `polkit-hypr` in `dotfiles.nix`<br>
 2. Uncomment `polkit-gnome.nix` in `system/polkit.nix`
 
+### How to launch lazyspotify? (ONLY WITH SPOTIFY PREMIUM)
+Follow [these](https://github.com/dubeyKartikay/lazyspotify#configuration) instructions. If you don't have premium you can skip `Web API`.
+
+
 ### 🕝 When to install?
 Install MolnixOS right after you had installed nixOS.
