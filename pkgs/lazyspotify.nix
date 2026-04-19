@@ -3,7 +3,7 @@ buildGoModule {
   pname = "lazyspotify";
   version = "unstable";
   inherit src;
-  vendorHash = lib.fakeHash; # ← changed from "sha256-XXXX"
+  vendorHash = "sha256-Axdt3/3ZOZY9Z5VUI6Wh77oIREOO26ODMyEgtscTmn8=";
   subPackages = [ "cmd/lazyspotify" ];
   meta = with lib; {
     description = "Terminal Spotify client";
