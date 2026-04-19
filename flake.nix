@@ -39,9 +39,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+	# LazySpotify - Spotify in terminal.
+    lazyspotify = {
+       url = "github:dubeyKartikay/lazyspotify";
+       flake = false; # repo has no flake.nix
+     };
+
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, spicetify, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, spicetify, lazyspotify, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;
@@ -51,9 +57,19 @@
   in {
     nixosConfigurations.main = pkgsSource.lib.nixosSystem {
       modules = [
+        
+        # nixOS system-wide configuration.
         ./configuration.nix
+
+        # Home-manager module.
         hmSource.nixosModules.home-manager
+
+        # NUR (AUR for nixOS).
         { nixpkgs.overlays = [ nur.overlays.default ]; }
+
+        # LazySpotify.
+        (final: prev: { lazyspotify = final.callPackage ./pkgs/lazyspotify.nix { src = inputs.lazyspotify; }; })
+
         {
           home-manager = {
             extraSpecialArgs = {
