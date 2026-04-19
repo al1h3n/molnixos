@@ -93,7 +93,13 @@ in {
     };
 
     hardware.openrgb.enable = true; # OpenRGB
+
+    # For org.freedesktop.portal.Settings (also lazyspotify).
+    gnome.gnome-keyring.enable = true;
   };
+
+  # For org.freedesktop.portal.Settings (also lazyspotify).
+  security.pam.services.login.enableGnomeKeyring = true;
 
   programs = {
     git.enable = true;
