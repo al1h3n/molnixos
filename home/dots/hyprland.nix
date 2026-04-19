@@ -7,7 +7,6 @@
     xwayland = {
       enable = true;
       force_zero_scaling = true;
-      # hidpi = false;
     };
   };
 
