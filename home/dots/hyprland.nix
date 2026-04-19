@@ -2,8 +2,13 @@
   # Enabling Hyprland.
   wayland.windowManager.hyprland = {
     enable = true;
-    xwayland.enable = true;
     systemd.enable = false; # Might break hyprland autolaunch.
+
+    xwayland = {
+      enable = true;
+      force_zero_scaling = true;
+      # hidpi = false;
+    };
   };
 
   # Add hyprmod (settings app, aur.archlinux.org/packages/hyprmod-git) when released in nixOS packages.
