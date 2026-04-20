@@ -50,11 +50,7 @@ in {
 
   systemd = {
     settings.Manager.DefaultTimeoutStopSec = lib.mkForce "10s";
-    services = {
-      libvirtd.serviceConfig.TimeoutStopSec = lib.mkForce "10s";
-      "user@".serviceConfig.TimeoutStopSec = lib.mkForce "10s";
-      "libvirt-guests".serviceConfig.TimeoutStopSec = lib.mkForce "10s";
-    };
+    services."user@".serviceConfig.TimeoutStopSec = lib.mkForce "10s";
   };
 
   services.xserver = {

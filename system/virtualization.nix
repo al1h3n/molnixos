@@ -27,8 +27,10 @@
   };
   systemd.services = {
     libvirtd.serviceConfig = {
+      TimeoutStopSec = lib.mkForce "10s";
       LoadCredentialEncrypted = lib.mkForce [];
     };
+    "libvirt-guests".serviceConfig.TimeoutStopSec = lib.mkForce "10s";
     libvirtd-network-default = {
       description = "libvirt default network autostart - MolniOS";
       after = [ "libvirtd.service" ];
