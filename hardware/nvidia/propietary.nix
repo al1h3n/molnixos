@@ -6,7 +6,7 @@
 
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
     # Keep this false unless you have graphical corruption after waking up from sleep.
-    powerManagement.enable = false;
+    powerManagement.enable = true;
 
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
