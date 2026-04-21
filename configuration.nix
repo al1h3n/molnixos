@@ -149,7 +149,7 @@ in {
       gcc python3 pipx temurin-bin-8 temurin-bin-21 temurin-bin-25
     
       # Main tools.
-      curl git openssh font-manager libnotify killall ffmpegthumbnailer
+      curl wget git openssh font-manager libnotify killall ffmpegthumbnailer
       fastfetch countryfetch btop neovim
       micro
       mpv peazip file

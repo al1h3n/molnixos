@@ -28,10 +28,10 @@
     enable = true;
     # platformTheme.name = "breeze";
     platformTheme.name = "qt6ct"; # QT_QPA_PLATFORMTHEME but for local.
-    style = {
-      name = "breeze-dark";
-      package = pkgs.kdePackages.breeze;
-    };
+    # style = {
+    #   name = "breeze-dark";
+    #   package = pkgs.kdePackages.breeze;
+    # };
   };
 
   home = {
