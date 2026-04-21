@@ -2,9 +2,12 @@
 # Quad9 filters malicious domains by default.
 { ... }: {
   networking = {
+    interfaces."enp6s0".mtu = 1400; # adjust interface name as needed
+
     nameservers = [
       "9.9.9.9"
       "149.112.112.112"
+      "1.1.1.1"
       "2620:fe::fe"
       "2620:fe::9"
     ];
@@ -21,6 +24,7 @@
     text = ''
       nameserver 9.9.9.9
       nameserver 149.112.112.112
+      nameserver 1.1.1.1
       nameserver 2620:fe::fe
       nameserver 2620:fe::9
     '';
