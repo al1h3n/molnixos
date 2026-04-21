@@ -1,5 +1,6 @@
 # wiki.nixos.org/wiki/NVIDIA
 { config, ... }: {
+  boot.blacklistedKernelModules = [ "nouveau" ]; # Remove open-source driver.
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     modesetting.enable = true;
