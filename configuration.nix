@@ -32,6 +32,8 @@ in {
       ./system/polkit.nix
       ./system/virtualization.nix
       ./system/xdg.nix
+
+      ./pkgs/github.nix
     ];
     
   
