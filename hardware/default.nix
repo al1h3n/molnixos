@@ -30,8 +30,11 @@
 
   # WiFi
   networking = {
-    networkmanager.enable = true;
-    wireless.enable = lib.mkForce false; # Disable wpa_supplicant, conflicts with networkmanager
+    wireless.enable = lib.mkForce false; # Disable wpa_supplicant, conflicts with networkmanager.
+    networkmanager = {
+      enable = true;
+      wifi.powersave = false;
+    };
   };
 
   # NetworkManager packages
