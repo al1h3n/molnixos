@@ -26,6 +26,6 @@
       nameserver 2620:fe::fe
       nameserver 2620:fe::9
     '';
-    mode = "0444"; # Read-only so nothing can overwrite it.
+    # mode = "0444"; # Read-only so nothing can overwrite it (conflicts with WARP).
   };
 }
