@@ -26,3 +26,23 @@ Follow [these](https://github.com/dubeyKartikay/lazyspotify#configuration) instr
 
 ### 🕝 When to install?
 Install MolnixOS right after you had installed nixOS.
+
+### Warning: can't download asset from repo.
+Just install WARP, you have 2 methods.
+
+```
+# First shell.
+NIXPKGS_ALLOW_UNFREE=1 nix-shell -p cloudflare-warp --run "sudo warp-svc &"
+
+# Second shell.
+NIXPKGS_ALLOW_UNFREE=1 nix-shell -p cloudflare-warp --run "warp-cli registration new && warp-cli connect"
+NIXPKGS_ALLOW_UNFREE=1 nix-shell -p cloudflare-warp
+warp-cli status # If it's healthy, you're great!
+```
+
+```
+# Method, when you already have config in nixOS
+# services.cloudflare-warp.enable = true;
+warp-cli connect/disconnect
+
+```

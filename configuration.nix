@@ -32,6 +32,7 @@ in {
       ./system/polkit.nix
       ./system/virtualization.nix
       ./system/xdg.nix
+      ./system/vpn.nix
 
       ./pkgs/github.nix
     ];
@@ -80,6 +81,7 @@ in {
   # virtualization.docker.enable = true;
 
   services = {
+
     displayManager.ly.enable = true;
 
     gvfs.enable = true;
