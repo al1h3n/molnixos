@@ -31,11 +31,11 @@ Install MolnixOS right after you had installed nixOS.
 Just install WARP, you have 2 methods.
 
 ```
-# First shell.
 NIXPKGS_ALLOW_UNFREE=1 nix-shell -p cloudflare-warp --run "sudo warp-svc &"
 
-# Second shell.
+# Use this if you're opening warp first time.
 NIXPKGS_ALLOW_UNFREE=1 nix-shell -p cloudflare-warp --run "warp-cli registration new && warp-cli connect"
+
 NIXPKGS_ALLOW_UNFREE=1 nix-shell -p cloudflare-warp
 warp-cli status # If it's healthy, you're great!
 ```
