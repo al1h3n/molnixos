@@ -1,5 +1,7 @@
-# ui.nix - GTK + Qt theming
-{ config, lib, pkgs, ... }: {
+# ui.nix - GTK + Qt theming.
+{ config, lib, pkgs, ... }: 
+let breezeDarkColors = "${pkgs.kdePackages.breeze}/share/color-schemes/BreezeDark.colors";
+in {
   # GTK
   gtk = {
     enable = true;
@@ -8,45 +10,48 @@
       package = pkgs.kdePackages.breeze-gtk;
     };
     gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
-    gtk4 = {
-      extraConfig.gtk-application-prefer-dark-theme = true;
-      theme = {
-        name = "Breeze-Dark";
-        package = pkgs.kdePackages.breeze-gtk;
-      };
+
+    # Should work with dconf.
+    # gtk4 = {
+    #   extraConfig.gtk-application-prefer-dark-theme = true;
+    #   theme = {
+    #     name = "Breeze-Dark";
+    #     package = pkgs.kdePackages.breeze-gtk;
+    #   };
+    # };
+  };
+  dconf = {
+    enable = true;
+    settings."org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      gtk-theme = "Breeze-Dark"; # explicit, required by some apps
     };
   };
-  dconf.settings."org/gnome/desktop/interface" = {
-    color-scheme = "prefer-dark";
-  };
-  home.activation.createDconf = config.lib.dag.entryBefore [ "dconfSettings" ] ''
-    mkdir -p $HOME/.config/dconf
-  '';
+  # home.activation.createDconf = config.lib.dag.entryBefore [ "dconfSettings" ] ''
+  #   mkdir -p $HOME/.config/dconf
+  # '';
 
   # Qt
   qt = {
     enable = true;
-    # platformTheme.name = "breeze";
-    platformTheme.name = "qt6ct"; # QT_QPA_PLATFORMTHEME but for local.
-    # style = {
-    #   name = "breeze-dark";
-    #   package = pkgs.kdePackages.breeze;
-    # };
+    platformTheme.name = "qtct"; # QT_QPA_PLATFORMTHEME but for local.
   };
 
-  home = {
-    sessionVariables = {
-      QT_QPA_PLATFORMTHEME = "qt6ct";
-      # QT_STYLE_OVERRIDE = "breeze-dark"; # Not recommended by qt6ct.
-      QT_FONT = "SF Pro Display:12";
-      GTK_THEME = "Breeze-Dark";
-    };
+  home.sessionVariables = {
+    QT_FONT = "SF Pro Display:12";
+    GTK_THEME = "Breeze-Dark";
+  };
+
+  systemd.user.sessionVariables = {
+    GTK_THEME = "Breeze-Dark";
+    QT_QPA_PLATFORMTHEME = "qt6ct";
   };
 
   # Packages.
   home.packages = lib.concatLists [
     (with pkgs.qt6Packages; [
-      qt6ct qtstyleplugin-kvantum
+      qt6ct
+      # qtstyleplugin-kvantum # If you're using Kvantum styles.
     ])
 
     (with pkgs; [
@@ -57,16 +62,21 @@
 
   # Qt5/Qt6 icon theme config.
   # Change to icon_theme to apply icons (look pixelated).
-  xdg.configFile."qt5ct/qt5ct.conf".text = ''
-    [Appearance]
-    icon_theme=MacTahoe
-    style=Breeze
-    color_scheme_path=/usr/share/color-schemes/BreezeDark.colors
-  '';
-  xdg.configFile."qt6ct/qt6ct.conf".text = ''
-    [Appearance]
-    icon_theme=MacTahoe
-    style=Breeze
-    color_scheme_path=/usr/share/color-schemes/BreezeDark.colors
-  '';
+  xdg.configFile = {
+    "qt5ct/qt5ct.conf".text = ''
+      [Appearance]
+      icon_theme=MacTahoe
+      style=Breeze-Dark
+      color_scheme_path=${breezeDarkColors}
+      custom_palette=true
+    '';
+
+    "qt6ct/qt6ct.conf".text = ''
+      [Appearance]
+      icon_theme=MacTahoe
+      style=Breeze-Dark
+      color_scheme_path=${breezeDarkColors}
+      custom_palette=true
+    '';
+  };
 }
