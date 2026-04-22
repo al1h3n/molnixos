@@ -152,7 +152,7 @@ in {
       curl wget git openssh font-manager libnotify killall ffmpegthumbnailer
       fastfetch countryfetch btop neovim
       micro
-      mpv peazip file
+      mpv file
       superfile
       bat eza yazi fzf ripgrep fd # fd - find, ripgrep [rg] - grep.
       # CLI tools - useful for multiple accounts.
