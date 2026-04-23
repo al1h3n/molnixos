@@ -1,4 +1,4 @@
-# ui.nix - GTK + Qt theming.
+# ui.nix - GTK + Qt theming (without icons).
 { config, lib, pkgs, ... }: 
 let breezeDarkColors = "${pkgs.kdePackages.breeze}/share/color-schemes/BreezeDark.colors";
 in {
