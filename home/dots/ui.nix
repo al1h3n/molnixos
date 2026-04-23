@@ -32,7 +32,7 @@ in {
 
   systemd.user.sessionVariables = {
     GTK_THEME = "Breeze-Dark";
-    QT_QPA_PLATFORMTHEME = lib.mkforce "qt6ct";
+    QT_QPA_PLATFORMTHEME = lib.mkForce "qt6ct";
   };
 
   home.sessionVariables = {
