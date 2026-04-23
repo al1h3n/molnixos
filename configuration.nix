@@ -149,9 +149,10 @@ in {
       gcc python3 pipx temurin-bin-8 temurin-bin-21 temurin-bin-25
     
       # Main tools.
-      curl wget git openssh font-manager libnotify killall ffmpegthumbnailer
-      fastfetch countryfetch btop neovim
-      micro
+      curl wget git
+      openssh
+      font-manager ntfs3g libnotify killall ffmpegthumbnailer
+      fastfetch countryfetch btop neovim micro
       mpv file
       superfile
       bat eza yazi fzf ripgrep fd # fd - find, ripgrep [rg] - grep.
