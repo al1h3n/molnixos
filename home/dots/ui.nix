@@ -11,14 +11,9 @@ in {
     };
     gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
 
-    # Should work with dconf.
-    # gtk4 = {
-    #   extraConfig.gtk-application-prefer-dark-theme = true;
-    #   theme = {
-    #     name = "Breeze-Dark";
-    #     package = pkgs.kdePackages.breeze-gtk;
-    #   };
-    # };
+    # Avoid warnings.
+    gtk4.theme = config.gtk.theme;
+
   };
   dconf = {
     enable = true;
@@ -27,24 +22,22 @@ in {
       gtk-theme = "Breeze-Dark"; # explicit, required by some apps
     };
   };
-  # home.activation.createDconf = config.lib.dag.entryBefore [ "dconfSettings" ] ''
-  #   mkdir -p $HOME/.config/dconf
-  # '';
 
   # Qt
   qt = {
     enable = true;
-    platformTheme.name = "qtct"; # QT_QPA_PLATFORMTHEME but for local.
-  };
-
-  home.sessionVariables = {
-    QT_FONT = "SF Pro Display:12";
-    GTK_THEME = "Breeze-Dark";
+    platformTheme.name = "qtct";
+    # QT_QPA_PLATFORMTHEME but for local. qtct sets to qt5ct for now.
   };
 
   systemd.user.sessionVariables = {
     GTK_THEME = "Breeze-Dark";
-    QT_QPA_PLATFORMTHEME = "qt6ct";
+    QT_QPA_PLATFORMTHEME = lib.mkforce "qt6ct";
+  };
+
+  home.sessionVariables = {
+    GTK_THEME = "Breeze-Dark";
+    QT_FONT = "SF Pro Display:12";
   };
 
   # Packages.
@@ -52,6 +45,10 @@ in {
     (with pkgs.qt6Packages; [
       qt6ct
       # qtstyleplugin-kvantum # If you're using Kvantum styles.
+    ])
+
+    (with pkgs.qt5Packages; [
+      qt5ct
     ])
 
     (with pkgs; [
