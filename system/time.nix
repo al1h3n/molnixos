@@ -8,8 +8,7 @@
     enable = true;
     servers = [ "pool.ntp.org" "time.cloudflare.com" ];
     extraConfig = ''
-      rtclocal
       makestep 1.0 3
-    '';
+    ''; # rtcountc before.
   };
 }
