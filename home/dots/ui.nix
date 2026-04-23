@@ -26,13 +26,13 @@ in {
   # Qt
   qt = {
     enable = true;
-    platformTheme.name = "qtct";
+    platformTheme.name = "qt6ct";
     # QT_QPA_PLATFORMTHEME but for local. qtct sets to qt5ct for now.
   };
 
   systemd.user.sessionVariables = {
     GTK_THEME = "Breeze-Dark";
-    QT_QPA_PLATFORMTHEME = lib.mkForce "qt6ct";
+    QT_QPA_PLATFORMTHEME = "qt6ct"; # Use lib.mkForce if you have errors.
   };
 
   home.sessionVariables = {
@@ -45,10 +45,6 @@ in {
     (with pkgs.qt6Packages; [
       qt6ct
       # qtstyleplugin-kvantum # If you're using Kvantum styles.
-    ])
-
-    (with pkgs.qt5Packages; [
-      qt5ct
     ])
 
     (with pkgs; [
