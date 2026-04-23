@@ -64,10 +64,7 @@ in {
 
   # 4. Individual user configuration (software + informaiton).
   documentation.nixos.enable = false;
-  time = {
-    timeZone = variables.zone;
-    hardwareClockInLocalTime = true;
-  };
+  time.timeZone = variables.zone;
   users = {
     defaultUserShell = pkgs.zsh;
     users.${variables.username} = {
