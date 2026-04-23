@@ -150,8 +150,8 @@ in {
     
       # Main tools.
       curl wget git
-      openssh
-      font-manager ntfs3g libnotify killall ffmpegthumbnailer
+      openssh # ntfs3g
+      font-manager libnotify killall ffmpegthumbnailer
       fastfetch countryfetch btop neovim micro
       mpv file
       superfile

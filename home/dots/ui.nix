@@ -55,21 +55,21 @@ in {
 
   # Qt5/Qt6 icon theme config.
   # Change to icon_theme to apply icons (look pixelated).
-  xdg.configFile = {
-    "qt5ct/qt5ct.conf".text = ''
-      [Appearance]
-      icon_theme=MacTahoe
-      style=Breeze-Dark
-      color_scheme_path=${breezeDarkColors}
-      custom_palette=true
-    '';
+  # xdg.configFile = {
+  #   "qt5ct/qt5ct.conf".text = ''
+  #     [Appearance]
+  #     icon_theme=MacTahoe
+  #     style=Breeze-Dark
+  #     color_scheme_path=${breezeDarkColors}
+  #     custom_palette=true
+  #   '';
 
-    "qt6ct/qt6ct.conf".text = ''
-      [Appearance]
-      icon_theme=MacTahoe
-      style=Breeze-Dark
-      color_scheme_path=${breezeDarkColors}
-      custom_palette=true
-    '';
-  };
+  #   "qt6ct/qt6ct.conf".text = ''
+  #     [Appearance]
+  #     icon_theme=MacTahoe
+  #     style=Breeze-Dark
+  #     color_scheme_path=${breezeDarkColors}
+  #     custom_palette=true
+  #   '';
+  # };
 }
