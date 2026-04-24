@@ -53,7 +53,7 @@
 
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, spicetify, stylix, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, spicetify, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;
@@ -75,9 +75,8 @@
           nur.overlays.default
           # (final: prev: { lazyspotify = final.callPackage ./pkgs/lazyspotify.nix { src = inputs.lazyspotify; }; })
         ]; }
-
-        # Stylix
-        stylix.nixosModules.stylix
+        
+        # stylix.nixosModules.stylix
 
         {
           home-manager = {
