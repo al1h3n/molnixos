@@ -1,6 +1,6 @@
 { pkgs, inputs, ... }: {
   home.packages = [
-    inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.sf-pro
+    inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.sf-pro-nerd
   ];
 
   fonts.fontconfig = {
