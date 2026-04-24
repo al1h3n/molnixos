@@ -1,5 +1,5 @@
 # Firefox
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   commonSettings = {
     "extensions.allowPrivateBrowsingByDefault" = true;
@@ -32,6 +32,10 @@ in {
   };
 
   programs.firefox = {
+
+    # Syntax changed in 26.05
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
+
     enable = true;
     profiles = {
       personal = {

@@ -27,6 +27,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Stylix - can change theme of various applications.
+    # stylix = {
+    #   url = "github:nix-community/stylix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
     # yt-x to watch YouTube in shell. Do NOT accept updates.
     yt-x = {
       url = "github:Benexl/yt-x";
@@ -47,7 +53,7 @@
 
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, spicetify, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, spicetify, stylix, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;
@@ -69,6 +75,9 @@
           nur.overlays.default
           # (final: prev: { lazyspotify = final.callPackage ./pkgs/lazyspotify.nix { src = inputs.lazyspotify; }; })
         ]; }
+
+        # Stylix
+        stylix.nixosModules.stylix
 
         {
           home-manager = {
