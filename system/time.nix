@@ -4,7 +4,7 @@
 { variables, ... }: {
   time = {
     timeZone = variables.zone;
-    hardwareClockInLocalTime = true;
+    # hardwareClockInLocalTime = true;
   };
 
   # Disable timesyncd first (conflicts with chrony)
