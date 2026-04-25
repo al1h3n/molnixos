@@ -47,7 +47,7 @@ in {
   networking.hostName = variables.host;
   boot = {
     kernelPackages = pkgs."linuxPackages_${variables.kernel}";
-    supportedFilesystems = [ "ntfs" ];
+    supportedFilesystems = [ "ntfs" "ntfs3g" ];
     loader.efi.canTouchEfiVariables = true;
   };
 
@@ -146,7 +146,7 @@ in {
     
       # Main tools.
       curl wget git
-      openssh # ntfs3g
+      openssh ntfs3g
       font-manager libnotify killall ffmpegthumbnailer
       fastfetch countryfetch btop neovim micro
       mpv file
