@@ -57,9 +57,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Setrixtui - cool tetris.
+    setrixtui = {
+      url = "github:Mjoyufull/Setrixtui";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, spicetify, anifetch, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, spicetify, anifetch, setrixtui, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;

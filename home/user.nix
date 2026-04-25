@@ -49,6 +49,7 @@
       # Gaming
       gamemode wine winetricks protontricks
       prismlauncher steam
+      inputs.setrixtui.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       # Art
       krita # blender
