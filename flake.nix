@@ -51,9 +51,15 @@
     #    flake = false; # repo has no flake.nix
     #  };
 
+    # Anifetch - animated logo in fastfetch.
+    anifetch = {
+      url = "github:Notenlish/anifetch";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, spicetify, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, spicetify, anifetch, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;
@@ -62,6 +68,7 @@
       else inputs.home-manager;
   in {
     nixosConfigurations.main = pkgsSource.lib.nixosSystem {
+      # specialArgs = { inherit inputs; };
       modules = [
         
         # nixOS system-wide configuration.

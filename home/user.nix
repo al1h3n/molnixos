@@ -14,6 +14,7 @@
 
       # Utilities
       cpu-x cava tealdeer zenity pay-respects piper openrgb-with-all-plugins
+      inputs.anifetch.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       # Cool utilities for no reason.
       cool-retro-term # RMB to change profile
