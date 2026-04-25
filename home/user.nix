@@ -14,7 +14,15 @@
 
       # Utilities.
       cpu-x cava tealdeer zenity pay-respects piper openrgb-with-all-plugins
-      inputs.anifetch.packages.${pkgs.stdenv.hostPlatform.system}.default
+      
+      # Anifetch doesn't have some dependencies.
+      (inputs.anifetch.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (old: {
+        propagatedBuildInputs = (old.propagatedBuildInputs or []) ++ (with pkgs.python3Packages; [
+          wcwidth
+          rich
+          pynput
+        ]);
+      }))
 
       # Cool utilities for no reason.
       cool-retro-term # RMB to change profile
