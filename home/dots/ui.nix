@@ -50,6 +50,7 @@ in {
     (with pkgs; [
       kdePackages.breeze
       kdePackages.breeze-gtk
+      nwg-look # GTK theme switcher.
     ])
   ];
 

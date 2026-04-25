@@ -6,7 +6,7 @@ let
     "cursor"
     "fonts"
     "ui"
-    "icons-papirus" # "icons"
+    "icons" "icons-papirus" # "icons-custom"
     "firefox"
     "zsh"
     "feh"
