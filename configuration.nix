@@ -151,6 +151,7 @@ in {
       fastfetch countryfetch btop neovim micro
       mpv file
       superfile
+      pavucontrol pulseaudio
       bat eza yazi fzf ripgrep fd # fd - find, ripgrep [rg] - grep.
       # CLI tools - useful for multiple accounts.
     ];
