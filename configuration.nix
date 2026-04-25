@@ -122,6 +122,7 @@ in {
 
   environment = {
     variables = {
+      NIXPKGS_ALLOW_UNFREE = "1";
       __VERSION = config.system.nixos.version;
       __STATE = config.system.stateVersion;
       SHARED_PATH = variables.shared;
