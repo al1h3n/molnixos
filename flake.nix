@@ -74,7 +74,7 @@
       else inputs.home-manager;
   in {
     nixosConfigurations.main = pkgsSource.lib.nixosSystem {
-      # specialArgs = { inherit inputs; };
+      specialArgs = { inherit inputs; };
       modules = [
         
         # nixOS system-wide configuration.

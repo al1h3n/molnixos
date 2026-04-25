@@ -24,10 +24,10 @@
               command = "${pkgs.neovim}/bin/nvim";
               options = ["NOPASSWD"];
             }
-            {
-              command = "${pkgs.systemd}/bin/systemctl";
-              options = ["NOPASSWD"];
-            }
+            # {
+            #   command = "${pkgs.systemd}/bin/systemctl";
+            #   options = ["NOPASSWD"];
+            # }
             {
               command = "/run/current-system/sw/bin/ln";
               options = ["NOPASSWD"];

@@ -1,10 +1,10 @@
 # configuration.nix - used tonybtw.com/tutorial/nixos-from-scratch
 # Definitions: lambda - function without a name (literally any.nix file)
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 let
   variables = import ./variables.nix;
-
+  applefonts = inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system};
 in {
   # 1. Import files.
   imports = [
@@ -157,6 +157,9 @@ in {
   };
 
   fonts.packages = with pkgs; [
-      nerd-fonts.jetbrains-mono
+    nerd-fonts.jetbrains-mono
+    applefonts.sf-pro
+    applefonts.sf-pro-nerd
+    applefonts.sf-mono-nerd
   ];
 }
