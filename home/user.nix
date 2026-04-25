@@ -6,13 +6,13 @@
     homeDirectory = "/home/${variables.username}";
     packages = with pkgs; [
 
-      # Multimedia
+      # Multimedia.
       songrec obs-studio
       ffmpeg-full imagemagickBig
       yt-dlp
       inputs.yt-x.packages.${pkgs.stdenv.hostPlatform.system}.default
 
-      # Utilities
+      # Utilities.
       cpu-x cava tealdeer zenity pay-respects piper openrgb-with-all-plugins
       inputs.anifetch.packages.${pkgs.stdenv.hostPlatform.system}.default
 
@@ -38,10 +38,11 @@
         # more-overview-stats not exist on nixOS
       ]))
       dialect # Translator
+      noteshrink # Convert photos of copybook to better and compressed ones.
 
-      # Coding
+      # Coding.
       vscodium
-      # zed-editor
+      vimPlugins.LazyVim
       
       # Music.
       # lazyspotify # Only with Premium subscription.
