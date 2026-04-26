@@ -1,7 +1,11 @@
 # Default hardware configurations.
 { pkgs, lib, variables, ... }: {
   # Main.
-  hardware.enableAllFirmware = true;
+  hardware = {
+    enableAllFirmware = true;
+    enableRedistributableFirmware = true;
+  };
+  
 
   # CPU.
   hardware.cpu = {
