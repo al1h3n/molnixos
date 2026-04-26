@@ -12,9 +12,7 @@ let
     };
 
     installPhase = ''
-      # The theme files live under other/grub2/src/<resolution>/
-      # Pick the folder matching your display: 1080p, 2k, or 4k
-      cp -r other/grub2/src/2k $out
+      cp -r other/grub2/. $out
     '';
   };
 in
@@ -22,7 +20,7 @@ in
   boot.loader.grub = {
     theme = graphiteGrubTheme;        # <-- this is the key addition
     extraConfig = ''
-      GRUB_GFXMODE=2560x1440x32      # match your screen resolution
+      GRUB_GFXMODE=auto
     '';
   };
 }
