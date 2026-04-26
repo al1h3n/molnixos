@@ -22,8 +22,8 @@ in {
       ./system/updates.nix
 
       # 1.4. System files.
-      ./system/boot-theme.nix
-      ./system/grub-theme.nix
+      # ./system/boot-theme.nix
+      # ./system/grub-theme.nix
       ./system/grub.nix
       ./system/ly.nix
 
