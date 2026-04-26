@@ -35,11 +35,15 @@
   services.blueman.enable = true;
 
   # Wi-Fi.
+  hardware.wirelessRegulatoryDatabase = true;
   networking = {
     wireless.enable = lib.mkForce false; # Disable wpa_supplicant, conflicts with networkmanager.
     networkmanager = {
       enable = true;
-      wifi.powersave = false;
+      wifi = {
+        backend = "iwd";
+        powersave = false;
+      };
     };
   };
 
