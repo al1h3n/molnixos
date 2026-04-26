@@ -22,11 +22,14 @@ in {
       ./system/updates.nix
 
       # 1.4. System files.
+      ./system/boot-theme.nix
       ./system/grub.nix
-      ./system/hosts.nix 
+      ./system/grub-theme.nix
+      ./system/ly.nix
+
+      ./system/hosts.nix
       ./system/autolaunch.nix
       ./system/sudo.nix
-      ./system/ly.nix
       ./system/dns.nix
       ./system/time.nix
       ./system/polkit.nix
