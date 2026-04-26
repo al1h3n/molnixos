@@ -9,8 +9,8 @@ let
   plymouthThemesSrc = pkgs.fetchFromGitHub {
     owner = "adi1090x";
     repo = "plymouth-themes";
-    rev = "master";
-    hash = "sha256-5d8817458d764bff4ff9daae94cf1bbaabf16ede";
+    rev = "5d8817458d764bff4ff9daae94cf1bbaabf16ede";
+    hash = "sha256-e3lRgIBzDkKcWEp5yyRCzQJM6yyTjYC5XmNUZZroDuw=";
   };
 
   # Map each theme name to its pack folder in the repo

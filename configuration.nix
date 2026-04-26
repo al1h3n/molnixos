@@ -149,6 +149,7 @@ in {
       gcc python3 pipx temurin-bin-8 temurin-bin-21 temurin-bin-25
     
       # Main tools.
+      nurl # Fetch hash from git repos.
       curl wget git
       openssh ntfs3g
       font-manager libnotify killall ffmpegthumbnailer
