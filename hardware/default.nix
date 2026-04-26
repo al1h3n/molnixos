@@ -1,13 +1,15 @@
 # Default hardware configurations.
 { pkgs, lib, variables, ... }: {
+  # Main.
+  hardware.enableAllFirmware = true;
 
-  # CPU
+  # CPU.
   hardware.cpu = {
     amd.updateMicrocode = true;
     intel.updateMicrocode = true;
   };
 
-  # Audio - PipeWire
+  # Audio - PipeWire.
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -17,7 +19,7 @@
   };
   security.rtkit.enable = true; # Real-time priority for audio
 
-  # Bluetooth
+  # Bluetooth.
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -28,7 +30,7 @@
   };
   services.blueman.enable = true;
 
-  # WiFi
+  # Wi-Fi.
   networking = {
     wireless.enable = lib.mkForce false; # Disable wpa_supplicant, conflicts with networkmanager.
     networkmanager = {
@@ -37,19 +39,19 @@
     };
   };
 
-  # NetworkManager packages
+  # NetworkManager packages.
   environment.systemPackages = with pkgs; [
     networkmanagerapplet  # nm-applet tray icon.
     libvdpau-va-gl # For spicetify GPU acceleration.
   ];
 
-  # GPU
+  # GPU.
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
 
-  # Add user to groups
+  # Add user to groups.
   users.users.${variables.username} = {
     extraGroups = [
       "networkmanager"  # Required to manage wifi without sudo
