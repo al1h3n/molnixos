@@ -4,18 +4,18 @@
 { variables, ... }: {
   time = {
     timeZone = variables.zone;
-    # hardwareClockInLocalTime = true;
+    # hardwareClockInLocalTime = true; # Use for RTC.
   };
 
   # Disable timesyncd first (conflicts with chrony)
-  services.timesyncd.enable = false;
+  # services.timesyncd.enable = false;
 
-  services.chrony = {
-    enable = true;
-    servers = [ "pool.ntp.org" "time.cloudflare.com" ];
-    extraConfig = ''
-      rtcountc
-      makestep 1.0 3
-    '';
-  };
+  # services.chrony = {
+  #   enable = true;
+  #   servers = [ "pool.ntp.org" "time.cloudflare.com" ];
+  #   extraConfig = ''
+  #     rtcountc
+  #     makestep 1.0 3
+  #   '';
+  # };
 }
