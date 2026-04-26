@@ -23,8 +23,8 @@ in {
 
       # 1.4. System files.
       ./system/boot-theme.nix
-      ./system/grub.nix
       ./system/grub-theme.nix
+      ./system/grub.nix
       ./system/ly.nix
 
       ./system/hosts.nix

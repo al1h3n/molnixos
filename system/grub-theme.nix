@@ -13,6 +13,7 @@ let
 
     installPhase = ''
       cp -r other/grub2/. $out
+      cp $out/config/theme-2k.txt $out/theme.txt
     '';
   };
 in
