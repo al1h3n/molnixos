@@ -11,6 +11,7 @@ in {
       # 1.1. Base configuration.
       ./hardware-configuration.nix
       ./hardware
+      ./hardware/airpods.nix
       ./hardware/mouse.nix
 
       # 1.2. GPU/iGPU.
