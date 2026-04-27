@@ -9,7 +9,7 @@
     swww_transition_fps = 144
     mpvpaper_options = -s -o "--gpu-api=vulkan --loop --mute --no-osd-bar --no-input-default-bindings" ALL $video
     stylesheet = ${variables.lshared}/config/waypaperstyle
-    fill = stretch
+    fill = fit
     subfolders = True
     all_subfolders = True
     show_hidden = True
