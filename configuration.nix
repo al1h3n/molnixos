@@ -26,6 +26,7 @@ in {
       # ./system/grub-theme.nix
       ./system/grub.nix
       ./system/ly.nix
+      ./system/logs.nix
 
       ./system/hosts.nix
       ./system/autolaunch.nix
