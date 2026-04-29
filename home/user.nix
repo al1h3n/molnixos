@@ -50,7 +50,6 @@
 
       # Coding.
       vscodium
-      vimPlugins.LazyVim
       
       # Music.
       # lazyspotify # Only with Premium subscription.
