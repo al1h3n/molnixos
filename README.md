@@ -30,6 +30,10 @@ Install MolnixOS right after you had installed nixOS.
 ### Warning: can't download asset from repo.
 Just install WARP, you have 2 methods.
 
+### I can't open executables.
+1. Run this command to check your dependencies: `ldd ./APP | grep "not found"`
+2. In configuration.nix, add plugins to `nix-ld`
+
 ```
 NIXPKGS_ALLOW_UNFREE=1 nix-shell -p cloudflare-warp --run "sudo warp-svc &"
 

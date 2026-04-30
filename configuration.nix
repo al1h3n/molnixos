@@ -123,7 +123,10 @@ in {
     xfconf.enable = true;
 
     # Beta standart executables fix.
-    nix-ld.enable = true;
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [ vlc stdenv.cc.cc.lib ];
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
