@@ -1,5 +1,6 @@
 # executables.nix - fix for standalone UNIX files.
 # Run games which use SDL with: DISPLAY=:0 SDL_VIDEODRIVER=x11 ./GAME
+
 { pkgs, ... }: {
   programs = {
     nix-ld = {
@@ -11,7 +12,6 @@
         # OpenGL / GPU
         libGL
         mesa
-        mesa.drivers
 
         # SDL2 display + input
         SDL2
@@ -19,12 +19,12 @@
         SDL2_image
 
         # X11 (for XWayland - FNF uses SDL which defaults to X11)
-        xorg.libX11
-        xorg.libXext
-        xorg.libXrandr
-        xorg.libXi
-        xorg.libXcursor
-        xorg.libXfixes
+        libX11
+        libXext
+        libXrandr
+        libXi
+        libXcursor
+        libXfixes
 
         # Wayland
         wayland
