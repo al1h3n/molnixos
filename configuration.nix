@@ -38,6 +38,7 @@ in {
       ./system/virtualization.nix
       ./system/xdg.nix
       ./system/vpn.nix
+      ./system/executables.nix
 
       ./pkgs/github.nix
     ];
@@ -121,12 +122,6 @@ in {
     # For GVFS
     dconf.enable = true;
     xfconf.enable = true;
-
-    # Beta standart executables fix.
-    nix-ld = {
-      enable = true;
-      libraries = with pkgs; [ vlc stdenv.cc.cc.lib ];
-    };
   };
 
   nixpkgs.config.allowUnfree = true;
