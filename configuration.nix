@@ -121,6 +121,9 @@ in {
     # For GVFS
     dconf.enable = true;
     xfconf.enable = true;
+
+    # Beta standart executables fix.
+    nix-ld.enable = true;
   };
 
   nixpkgs.config.allowUnfree = true;
