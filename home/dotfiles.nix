@@ -23,6 +23,7 @@ let
     # "sddm"
     "virt-manager"
     "spicetify"
+    "lazyvim"
   ];
 in {
   imports = map (name: path + "/${name}.nix") dots;

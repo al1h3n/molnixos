@@ -51,6 +51,12 @@
     #    flake = false; # repo has no flake.nix
     #  };
 
+    # lazyvim - custom configuration for nvim.
+    lazyvim = {
+      url = "github:pfassina/lazyvim-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Anifetch - animated logo in fastfetch.
     anifetch = {
       url = "github:Notenlish/anifetch";
@@ -65,7 +71,7 @@
 
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, spicetify, anifetch, setrixtui, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, spicetify, anifetch, setrixtui, lazyvim, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;
@@ -101,7 +107,10 @@
             useUserPackages = true;
             users.${variables.username} = import ./home/home.nix;
             backupFileExtension = "backup";
-            sharedModules = [ spicetify.homeManagerModules.spicetify ];
+            sharedModules = [
+              spicetify.homeManagerModules.spicetify
+              lazyvim.homeManagerModules.default
+            ];
           };
         }
       ];
