@@ -67,7 +67,7 @@
       upscayl
 
       # Social
-      vesktop telegram-desktop # _64gram
+      equicord telegram-desktop # _64gram
 
       # Notes
       obsidian appflowy # notion-app only on macOS, enhanced one is write screen.
