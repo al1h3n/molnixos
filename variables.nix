@@ -3,7 +3,7 @@
 
 rec {
 
-  version = "25.11";
+  version = "26.05";
   channel = "unstable";
   kernel = "zen";
 

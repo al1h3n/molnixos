@@ -1,0 +1,1 @@
+Remove configPath = "${config.xdg.configHome}/mozilla/firefox"; when 26.05 will be released.
