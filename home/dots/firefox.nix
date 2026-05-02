@@ -32,10 +32,6 @@ in {
   };
 
   programs.firefox = {
-
-    # Syntax changed in 26.05
-    configPath = "${config.xdg.configHome}/mozilla/firefox";
-
     enable = true;
     profiles = {
       personal = {
@@ -44,7 +40,8 @@ in {
         settings = commonSettings;
         extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
           # Privacy and slop
-          ublock-origin canvasblocker privacy-badger skip-redirect smart-referer
+          ublock-origin canvasblocker privacy-badger smart-referer
+          # skip-redirect # Irritating sometimes.
 
           # Perfomance
           onetab
@@ -66,7 +63,7 @@ in {
         #   "browser.startup.homepage" = "https://google.com";
         # };
         extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-          ublock-origin canvasblocker privacy-badger skip-redirect smart-referer
+          ublock-origin canvasblocker privacy-badger smart-referer
         ];
       };
     };
