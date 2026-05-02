@@ -9,6 +9,7 @@
       # Multimedia.
       songrec obs-studio
       ffmpeg-full imagemagickBig
+      nomacs
       yt-dlp
       inputs.yt-x.packages.${pkgs.stdenv.hostPlatform.system}.default
 
