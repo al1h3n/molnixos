@@ -24,6 +24,7 @@ let
     "virt-manager"
     "spicetify"
     "lazyvim"
+    "yazi"
   ];
 in {
   imports = map (name: path + "/${name}.nix") dots;

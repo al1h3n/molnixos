@@ -41,6 +41,8 @@ in {
       ./system/executables.nix
 
       ./pkgs/github.nix
+      ./system/packages/jp2.nix
+      # ./system/packages/imagemagick-mimes.nix
     ];
     
   
