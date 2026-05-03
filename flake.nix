@@ -75,9 +75,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Alt + Tab.
+    snappy-switcher = {
+      url = "github:OpalAayan/snappy-switcher";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, spicetify, anifetch, setrixtui, lazyvim, ie-r, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, nur,
+  yt-x, spicetify, anifetch, setrixtui, lazyvim, ie-r, snappy-switcher, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;
