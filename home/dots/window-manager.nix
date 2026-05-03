@@ -4,6 +4,7 @@
       brightnessctl
       blueman
       wtype
+      wlogout
       
       (rofi.override {
       plugins = [ rofi-emoji rofi-calc ];})

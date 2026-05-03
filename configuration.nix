@@ -123,6 +123,8 @@ in {
     # For GVFS
     dconf.enable = true;
     xfconf.enable = true;
+
+    gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
   };
 
   nixpkgs.config.allowUnfree = true;
