@@ -13,7 +13,7 @@
       (tesseract5.override { enableLanguages = [ "eng" "rus" "chi_sim" ]; })
       awww mpvpaper waypaper
       wl-clipboard wl-clip-persist cliphist
-      grim slurp wf-recorder
+      grim slurp wf-recorder satty hyprshot
       xdg-user-dirs playerctl
 
       jq waybar # quickshell
