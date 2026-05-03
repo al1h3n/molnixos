@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   home.packages = with pkgs;[
       hyprlock hyprshell
       brightnessctl
@@ -18,5 +18,7 @@
 
       jq waybar # quickshell
       swaynotificationcenter
+
+      inputs.ie-r.packages.${pkgs.system}.default # Eyedropper.
   ];
 }

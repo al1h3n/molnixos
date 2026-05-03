@@ -69,9 +69,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Eyedropper to catch a color.
+    ie-r = {
+      url = "github:miaupaw/ie-r";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, spicetify, anifetch, setrixtui, lazyvim, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, nur, yt-x, spicetify, anifetch, setrixtui, lazyvim, ie-r, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;
