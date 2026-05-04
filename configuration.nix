@@ -84,7 +84,6 @@ in {
   # virtualization.docker.enable = true;
 
   services = {
-
     displayManager.ly.enable = true;
 
     gvfs.enable = true;

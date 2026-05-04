@@ -86,4 +86,7 @@
       johnny john # GUI and CLI.
     ];
   };
+  services = {
+    activitywatch.enable = true;
+  };
 }
