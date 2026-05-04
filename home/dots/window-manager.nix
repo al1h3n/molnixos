@@ -20,6 +20,5 @@
       swaynotificationcenter
 
       inputs.ie-r.packages.${pkgs.stdenv.hostPlatform.system}.default # Eyedropper.
-      inputs.snappy-switcher.packages.${pkgs.stdenv.hostPlatform.system}.default # Alt + Tab.
   ];
 }
