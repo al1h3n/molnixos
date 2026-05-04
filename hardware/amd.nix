@@ -1,13 +1,10 @@
 # nixos.wiki/wiki/AMD_GPU
-
-{ config, pkgs, ... }: {
-  {
+{ pkgs, ... }: {
   services.xserver.videoDrivers = [ "amdgpu-pro" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
 
+  environment.systemPackages = [ pkgs.nvtopPackages.amd ];
+
   # Required for OpenGL and OpenCL (Pro version)
-  hardware.opengl.extraPackages = with pkgs; [
-    amdgpu-pro-all
-  ];
-  }
+  hardware.opengl.extraPackages = [ pkgs.amdgpu-pro-all ];
 }

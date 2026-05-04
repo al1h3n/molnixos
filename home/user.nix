@@ -55,32 +55,35 @@
       # Music.
       # lazyspotify # Only with Premium subscription.
 
-      # Gaming
+      # Gaming.
       gamemode wine winetricks protontricks
       prismlauncher steam
       inputs.setrixtui.packages.${pkgs.stdenv.hostPlatform.system}.default
 
-      # Art
+      # Art.
       krita # blender
       losslesscut-bin # To remove part of videos without losing quality.
 
-      # AI, upscaling
+      # AI, upscaling.
       upscayl
 
-      # Social
+      # Social.
       equicord telegram-desktop # _64gram
 
-      # Notes
-      obsidian appflowy # notion-app only on macOS, enhanced one is write screen.
+      # Notes.
+      obsidian # appflowy # notion-app only on macOS, enhanced one is write screen.
       
-      # Shell
+      # Shell.
       kitty
 
-      # Sharing files
+      # Sharing files.
       localsend
 
       # Office
       # freeoffice
+
+      # Hacking.
+      johnny john # GUI and CLI.
     ];
   };
 }

@@ -4,7 +4,7 @@
     # ./nouveau.nix
   ];
   environment = {
-    systemPackages = with pkgs; [ nvidia-vaapi-driver ];
+    systemPackages = with pkgs; [ nvidia-vaapi-driver nvtopPackages.nvidia ];
     variables = { __GLX_VENDOR_LIBRARY_NAME = "nvidia"; };
   };
   systemd.services.libvirtd.environment = {

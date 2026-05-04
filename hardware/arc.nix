@@ -1,4 +1,5 @@
 { pkgs, ... }: {
+  environment.systemPackages = [ pkgs.nvtopPackages.intel ];
   hardware.graphics = {
     extraPackages = with pkgs; [
       intel-media-driver  # For modern Intel GPUs

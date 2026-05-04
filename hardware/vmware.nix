@@ -1,5 +1,5 @@
 # wiki.nixos.org/wiki/VMware
-{ pkgs, ... }: {
+{ ... }: {
   services.xserver.videoDrivers = [ "vmware" ];
   
   virtualisation.vmware.guest = {
