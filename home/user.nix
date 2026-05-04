@@ -91,6 +91,12 @@
 
       # Test internet speed.
       speedtest-cli
+
+      # Dual monitors with different devices.
+      # deskreen
+
+      # Wallpapers.
+      variety gowall
     ];
   };
   services = {
