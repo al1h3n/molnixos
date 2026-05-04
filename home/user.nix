@@ -48,6 +48,7 @@
       ]))
       dialect # Translator
       noteshrink # Convert photos of copybook to better and compressed ones.
+      speedread # Read files fast from plain text.
 
       # Coding.
       vscodium
@@ -84,6 +85,9 @@
 
       # Hacking.
       johnny john # GUI and CLI.
+
+      # Managing disks.
+      gparted
     ];
   };
   services = {
