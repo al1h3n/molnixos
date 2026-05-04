@@ -88,6 +88,9 @@
 
       # Managing disks.
       gparted
+
+      # Test internet speed.
+      speedtest-cli
     ];
   };
   services = {
