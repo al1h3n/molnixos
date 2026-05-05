@@ -7,13 +7,14 @@
     number_of_columns = 5
     swww_transition_type = random
     swww_transition_fps = 144
-    mpvpaper_options = -s -o "--gpu-api=vulkan --loop --mute --no-osd-bar --no-input-default-bindings" ALL $video
+    mpvpaper_options = -s -o "--gpu-api=vulkan --loop --mute --cache=no --demuxer-max-bytes=1000000 --demuxer-max-back-bytes=0" ALL $video
     stylesheet = ${variables.lshared}/config/waypaperstyle
-    fill = fit
+    fill = stretch
     subfolders = True
     all_subfolders = True
     show_hidden = True
     mpvpaper_sound = False
   '';
 }
-# CHECK --gpu-api=vulkan
+# CHECK --gpu-api=vulkan, if still not working try OpenGL.
+# Demuxer: 1MiB to Bytes
