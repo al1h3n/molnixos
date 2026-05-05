@@ -26,6 +26,7 @@ let
     "lazyvim"
     "yazi"
     "snappy-switcher"
+    "variety"
   ];
 in {
   imports = map (name: path + "/${name}.nix") dots;
