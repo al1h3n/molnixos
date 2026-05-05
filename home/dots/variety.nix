@@ -25,5 +25,4 @@
       '';
       # /home/${variables.username}
     };
-  };
-}
+  }
