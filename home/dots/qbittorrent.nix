@@ -1,5 +1,5 @@
 # qbittorrent.nix
-{ pkgs, config, variables, ... }: 
+{ pkgs, variables, ... }: 
 let
   fetchCatpuccin = name: builtins.fetchurl "https://github.com/catppuccin/qbittorrent/releases/latest/download/catppuccin-${name}.qbtheme";
   frappe = fetchCatpuccin "frappe";

@@ -96,7 +96,7 @@
       # deskreen
 
       # Wallpapers.
-      gowall # variety # Doesn't fit well with waypaper.
+      gowall # Doesn't fit well with waypaper.
     ];
   };
   services = {

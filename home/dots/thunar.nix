@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ ... }: {
   xfconf.settings = {
     thunar = {
       "last-show-hidden" = true;  # Thunar file manager window

@@ -1,5 +1,5 @@
 # home.nix (Home Manager)
-{ config, pkgs, ... }: {
+{ ... }: {
   programs.yazi = {
     enable = true;
     settings = {

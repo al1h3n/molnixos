@@ -1,5 +1,5 @@
 # Firefox
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 let
   commonSettings = {
     "extensions.allowPrivateBrowsingByDefault" = true;
