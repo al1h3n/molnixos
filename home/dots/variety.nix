@@ -18,7 +18,7 @@
       chmod +x ~/.config/variety/scripts/set_wallpaper.sh
     '';
 
-    "variety/variety.conf" = {
+    xdg.configFile."variety/variety.conf" = {
       text = ''
         [General]
         set_wallpaper_script = ~/.config/variety/scripts/set_wallpaper.sh
