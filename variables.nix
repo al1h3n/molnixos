@@ -43,6 +43,8 @@ rec {
   hyprlock = "${shared}/hyprlock"; 
   rofi = "${shared}/rofi";
 
+  niri = "${shared}/niriconf";
+
   kitty = "${shared}/kitty";
   kitty_style = "${shared}/kittystyle";
 
