@@ -69,7 +69,8 @@
       upscayl
 
       # Social.
-      equicord telegram-desktop # _64gram
+      telegram-desktop # _64gram
+      vesktop # equicord # Can't see the package in app list or commands.
 
       # Notes.
       obsidian # appflowy # notion-app only on macOS, enhanced one is write screen.
