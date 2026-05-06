@@ -101,22 +101,16 @@
     nixosConfigurations.main = pkgsSource.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
-        
-        # nixOS system-wide configuration.
-        ./configuration.nix
+        ./configuration.nix  # nixOS system-wide configuration.
+        hmSource.nixosModules.home-manager # Enables HM module.
 
-        # Home-manager module.
-        hmSource.nixosModules.home-manager
-
-        # Overlays.
-        { nixpkgs.overlays = [
+        { nixpkgs.overlays = [ # Overlays.
           nur.overlays.default
           # (final: prev: { lazyspotify = final.callPackage ./pkgs/lazyspotify.nix { src = inputs.lazyspotify; }; })
         ]; }
-        
         # stylix.nixosModules.stylix
-
-        {
+        inputs.niri.nixosModules.niri
+        { # Actual HM config.
           home-manager = {
             extraSpecialArgs = {
               inherit variables inputs;
