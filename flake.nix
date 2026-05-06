@@ -80,10 +80,17 @@
       url = "github:OpalAayan/snappy-switcher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Seems like Niri isn't working with programs.enable
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nur,
-  yt-x, spicetify, anifetch, setrixtui, lazyvim, ie-r, snappy-switcher, ... }@inputs:
+  yt-x, spicetify, anifetch, setrixtui, lazyvim, ie-r,
+  snappy-switcher, niri, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;
@@ -122,6 +129,7 @@
             sharedModules = [
               spicetify.homeManagerModules.spicetify
               lazyvim.homeManagerModules.default
+              inputs.niri.homeModules.niri
             ];
           };
         }
