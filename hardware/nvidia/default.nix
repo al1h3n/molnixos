@@ -16,5 +16,9 @@
   };
 
   # Fix for systemctl sleep-ish functions.
-  boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+  boot.kernelParams = [
+    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    "nvidia.NVreg_TemporaryFilePath=/var/tmp"
+  ];
+  systemd.tmpfiles.rules = [ "d /var/tmp 1777 root root -" ];
 }
