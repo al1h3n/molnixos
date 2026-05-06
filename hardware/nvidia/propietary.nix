@@ -15,7 +15,7 @@
 
     # Use the proprietary closed-source driver.
     # (Set to true ONLY if you have an RTX 2000 series or newer AND want the open-source kernel modules).
-    open = false;
+    open = true;
 
     # Enable the Nvidia settings menu, accessible via `nvidia-settings`.
     nvidiaSettings = true;

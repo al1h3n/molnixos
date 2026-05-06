@@ -20,6 +20,11 @@
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
     "nvidia.NVreg_TemporaryFilePath=/var/tmp"
     "mem_sleep_default=s2idle"
+    "nvidia_drm.modeset=1"
   ];
+  boot.extraModprobeConfig = ''
+    options nvidia NVreg_PreserveVideoMemoryAllocations=1
+    options nvidia NVreg_TemporaryFilePath=/var/tmp
+  '';
   systemd.tmpfiles.rules = [ "d /var/tmp 1777 root root -" ];
 }
