@@ -80,12 +80,6 @@
       url = "github:OpalAayan/snappy-switcher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Seems like Niri isn't working with programs.enable
-    # niri = {
-    #   url = "github:sodiboo/niri-flake";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nur,
@@ -109,7 +103,6 @@
           # (final: prev: { lazyspotify = final.callPackage ./pkgs/lazyspotify.nix { src = inputs.lazyspotify; }; })
         ]; }
         # stylix.nixosModules.stylix
-        #! inputs.niri.nixosModules.niri
         { # Actual HM config.
           home-manager = {
             extraSpecialArgs = {
