@@ -19,6 +19,7 @@
   boot.kernelParams = [
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
     "nvidia.NVreg_TemporaryFilePath=/var/tmp"
+    "mem_sleep_default=s2idle"
   ];
   systemd.tmpfiles.rules = [ "d /var/tmp 1777 root root -" ];
 }
