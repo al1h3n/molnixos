@@ -1,4 +1,4 @@
 { pkgs, ... }: {
   programs.niri.enable = true;
-  # environment.systemPackages = [ pkgs.niri ];
+  environment.systemPackages = [ pkgs.niri ];
 }
