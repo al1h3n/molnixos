@@ -123,7 +123,6 @@
             sharedModules = [
               spicetify.homeManagerModules.spicetify
               lazyvim.homeManagerModules.default
-              inputs.niri.homeModules.niri
             ];
           };
         }
