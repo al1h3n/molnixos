@@ -44,6 +44,7 @@ in {
       ./system/packages/imagemagick-mimes.nix
     
       ./pkgs/hyprland.nix
+      ./pkgs/niri.nix
       # ./pkgs/plasma.nix
       # ./pkgs/gnome.nix
     ];
