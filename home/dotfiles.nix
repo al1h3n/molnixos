@@ -14,7 +14,7 @@ let
     "peazip"
     "prismlauncher"
     "hyprland"
-    # "niri"
+    "niri"
     "window-manager"
     "qbittorrent"
     # "polkit-hypr"
