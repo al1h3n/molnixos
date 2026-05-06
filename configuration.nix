@@ -42,6 +42,10 @@ in {
 
       ./pkgs/github.nix
       ./system/packages/imagemagick-mimes.nix
+    
+      ./pkgs/hyprland.nix
+      # ./pkgs/plasma.nix
+      # ./pkgs/gnome.nix
     ];
     
   
@@ -106,11 +110,6 @@ in {
 
   programs = {
     git.enable = true;
-    hyprland = {
-      enable = true;
-      xwayland.enable = true;
-    };
-
     zsh.enable = true;
     thunar = {
       enable = true;
