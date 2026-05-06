@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, variables, ... }: {
   programs.niri = {
     enable = true;
   };
