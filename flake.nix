@@ -82,15 +82,15 @@
     };
 
     # Seems like Niri isn't working with programs.enable
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # niri = {
+    #   url = "github:sodiboo/niri-flake";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nur,
   yt-x, spicetify, anifetch, setrixtui, lazyvim, ie-r,
-  snappy-switcher, niri, ... }@inputs:
+  snappy-switcher, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;
@@ -109,7 +109,7 @@
           # (final: prev: { lazyspotify = final.callPackage ./pkgs/lazyspotify.nix { src = inputs.lazyspotify; }; })
         ]; }
         # stylix.nixosModules.stylix
-        inputs.niri.nixosModules.niri
+        #! inputs.niri.nixosModules.niri
         { # Actual HM config.
           home-manager = {
             extraSpecialArgs = {
