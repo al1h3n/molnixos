@@ -41,7 +41,7 @@ rec {
   hyprland = "${shared}/hyprland-monolithic/hypr.conf";
   hyprpaper = "${shared}/hyprpaper";
   hyprlock = "${shared}/hyprlock"; 
-  rofi = "${shared}/rofi";
+  rofi = "${shared}/rofi.rasi";
 
   niri = "${shared}/niri.kdl";
 
