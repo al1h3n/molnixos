@@ -16,7 +16,7 @@
 
   xdg.configFile = {
     "hypr/hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink variables.hyprland;
-    "hypr/custom".source = config.lib.file.mkOutOfStoreSymlink "${toString variables.shared}/custom";
+    # "hypr/custom".source = config.lib.file.mkOutOfStoreSymlink "${toString variables.shared}/custom";
   };
 
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];

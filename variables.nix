@@ -38,28 +38,28 @@ rec {
 
   feh = "${shared}/feh";
 
-  hyprland = "${shared}/hyprconfig";
+  hyprland = "${shared}/hyprland-monolithic/hypr.conf";
   hyprpaper = "${shared}/hyprpaper";
   hyprlock = "${shared}/hyprlock"; 
   rofi = "${shared}/rofi";
 
-  niri = "${shared}/niriconf";
+  niri = "${shared}/niri.kdl";
 
   kitty = "${shared}/kitty";
   kitty_style = "${shared}/kittystyle";
 
   ly = "${shared}/ly";
-  qbittorrent = "${shared}/qbittorrent";
+  qbittorrent = "${shared}/qbittorrent.ini";
 
-  sddm = "${shared}/sddm";
-  swaync = "${shared}/swaync";
-  swaync_style = "${shared}/swayncstyle";
+  sddm = "${shared}/sddm.conf";
+  swaync = "${shared}/swaync.json";
+  swaync_style = "${shared}/swaync-style.css";
 
-  waypaper = "${shared}/waypaper";
-  waypaper_style = "${shared}/waypaperstyle";
+  waypaper = "${shared}/waypaper.ini";
+  waypaper_style = "${shared}/waypaperstyle.css";
 
-  peazip = "${shared}/peazip";
-  prismlauncher = "${shared}/prismlauncher";
+  peazip = "${shared}/peazip.cfg";
+  prismlauncher = "${shared}/prismlauncher.cfg";
   spicetify = "${shared}/spicetify";
 
   fish = "${shared}/config.fish";
