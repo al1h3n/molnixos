@@ -103,7 +103,6 @@
       modules = [
         ./configuration.nix  # nixOS system-wide configuration.
         hmSource.nixosModules.home-manager # Enables HM module.
-        hyprland.nixosModules.default
 
         { nixpkgs.overlays = [ # Overlays.
           nur.overlays.default
