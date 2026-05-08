@@ -108,8 +108,8 @@
       enable = true;
       watchers = {
         aw-watcher-window = {
-          package = pkgs.activitywatch;
-          executable = "aw-watcher-window";
+          package = pkgs.aw-watcher-window-wayland;
+          executable = "aw-watcher-window-wayland";
         };
         aw-watcher-afk = {
           package = pkgs.activitywatch;
