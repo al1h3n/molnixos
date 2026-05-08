@@ -8,27 +8,29 @@ let
 in {
   # 1. Import files.
   imports = [
-      # 1.1. Base configuration.
+      # Build.
+      ./build/github.nix
+
+      # Hardware.
       ./hardware-configuration.nix
       ./hardware
       ./hardware/mouse.nix
-      # ./hardware/airpods.nix
-
-      # 1.2. GPU/iGPU.
-      ./hardware/nvidia
+      ./hardware/nvidia # GPU configuration.
       # ./hardware/vmware.nix
-      # Choose or adjust GPU configuration (custom folder)
+      # ./hardware/amd.nix
+      ./hardware/gpu-gaming.nix # If you're not a gamer disable it.
     
-      # 1.3. Updating schedule.
-      ./system/updates.nix
+      # Pkgs
+      ./pkgs/hyprland.nix
+      ./pkgs/niri.nix
+      # ./pkgs/plasma.nix
+      # ./pkgs/gnome.nix
 
-      # 1.4. System files.
-      # ./system/boot-theme.nix
-      # ./system/grub-theme.nix
+      # System.
+      ./system/updates.nix
       ./system/grub.nix
       ./system/ly.nix
       ./system/logs.nix
-
       ./system/hosts.nix
       ./system/autolaunch.nix
       ./system/sudo.nix
@@ -39,14 +41,7 @@ in {
       ./system/xdg.nix
       ./system/vpn.nix
       ./system/executables.nix
-
-      ./pkgs/github.nix
-      ./system/packages/imagemagick-mimes.nix
-    
-      ./pkgs/hyprland.nix
-      ./pkgs/niri.nix
-      # ./pkgs/plasma.nix
-      # ./pkgs/gnome.nix
+      ./system/gaming.nix
     ];
     
   
@@ -58,8 +53,9 @@ in {
   system.stateVersion = variables.version;
   networking.hostName = variables.host;
   boot = {
-    kernelPackages = pkgs."linuxPackages_${variables.kernel}";
-    supportedFilesystems = [ "ntfs" "ntfs3g" ];
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
+    # kernelPackages = pkgs."linuxPackages_${variables.kernel}";
+    supportedFilesystems = [ "ntfs" ];
     loader.efi.canTouchEfiVariables = true;
   };
 
@@ -156,7 +152,7 @@ in {
       # Main tools.
       nurl # Fetch hash from git repos.
       curl wget git
-      openssh ntfs3g
+      openssh
       font-manager libnotify killall ffmpegthumbnailer
       fastfetch countryfetch btop neovim micro
       mpv file

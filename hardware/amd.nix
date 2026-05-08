@@ -7,4 +7,10 @@
 
   # Required for OpenGL and OpenCL (Pro version)
   hardware.opengl.extraPackages = [ pkgs.amdgpu-pro-all ];
+
+  # Tuning your GPU (AMD exclusive).
+  programs.corectrl = {
+    enable = true;
+    gpuOverclock.enable = true;
+  };
 }

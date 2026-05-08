@@ -14,6 +14,12 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
+    # CachyOS repository.
+    nix-cachyos-kernel = {
+      url = "github:xddxdd/nix-cachyos-kernel/release";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # NUR - Nix User Repository, for packages that aren't in nixpkgs. Similar to AUR.
     # Used for Firefox extensions.
     nur = {
@@ -80,11 +86,16 @@
       url = "github:OpalAayan/snappy-switcher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-proton-cachyos = {
+      url = "github:kimjongbing/nix-proton-cachyos";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nur,
+  outputs = { self, nixpkgs, nixpkgs-stable, nur, nix-cachyos-kernel,
   yt-x, spicetify, anifetch, setrixtui, lazyvim, ie-r,
-  snappy-switcher, ... }@inputs:
+  snappy-switcher, nix-proton-cachyos, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;
@@ -100,6 +111,7 @@
 
         { nixpkgs.overlays = [ # Overlays.
           nur.overlays.default
+          nix-cachyos-kernel.overlays.pinned
           # (final: prev: { lazyspotify = final.callPackage ./pkgs/lazyspotify.nix { src = inputs.lazyspotify; }; })
         ]; }
         # stylix.nixosModules.stylix

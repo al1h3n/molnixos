@@ -57,8 +57,11 @@
       # lazyspotify # Only with Premium subscription.
 
       # Gaming.
-      gamemode wine winetricks protontricks
-      prismlauncher steam
+      protontricks # Fix tool if game not working.
+      # protontricks - better winetricks, steam uses own Proton.
+      mangohud # FPS counter, enable manually.
+      protonup-qt # Install custom protonup-qt versions.
+      prismlauncher
       inputs.setrixtui.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       # Art.
@@ -101,6 +104,12 @@
     ];
   };
   services = {
-    activitywatch.enable = true;
+    activitywatch = {
+      enable = true;
+      watchers = {
+        aw-watcher-window.enable = true;
+        aw-watcher-afk.enable = true;
+      };
+    };
   };
 }

@@ -1,18 +1,17 @@
 ### 🛠️ Changing variables for your needs:
 Open variables.nix and change everything you need.<br>
-For instance, location of hyprland configuration.
+For instance, location of hyprland configuration.<br>
 
 ### ❗Important things:
 1. Add flake.nix and flake.lock (as well as any flakes file) to git:<br>
 `git init`<br>
 `git add .`<br>
-`git commit -m "flakes"`
+`git commit -m "flakes"`<br>
 
 
 ### ➡️ Where files will be saved?
-Configurations: `/etc/nixos"`<br>
-Shared dotfiles: `/etc/nixos/molnixos"`<br>
-User dotfiles: `~/.local/share/molnios-shared`<br>
+Shared dotfiles and configurations: `/etc/nixos/molnixos"`<br>
+User dotfiles: `~/.local/share/molnios`<br>
 Configurations: `~/.config`
 
 ### ↔️ How to switch from one polkit to another one?
@@ -21,7 +20,7 @@ Let's take as an example `hyprpolkitagent` -> `polkit-gnome`<br>
 2. Uncomment `polkit-gnome.nix` in `system/polkit.nix`
 
 ### How to launch lazyspotify? (ONLY WITH SPOTIFY PREMIUM)
-Follow [these](https://github.com/dubeyKartikay/lazyspotify#configuration) instructions. If you don't have premium you can skip `Web API`.
+Follow [these](https://github.com/dubeyKartikay/lazyspotify#configuration) instructions.
 
 
 ### 🕝 When to install?
@@ -50,3 +49,16 @@ warp-cli status # If it's healthy, you're great!
 warp-cli connect/disconnect
 
 ```
+
+### What are these directories?
+
+| Directory | What is inside? |
+| :--- | :---: |
+| `build` | All packages that need to be manually built from source.
+| `hardware` | Everything related to configure your PC components or accessories, like drivers or tune programs. |
+| `home` | Dotfiles, individual packages and settings for user-wide services. |
+| `pkgs` | All system-wide themed packages |
+| `system` | System services, such as bootloaders or system update settings; group of multiple packages. |
+
+### Enabling custom Proton in Steam.
+Steam → Settings → Compatibility → Enable Steam Play for all other titles → select Proton-CachyOS from the dropdown.<br>
