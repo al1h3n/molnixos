@@ -163,10 +163,13 @@ in {
     ];
   };
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    applefonts.sf-pro
-    applefonts.sf-pro-nerd
-    applefonts.sf-mono-nerd
-  ];
+  fonts = {
+    fontDir.enable = true;
+    packages = with pkgs; [
+      nerd-fonts.jetbrains-mono
+      applefonts.sf-pro
+      applefonts.sf-pro-nerd
+      applefonts.sf-mono-nerd
+    ];
+  };
 }
