@@ -108,7 +108,11 @@
       enable = true;
       watchers = {
         aw-watcher-window.enable = true;
-        aw-watcher-afk.enable = true;
+        # aw-watcher-afk.enable = true;
+        aw-watcher-window-wayland = {
+          enable = true;
+          package = pkgs.aw-watcher-window-wayland;
+        };
       };
     };
   };
