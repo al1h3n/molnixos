@@ -108,6 +108,7 @@
           nur.overlays.default
           nix-cachyos-kernel.overlays.pinned
           # (final: prev: { lazyspotify = final.callPackage ./pkgs/lazyspotify.nix { src = inputs.lazyspotify; }; })
+          (final: prev: { openldap = prev.openldap.overrideAttrs (_: { doCheck = false; });}) # Fix for lutris build.
         ]; }
         # stylix.nixosModules.stylix
         { # Actual HM config.
