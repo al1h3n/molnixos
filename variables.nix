@@ -65,5 +65,5 @@ rec {
   fish = "${shared}/config.fish";
   fish_theme = "${shared}/tide.fish";
 
-  mangohud = "${shared}/mangohud-gaming.conf"
+  mangohud = "${shared}/mangohud-gaming.conf";
 }
