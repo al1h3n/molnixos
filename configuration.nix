@@ -143,8 +143,6 @@ in {
       JAVA_HOME = "${pkgs.temurin-bin-21}";
 
       GTK_THEME = variables.theme_gtk;
-
-      MANGOHUD_CONFIGFILE = variables.mangohud;
     };
 
     systemPackages = with pkgs; [
