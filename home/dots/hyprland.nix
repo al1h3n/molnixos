@@ -1,5 +1,5 @@
 { inputs, pkgs, config, variables, ... }: {
-  imports = [ inputs.hyprland.homeManagerModules.default ];
+  # imports = [ inputs.hyprland.homeManagerModules.default ];
   # Enabling Hyprland.
   wayland.windowManager.hyprland = {
     enable = true;
@@ -17,5 +17,5 @@
     # "hypr/custom".source = config.lib.file.mkOutOfStoreSymlink "${toString variables.shared}/custom";
   };
 
-  # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
 }
