@@ -17,5 +17,5 @@
     # "hypr/custom".source = config.lib.file.mkOutOfStoreSymlink "${toString variables.shared}/custom";
   };
 
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
 }

@@ -29,6 +29,13 @@
         "https://cache.garnix.io?priority=32"
         "https://cache.nixos.org" # Priority = 40.
       ];
+      trusted-substituters = [
+        "https://hyprland.cachix.org?priority=25"
+        "https://nix-community.cachix.org?priority=30"
+        "https://attic.xuyh0120.win/lantian?priority=31"
+        "https://cache.garnix.io?priority=32"
+        "https://cache.nixos.org" # Priority = 40.
+      ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
