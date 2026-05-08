@@ -72,7 +72,6 @@ yarn-error.log*
 
 # Java / Kotlin
 .gradle/
-build/
 
 # =========================
 # CUSTOM EXAMPLES
