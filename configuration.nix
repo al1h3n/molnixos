@@ -135,7 +135,7 @@ in {
 
       __EGL_VENDOR_LIBRARY_DIRS = "/run/opengl-driver/share/glvnd/egl_vendor.d";
 
-      WLR_NO_HARDWARE_CURSORS = "1"; # If your cursor becomes invisible
+      WLR_NO_HARDWARE_CURSORS = "1"; # If your cursor becomes invisible.
       NIXOS_OZONE_WL = "1";
       ELECTRON_OZONE_PLATFORM_HINTS = "auto";
       NVD_BACKEND = "direct";
