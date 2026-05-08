@@ -107,11 +107,13 @@
     activitywatch = {
       enable = true;
       watchers = {
-        aw-watcher-window.enable = true;
-        # aw-watcher-afk.enable = true;
-        aw-watcher-window-wayland = {
-          enable = true;
-          package = pkgs.aw-watcher-window-wayland;
+        aw-watcher-window = {
+          package = pkgs.activitywatch;
+          executable = "aw-watcher-window";
+        };
+        aw-watcher-afk = {
+          package = pkgs.activitywatch;
+          executable = "aw-watcher-afk";
         };
       };
     };
