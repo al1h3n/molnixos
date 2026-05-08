@@ -1,3 +1,4 @@
+# System-wide hyprland module.
 { ... }: {
   programs.hyprland = {
     enable = true;

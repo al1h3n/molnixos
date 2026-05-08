@@ -1,5 +1,5 @@
-{ inputs, pkgs, config, variables, ... }: {
-  # imports = [ inputs.hyprland.homeManagerModules.default ];
+# User-wide hyprland module.
+{ pkgs, config, variables, ... }: {
   # Enabling Hyprland.
   wayland.windowManager.hyprland = {
     enable = true;
