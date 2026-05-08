@@ -4,9 +4,9 @@
     enable = true;
     dates = "weekly";
     flags = [
+      "--update-input" "hyprland"
       "--update-input" "nix-cachyos-kernel"
       "--update-input" "nixpkgs"
-      "--update-input" "nix-proton-cachyos"
       "--commit-lock-file"
     ];
   };

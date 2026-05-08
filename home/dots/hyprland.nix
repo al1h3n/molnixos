@@ -1,12 +1,10 @@
-{ pkgs, config, variables, ... }: {
+{ inputs, pkgs, config, variables, ... }: {
+  imports = [ inputs.hyprland.homeManagerModules.default ];
   # Enabling Hyprland.
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false; # Might break hyprland autolaunch.
-
-    xwayland = {
-      enable = true;
-    };
+    xwayland.enable = true;
   };
 
   # Add hyprmod (settings app, aur.archlinux.org/packages/hyprmod-git) when released in nixOS packages.

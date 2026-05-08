@@ -87,15 +87,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-proton-cachyos = {
-      url = "github:kimjongbing/nix-proton-cachyos";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nur, nix-cachyos-kernel,
   yt-x, spicetify, anifetch, setrixtui, lazyvim, ie-r,
-  snappy-switcher, nix-proton-cachyos, ... }@inputs:
+  snappy-switcher, hyprland, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;
@@ -108,6 +108,7 @@
       modules = [
         ./configuration.nix  # nixOS system-wide configuration.
         hmSource.nixosModules.home-manager # Enables HM module.
+        hyprland.nixosModules.default
 
         { nixpkgs.overlays = [ # Overlays.
           nur.overlays.default
