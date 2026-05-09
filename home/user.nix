@@ -61,7 +61,7 @@
       # protontricks - better winetricks, steam uses own Proton.
       mangohud # FPS counter, enable manually.
       protonup-qt # Install custom protonup-qt versions.
-      lutris # Game launcher.
+      heroic # Game launcher, lutris has bugs.
       prismlauncher
       inputs.setrixtui.packages.${pkgs.stdenv.hostPlatform.system}.default
 
