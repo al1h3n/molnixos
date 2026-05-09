@@ -18,7 +18,7 @@
     enable = true;
     defaultApplications = {
       # Images & photos.
-      "image/*" = [ "org.gnome.gThumb.desktop" ];
+      "image/*" = [ "geeqie.desktop" ];
 
       # Standard Archives.
       "application/zip" = [ "peazip-extract.desktop" ];
