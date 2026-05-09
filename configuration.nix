@@ -146,7 +146,7 @@ in {
 
       GTK_THEME = variables.theme_gtk;
 
-      EDITOR = "nvim"
+      EDITOR = "nvim";
     };
 
     systemPackages = with pkgs; [
