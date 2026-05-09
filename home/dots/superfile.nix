@@ -6,6 +6,6 @@
     p7zip          # Backend for 7z/zip
     unzip          # ZIP extraction/listing
     hexyl          # Pretty hex viewer for binaries
-    poppler_utils  # pdftotext — PDF preview
+    poppler-utils  # pdftotext — PDF preview
   ];
 }
