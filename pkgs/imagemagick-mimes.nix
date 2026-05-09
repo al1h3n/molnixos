@@ -147,6 +147,7 @@ in
     gthumb
     feh
     imagemagickMimes
+    librsvg
   ];
 
   environment.pathsToLink = [ "/share/mime" "/share/applications" ];
