@@ -1,5 +1,5 @@
 # home.nix (Home Manager)
-{ ... }: {
+{ config, variables, ... }: {
   programs.yazi = {
     enable = true;
     settings = {
@@ -56,5 +56,11 @@
         name = m;
         value = "org.gnome.gThumb.desktop";
       }) imageMimes);
+  };
+
+  xdg.configFile."yazi" = {
+    "yazi.toml".source = config.lib.file.mkOutOfStoreSymlink "${variables.yazi}/yazi.toml";
+    "keymap.toml".source = config.lib.file.mkOutOfStoreSymlink "${variables.yazi}/keymap.toml";
+    "theme.toml".source = config.lib.file.mkOutOfStoreSymlink "${variables.yazi}/theme.toml";
   };
 }
