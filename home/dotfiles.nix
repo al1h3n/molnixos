@@ -28,6 +28,7 @@ let
     "snappy-switcher"
     "variety"
     # "ollama"
+    "superfile"
   ];
 in {
   imports = map (name: path + "/${name}.nix") dots;
