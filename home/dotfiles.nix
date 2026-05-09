@@ -24,11 +24,11 @@ let
     "virt-manager"
     "spicetify"
     "lazyvim"
-    "yazi"
+    # "yazi"
     "snappy-switcher"
     "variety"
     # "ollama"
-    "superfile"
+    "filepreviews"
   ];
 in {
   imports = map (name: path + "/${name}.nix") dots;

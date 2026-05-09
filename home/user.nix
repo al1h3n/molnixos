@@ -8,7 +8,7 @@
 
       # Multimedia.
       songrec obs-studio
-      ffmpeg-full imagemagickBig
+      imagemagickBig
       gthumb
       yt-dlp
       inputs.yt-x.packages.${pkgs.stdenv.hostPlatform.system}.default

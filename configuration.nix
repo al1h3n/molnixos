@@ -25,7 +25,6 @@ in {
       ./pkgs/niri.nix
       # ./pkgs/plasma.nix
       # ./pkgs/gnome.nix
-      ./pkgs/imagemagick-mimes.nix
 
       # System.
       ./system/updates.nix
@@ -161,7 +160,10 @@ in {
       mpv file
       superfile
       pavucontrol pulseaudio
-      bat eza yazi fzf ripgrep fd # fd - find, ripgrep [rg] - grep.
+      bat eza fzf ripgrep fd # fd - find, ripgrep [rg] - grep.
+      (yazi.override {
+        _7zz = _7zz-rar;  # Support for RAR extraction
+      })
       # CLI tools - useful for multiple accounts.
     ];
   };
