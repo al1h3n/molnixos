@@ -25,6 +25,7 @@ in {
       ./pkgs/niri.nix
       # ./pkgs/plasma.nix
       # ./pkgs/gnome.nix
+      ./pkgs/imagemagick-mimes.nix
 
       # System.
       ./system/updates.nix
@@ -100,6 +101,8 @@ in {
 
     # For org.freedesktop.portal.Settings (also lazyspotify).
     gnome.gnome-keyring.enable = true;
+
+    tlp.enable = true; # Power profiles.
   };
 
   # For org.freedesktop.portal.Settings (also lazyspotify).
