@@ -27,6 +27,7 @@ let
     "yazi"
     "snappy-switcher"
     "variety"
+    # "ollama"
   ];
 in {
   imports = map (name: path + "/${name}.nix") dots;
