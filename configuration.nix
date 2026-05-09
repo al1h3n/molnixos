@@ -145,6 +145,8 @@ in {
       JAVA_HOME = "${pkgs.temurin-bin-21}";
 
       GTK_THEME = variables.theme_gtk;
+
+      EDITOR = "nvim"
     };
 
     systemPackages = with pkgs; [
@@ -158,7 +160,7 @@ in {
       font-manager libnotify killall ffmpegthumbnailer
       fastfetch countryfetch btop neovim micro
       mpv file
-      superfile
+      # superfile
       pavucontrol pulseaudio
       bat eza fzf ripgrep fd # fd - find, ripgrep [rg] - grep.
       (yazi.override {
