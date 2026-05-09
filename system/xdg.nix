@@ -7,4 +7,10 @@
       # "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
     };
   };
+
+  xdg.mime.defaultApplications = {
+    "audio/*" = "mpv.desktop";
+    "video/*" = "mpv.desktop";
+    "image/*" = "org.gnome.gThumb.desktop";
+  };
 }
