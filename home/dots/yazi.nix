@@ -1,7 +1,6 @@
 # home.nix (Home Manager)
 { config, lib, variables, ... }: {
   programs.yazi = {
-    enable = true;
     settings = {
       mime = {
         prepend_rules = [
