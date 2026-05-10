@@ -24,7 +24,7 @@ let
     "virt-manager"
     "spicetify"
     "lazyvim"
-    # "yazi"
+    "yazi"
     "snappy-switcher"
     "variety"
     # "ollama"
