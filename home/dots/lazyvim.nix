@@ -1,6 +1,6 @@
 # lazyvim - nvim configuration.
 # You can't join xdg.configFile."nvim" = {}; in user modules.
-{ ... }:
+{ lib, config, variables, ... }:
 let
   sym = rel: lib.mkForce (config.lib.file.mkOutOfStoreSymlink "${variables.shared}/lazyvim/${rel}");
 in {
