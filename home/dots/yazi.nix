@@ -57,10 +57,8 @@
         value = "geeqie.desktop";
       }) imageMimes);
   };
-
-  xdg.configFile."yazi" = {
-    "yazi.toml".source = config.lib.file.mkOutOfStoreSymlink "${variables.yazi}/yazi.toml";
-    "keymap.toml".source = config.lib.file.mkOutOfStoreSymlink "${variables.yazi}/keymap.toml";
-    "theme.toml".source = config.lib.file.mkOutOfStoreSymlink "${variables.yazi}/theme.toml";
-  };
+  # Configfile in home-manager doesn't support joining files in 1 argument.
+  xdg.configFile."yazi/yazi.toml".source = config.lib.file.mkOutOfStoreSymlink "${variables.yazi}/yazi.toml";
+  xdg.configFile."yazi/keymap.toml".source = config.lib.file.mkOutOfStoreSymlink "${variables.yazi}/keymap.toml";
+  xdg.configFile."yazi/theme.toml".source = config.lib.file.mkOutOfStoreSymlink "${variables.yazi}/theme.toml";
 }
