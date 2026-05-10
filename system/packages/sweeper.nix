@@ -4,7 +4,7 @@ let
   # Fetched at build time, cached in Nix store. 
   # Only re-downloads when you run nixos-rebuild, not on every reboot.
   sweeperScript = builtins.fetchurl {
-    url = "https://raw.githubusercontent.com/Alihan1ai9595/sweeper/unobfusticated/sweeper.sh";
+    url = "https://raw.githubusercontent.com/al1h3n/sweeper/refs/heads/main/sweeper.sh";
   };
 in {
   # Makes script available system-wide as a package. Saved in /nix/store/<hash>-sweeper.sh
