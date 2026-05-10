@@ -110,6 +110,7 @@ in {
   programs = {
     git.enable = true;
     zsh.enable = true;
+    fish.enable = true;
     thunar = {
       enable = true;
       plugins = with pkgs; [
