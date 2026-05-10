@@ -148,6 +148,7 @@ in {
       GTK_THEME = variables.theme_gtk;
 
       EDITOR = "nvim";
+      TERMINAL = "kitty";
     };
 
     systemPackages = with pkgs; [
