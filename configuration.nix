@@ -73,7 +73,7 @@ in {
   # 4. Individual user configuration (software + informaiton).
   documentation.nixos.enable = false;
   users = {
-    defaultUserShell = pkgs.zsh;
+    defaultUserShell = pkgs.fish;
     users.${variables.username} = {
       description = "User account created by MolniOS configuration.";
       isNormalUser = true;

@@ -54,7 +54,7 @@
     in
       builtins.listToAttrs (map (m: {
         name = m;
-        value = "org.gnome.gThumb.desktop";
+        value = "geeqie.desktop";
       }) imageMimes);
   };
 
