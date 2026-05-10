@@ -166,7 +166,7 @@ in {
       (yazi.override {
         _7zz = _7zz-rar;  # Support for RAR extraction
       })
-      # CLI tools - useful for multiple accounts.
+      gum # Useful for shell scripts.
     ];
   };
 
