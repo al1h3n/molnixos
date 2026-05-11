@@ -50,7 +50,7 @@ in {
           enhancer-for-youtube return-youtube-dislikes sponsorblock videospeed
 
           # Style
-          nighttab
+          nighttab darkreader
         ];
       };
 
@@ -63,7 +63,7 @@ in {
         #   "browser.startup.homepage" = "https://google.com";
         # };
         extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-          ublock-origin canvasblocker privacy-badger smart-referer
+          ublock-origin canvasblocker privacy-badger smart-referer darkreader
         ];
       };
     };
