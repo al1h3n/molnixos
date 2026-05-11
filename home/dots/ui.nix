@@ -1,5 +1,5 @@
 # ui.nix - GTK + Qt theming (without icons).
-{ config, lib, pkgs, ... }: 
+{ config, lib, pkgs, ... }:
 let breezeDarkColors = "${pkgs.kdePackages.breeze}/share/color-schemes/BreezeDark.colors";
 in {
   # GTK
@@ -44,12 +44,14 @@ in {
   home.packages = lib.concatLists [
     (with pkgs.qt6Packages; [
       qt6ct
-      # qtstyleplugin-kvantum # If you're using Kvantum styles.
+      qtstyleplugin-kvantum # If you're using Kvantum styles.
     ])
 
     (with pkgs; [
       kdePackages.breeze
       kdePackages.breeze-gtk
+      gruvbox-dark-gtk
+      gruvbox-kvantum
       nwg-look # GTK theme switcher.
     ])
   ];
