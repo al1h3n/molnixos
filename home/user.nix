@@ -13,9 +13,12 @@
       yt-dlp
       inputs.yt-x.packages.${pkgs.stdenv.hostPlatform.system}.default
 
+      # Backend.
+      jq
+
       # Utilities.
       cpu-x cava tealdeer zenity pay-respects piper openrgb-with-all-plugins
-      
+
       # Anifetch doesn't have some dependencies.
       (inputs.anifetch.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (old: {
         propagatedBuildInputs = (old.propagatedBuildInputs or []) ++ (with pkgs.python3Packages; [
@@ -52,7 +55,7 @@
 
       # Coding.
       vscodium
-      
+
       # Music.
       # lazyspotify # Only with Premium subscription.
 
@@ -78,7 +81,7 @@
 
       # Notes.
       obsidian # appflowy # notion-app only on macOS, enhanced one is write screen.
-      
+
       # Shell.
       kitty
 
