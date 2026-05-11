@@ -41,20 +41,17 @@ in {
   };
 
   # Packages.
-  home.packages = lib.concatLists [
+  home.packages =
     (with pkgs.qt6Packages; [
       qt6ct
       qtstyleplugin-kvantum # If you're using Kvantum styles.
-    ])
-
+      ])
+    ++
     (with pkgs; [
-      kdePackages.breeze
-      kdePackages.breeze-gtk
-      gruvbox-dark-gtk
-      gruvbox-kvantum
-      nwg-look # GTK theme switcher.
-    ])
-  ];
+    kdePackages.breeze kdePackages.breeze-gtk
+    gruvbox-dark-gtk gruvbox-kvantum
+    nwg-look
+    ]);
 
   # Stylix
   # stylix = {
