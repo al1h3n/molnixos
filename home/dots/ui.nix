@@ -6,8 +6,10 @@ in {
   gtk = {
     enable = true;
     theme = {
-      name = "Breeze-Dark";
-      package = pkgs.kdePackages.breeze-gtk;
+      name = "gruvbox-dark";
+      package = pkgs.gruvbox-dark-gtk;
+      # name = "Breeze-Dark";
+      # package = pkgs.kdePackages.breeze-gtk;
     };
     gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
 
@@ -31,14 +33,14 @@ in {
   };
 
   systemd.user.sessionVariables = {
-    GTK_THEME = "Breeze-Dark";
+    GTK_THEME = "gruvbox-dark"; # Breeze-Dark
     QT_QPA_PLATFORMTHEME = "qt6ct"; # Use lib.mkForce if you have errors.
   };
 
-  home.sessionVariables = {
-    GTK_THEME = "Breeze-Dark";
-    QT_FONT = "SF Pro Display:12";
-  };
+  # home.sessionVariables = {
+  #   GTK_THEME = "gruvbox-dark"; # Breeze-Dark
+  #   QT_FONT = "SF Pro Display:12";
+  # };
 
   # Packages.
   home.packages =
