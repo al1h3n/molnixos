@@ -21,7 +21,7 @@ in {
     enable = true;
     settings."org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
-      gtk-theme = "Breeze-Dark"; # explicit, required by some apps
+      gtk-theme = "gruvbox-dark"; # explicit, required by some apps
     };
   };
 
