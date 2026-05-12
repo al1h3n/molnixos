@@ -12,8 +12,8 @@ rec {
   os_name_custom = "MolnixOS";
 
   zone = "Asia/Almaty";
-  
-  shared_root = "/etc/nixos/shared"; 
+
+  shared_root = "/etc/nixos/shared";
   shared = shared_root + "/config"; # Source dotfiles folder.
 
   lshare = "/home/${username}/.local/share";
@@ -21,10 +21,10 @@ rec {
   media = "${lshared}/molnios-media/wallpapers"; # ! CHECK
 
   cursor_name = "clay_white";
-  cursors_dir = shared_root + "/cursors"; 
+  cursors_dir = shared_root + "/cursors";
   cursor = cursors_dir + "/${cursor_name}";
   icons = "${shared}/icons/MacTahoe-dark";
-  theme_gtk = "Breeze-Dark";
+  theme_gtk = "gruvbox-dark"; # Breeze-Dark
 
   browser = "firefox";
   hosts = "${shared}/hosts";
@@ -40,7 +40,7 @@ rec {
 
   hyprland = "${shared}/hyprland-monolithic/hypr.conf";
   hyprpaper = "${shared}/hyprpaper";
-  hyprlock = "${shared}/hyprlock"; 
+  hyprlock = "${shared}/hyprlock";
   rofi = "${shared}/rofi.rasi";
 
   niri = "${shared}/niri.kdl";

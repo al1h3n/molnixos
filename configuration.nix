@@ -19,7 +19,7 @@ in {
       # ./hardware/vmware.nix
       # ./hardware/amd.nix
       ./hardware/gpu-gaming.nix # If you're not a gamer disable it.
-    
+
       # Pkgs
       ./pkgs/hyprland.nix
       ./pkgs/niri.nix
@@ -43,12 +43,12 @@ in {
       ./system/executables.nix
       ./system/gaming.nix
     ];
-    
-  
+
+
   # 2. Experimental features and session variables.
   _module.args.variables = variables; # Add variable to NixOS modules (system-wide).
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
+
   # 3. System configuration (hardware).
   system.stateVersion = variables.version;
   networking.hostName = variables.host;
@@ -145,7 +145,7 @@ in {
 
       JAVA_HOME = "${pkgs.temurin-bin-21}";
 
-      GTK_THEME = variables.theme_gtk;
+      # GTK_THEME = variables.theme_gtk;
 
       EDITOR = "nvim";
       TERMINAL = "kitty";
@@ -154,7 +154,7 @@ in {
     systemPackages = with pkgs; [
       # Programming compilers.
       gcc python3 pipx temurin-bin-8 temurin-bin-21 temurin-bin-25
-    
+
       # Main tools.
       nurl # Fetch hash from git repos.
       curl wget git
