@@ -32,6 +32,8 @@ in {
     # QT_QPA_PLATFORMTHEME but for local. qtct sets to qt5ct for now.
   };
 
+  xdg.dataFile."Kvantum/Gruvbox-Dark-Brown".source = "${pkgs.gruvbox-kvantum}/share/Kvantum/Gruvbox-Dark-Brown";
+
   systemd.user.sessionVariables = {
     GTK_THEME = "gruvbox-dark"; # Breeze-Dark
     QT_QPA_PLATFORMTHEME = "qt6ct"; # Use lib.mkForce if you have errors.
