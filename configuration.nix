@@ -169,6 +169,7 @@ in {
         _7zz = _7zz-rar;  # Support for RAR extraction
       })
       gum # Useful for shell scripts.
+      grub2 # grub-reboot INDEX.
     ];
   };
 
