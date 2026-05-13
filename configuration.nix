@@ -42,6 +42,7 @@ in {
       ./system/vpn.nix
       ./system/executables.nix
       ./system/gaming.nix
+      ./system/coding.nix
     ];
 
 
@@ -152,9 +153,6 @@ in {
     };
 
     systemPackages = with pkgs; [
-      # Programming compilers.
-      gcc python3 pipx temurin-bin-8 temurin-bin-21 temurin-bin-25
-
       # Main tools.
       nurl # Fetch hash from git repos.
       curl wget git
