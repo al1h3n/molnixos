@@ -1,15 +1,15 @@
-# https://github.com/Alihan1ai9595/sweeper
+# https://github.com/al1h3n/sweeper
 { pkgs, ... }:
 let
-  # Fetched at build time, cached in Nix store. 
+  # Fetched at build time, cached in Nix store.
   # Only re-downloads when you run nixos-rebuild, not on every reboot.
-  sweeperScript = builtins.fetchurl {
+  script = builtins.fetchurl {
     url = "https://raw.githubusercontent.com/al1h3n/sweeper/refs/heads/main/sweeper.sh";
   };
 in {
   # Makes script available system-wide as a package. Saved in /nix/store/<hash>-sweeper.sh
   environment.systemPackages = [
-    (pkgs.writeScriptBin "sweeper" (builtins.readFile sweeperScript))
+    (pkgs.writeScriptBin "sweeper" (builtins.readFile script))
   ];
 
   # Systemd user service — runs for every user that logs in.
@@ -19,7 +19,7 @@ in {
     after = [ "network-online.target" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.bash}/bin/bash ${sweeperScript}";
+      ExecStart = "${pkgs.bash}/bin/bash ${script}";
       RemainAfterExit = true;
     };
   };

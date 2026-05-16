@@ -14,6 +14,7 @@ let
     "peazip"
     "prismlauncher"
     "hyprland"
+    "snappy-switcher"  # Only works with hyprland.
     "niri"
     "window-manager"
     "qbittorrent"
@@ -25,7 +26,6 @@ let
     "spicetify"
     "lazyvim"
     "yazi"
-    "snappy-switcher"
     "variety"
     # "ollama"
     "associations"
