@@ -31,8 +31,13 @@ in {
     };
   };
 
+  home.packages = [
+    pkgs.pywalfox-native
+  ];
+
   programs.firefox = {
     enable = true;
+    nativeMessagingHosts = [ pkgs.pywalfox-native ]; # pywal in firefox.
     profiles = {
       personal = {
         id = 0;
