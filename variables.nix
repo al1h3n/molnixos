@@ -38,7 +38,8 @@ rec {
 
   feh = "${shared}/feh";
 
-  hyprland = "${shared}/hyprland-monolithic/hypr.conf";
+  hyprland_monolithic = "${shared}/hyprland-monolithic/hypr.conf";
+  hyprland = "${shared}/hyprland/hyprland.lua";
   hyprpaper = "${shared}/hyprpaper";
   hyprlock = "${shared}/hyprlock";
   rofi = "${shared}/rofi.rasi";

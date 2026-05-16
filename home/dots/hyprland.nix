@@ -12,8 +12,11 @@
   #   hyprmod
   # ];
 
+  # xdg.configFile = {
+  #   "hypr/hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink variables.hyprland_monolithic;
+  # };
   xdg.configFile = {
-    "hypr/hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink variables.hyprland;
+    "hypr/hyprland.lua".source = config.lib.file.mkOutOfStoreSymlink variables.hyprland;
   };
 
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
