@@ -5,10 +5,6 @@
         {
           commands = [
             {
-              command = "${pkgs.systemd}/bin/systemctl suspend";
-              options = ["NOPASSWD"];
-            }
-            {
               command = "${pkgs.systemd}/bin/reboot";
               options = ["NOPASSWD"];
             }
@@ -24,10 +20,10 @@
               command = "${pkgs.neovim}/bin/nvim";
               options = ["NOPASSWD"];
             }
-            # {
-            #   command = "${pkgs.systemd}/bin/systemctl";
-            #   options = ["NOPASSWD"];
-            # }
+            {
+              command = "${pkgs.systemd}/bin/systemctl";
+              options = ["NOPASSWD"];
+            }
             {
               command = "/run/current-system/sw/bin/ln";
               options = ["NOPASSWD"];
@@ -48,6 +44,11 @@
               command = "/home/${variables.username}/.nix-profile/bin/home-manager";
               options = ["NOPASSWD"];
             }
+            # TLP.
+            { command = "${pkgs.tlp}/bin/tlp"; options = ["NOPASSWD"]; }
+            { command = "${pkgs.tlp}/bin/tlp-stat"; options = ["NOPASSWD"]; }
+            { command = "${pkgs.tlp}/bin/bluetooth"; options = [ "NOPASSWD" ]; }
+            { command = "${pkgs.tlp}/bin/tlp-stat"; options = [ "NOPASSWD" ]; }
           ];
           groups = ["wheel"];
         }
