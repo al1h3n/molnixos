@@ -7,7 +7,7 @@ in {
     defaultFonts = {
       sansSerif = [ "JetBrainsMono Nerd Font Propo" "SF Mono" ];
       serif     = [ "JetBrainsMono Nerd Font Propo" "SF Pro" ];
-      monospace = [ "JetBrainsMono Nerd Font Propo" "SF Pro" ];
+      monospace = [ "JetBrainsMono Nerd Font" "SF Pro" ];
     };
   };
 }

@@ -44,7 +44,7 @@ rec {
   hyprlock = "${shared}/hyprlock";
   rofi = "${shared}/rofi.rasi";
 
-  niri = "${shared}/niri.kdl";
+  niri = "${shared}/niri-monolithic/niri.kdl";
 
   kitty = "${shared}/kitty";
   kitty_style = "${shared}/kittystyle";
