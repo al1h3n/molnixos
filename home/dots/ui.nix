@@ -1,12 +1,12 @@
 # ui.nix - GTK + Qt theming (without icons).
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, variables, ... }:
 let breezeDarkColors = "${pkgs.kdePackages.breeze}/share/color-schemes/BreezeDark.colors";
 in {
   # GTK
   gtk = {
     enable = true;
     theme = {
-      name = "gruvbox-dark";
+      name = variables.theme_gtk;
       package = pkgs.gruvbox-dark-gtk;
       # name = "Breeze-Dark";
       # package = pkgs.kdePackages.breeze-gtk;
@@ -21,7 +21,7 @@ in {
     enable = true;
     settings."org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
-      gtk-theme = "gruvbox-dark"; # explicit, required by some apps
+      gtk-theme = variables.theme_gtk; # explicit, required by some apps
     };
   };
 
@@ -35,14 +35,9 @@ in {
   xdg.dataFile."Kvantum/Gruvbox-Dark-Brown".source = "${pkgs.gruvbox-kvantum}/share/Kvantum/Gruvbox-Dark-Brown";
 
   systemd.user.sessionVariables = {
-    GTK_THEME = "gruvbox-dark"; # Breeze-Dark
+    GTK_THEME = variables.theme_gtk;
     QT_QPA_PLATFORMTHEME = "qt6ct"; # Use lib.mkForce if you have errors.
   };
-
-  # home.sessionVariables = {
-  #   GTK_THEME = "gruvbox-dark"; # Breeze-Dark
-  #   QT_FONT = "SF Pro Display:12";
-  # };
 
   # Packages.
   home.packages =
