@@ -77,7 +77,7 @@
 
       # Social.
       telegram-desktop # _64gram
-      vesktop # equicord # Can't see the package in app list or commands.
+      goofcord # Supports Vencord, Equicord and others. Optimized as well.
 
       # Notes.
       obsidian # appflowy # notion-app only on macOS, enhanced one is write screen.
