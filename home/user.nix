@@ -83,7 +83,7 @@
       obsidian # appflowy # notion-app only on macOS, enhanced one is write screen.
 
       # Shell.
-      kitty zellij
+      kitty wezterm zellij
 
       # Sharing files.
       localsend
