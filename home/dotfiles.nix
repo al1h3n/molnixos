@@ -26,7 +26,7 @@ let
     "spicetify"
     "lazyvim"
     "yazi"
-    "variety"
+    # "variety"
     # "ollama"
     "associations"
   ];

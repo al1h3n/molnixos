@@ -21,6 +21,7 @@ in {
       ./hardware/gpu-gaming.nix # If you're not a gamer disable it.
 
       # Pkgs
+      ./pkgs/doas.nix
       ./pkgs/hyprland.nix
       ./pkgs/niri.nix
       # ./pkgs/plasma.nix
