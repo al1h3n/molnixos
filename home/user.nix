@@ -9,7 +9,7 @@
       # Multimedia.
       songrec obs-studio
       imagemagickBig
-      geeqie # gthumb uses pixbuf, not imagemagickBig
+      nsxiv geeqie # gthumb uses pixbuf, not imagemagickBig
       yt-dlp
       inputs.yt-x.packages.${pkgs.stdenv.hostPlatform.system}.default
 
@@ -18,6 +18,7 @@
 
       # Utilities.
       cpu-x cava tealdeer zenity pay-respects piper openrgb-with-all-plugins
+      dupeguru # To remove duplicated files. Add game directories to exceptions.
 
       # Anifetch doesn't have some dependencies.
       (inputs.anifetch.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (old: {
@@ -29,16 +30,17 @@
       }))
 
       # Cool utilities for no reason.
-      cool-retro-term # RMB to change profile
+      pokemon-colorscripts # Pokemons.
+      cool-retro-term # RMB to change profile.
       genact # Random logs.
-      hollywood # Crazy ass random hacker stuff
+      hollywood # Crazy ass random hacker stuff.
       cbonsai
       lavat # Lava lamp.
-      pipes-rs # Infinite pipes
+      pipes-rs # Infinite pipes.
       cmatrix unimatrix
       # rusty-rain # Better cmatrix, no in nixOS packages now.
-      mapscii # Map
-      toilet # Rich print
+      mapscii # Map.
+      toilet tuilet # Rich print.
       tty-clock termdown
       globe-cli
 
@@ -63,7 +65,7 @@
       protontricks # Fix tool if game not working.
       # protontricks - better winetricks, steam uses own Proton.
       mangohud # FPS counter, enable manually.
-      protonup-qt # Install custom protonup-qt versions.
+      protonplus # Better protonup-qt. Manage proton versions. Add portprotonqt when released.
       heroic # Game launcher, lutris has bugs.
       prismlauncher
       inputs.setrixtui.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -87,6 +89,7 @@
 
       # Sharing files.
       localsend
+      warp # Online file transfer.
 
       # Office
       # freeoffice

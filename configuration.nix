@@ -161,9 +161,10 @@ in {
       font-manager libnotify killall ffmpegthumbnailer
       fastfetch countryfetch btop neovim micro
       mpv file
-      # superfile
+      duf # Mini alternative for disks usage.
       pavucontrol pulseaudio
       bat eza fzf ripgrep fd # fd - find, ripgrep [rg] - grep.
+      # superfile
       (yazi.override {
         _7zz = _7zz-rar;  # Support for RAR extraction
       })

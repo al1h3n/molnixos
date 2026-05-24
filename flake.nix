@@ -86,15 +86,21 @@
       url = "github:OpalAayan/snappy-switcher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # TUI for toilet, fancy color output.
+    tuilet = {
+      url = "github:gamache/tuilet";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nur, nix-cachyos-kernel,
-  yt-x, spicetify, anifetch, setrixtui, lazyvim, ie-r, snappy-switcher, ... }@inputs:
+  yt-x, spicetify, anifetch, setrixtui, lazyvim, ie-r, snappy-switcher, tuilet, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;
-    hmSource = if variables.channel == "stable" 
-      then inputs.home-manager-stable 
+    hmSource = if variables.channel == "stable"
+      then inputs.home-manager-stable
       else inputs.home-manager;
   in {
     nixosConfigurations.main = pkgsSource.lib.nixosSystem {
@@ -106,7 +112,8 @@
         { nixpkgs.overlays = [ # Overlays.
           nur.overlays.default
           nix-cachyos-kernel.overlays.pinned
-          # (final: prev: { lazyspotify = final.callPackage ./pkgs/lazyspotify.nix { src = inputs.lazyspotify; }; })
+          # (final: prev: { lazyspotify = final.callPackage ./build/lazyspotify.nix { src = inputs.lazyspotify; }; })
+          (final: prev: { tuilet = final.callPackage ./build/tuilet.nix { src = inputs.tuilet; }; })
         ]; }
         # stylix.nixosModules.stylix
         { # Actual HM config.
@@ -114,7 +121,7 @@
             extraSpecialArgs = {
               inherit variables inputs;
             }; # Add variable to Home Manager modules (user-defined).
-          
+
             useGlobalPkgs = true;
             useUserPackages = true;
             users.${variables.username} = import ./home/home.nix;
