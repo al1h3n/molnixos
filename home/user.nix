@@ -92,7 +92,7 @@
       # freeoffice
 
       # Hacking.
-      # johnny john # GUI and CLI. (has some error in nixpkgs)
+      johnny john # GUI and CLI. (has some error in nixpkgs)
 
       # Managing disks.
       gparted
