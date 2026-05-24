@@ -2,7 +2,6 @@
   services = {
     activitywatch = {
       enable = true;
-      package = pkgs.activitywatch.override { aw-webui = pkgs.aw-webui.overrideAttrs (_: { doCheck = false; }); };
       watchers = {
         aw-watcher-window = {
           package = pkgs.aw-watcher-window-wayland;
