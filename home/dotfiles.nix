@@ -29,6 +29,7 @@ let
     # "variety"
     # "ollama"
     "associations"
+    "activity-watch"
   ];
 in {
   imports = map (name: path + "/${name}.nix") dots;
