@@ -69,7 +69,7 @@
       inputs.setrixtui.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       # Art.
-      krita # blender
+      krita gimp # blender
       losslesscut-bin # To remove part of videos without losing quality.
 
       # AI, upscaling.
