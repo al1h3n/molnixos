@@ -37,6 +37,7 @@ in {
   systemd.user.sessionVariables = {
     GTK_THEME = variables.theme_gtk;
     QT_QPA_PLATFORMTHEME = "qt6ct"; # Use lib.mkForce if you have errors.
+    QT_QPA_PLATFORM = "wayland;xcb";
   };
 
   # Packages.
@@ -44,6 +45,7 @@ in {
     (with pkgs.qt6Packages; [
       qt6ct
       qtstyleplugin-kvantum # If you're using Kvantum styles.
+      qtwayland # For dupeguru.
       ])
     ++
     (with pkgs; [

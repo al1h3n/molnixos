@@ -75,7 +75,7 @@
       losslesscut-bin # To remove part of videos without losing quality.
 
       # AI, upscaling.
-      upscayl # Run "nix run github:mayjs/upscayl_nixos" if doesn't work.
+      # upscayl # Run "nix run github:mayjs/upscayl_nixos" if doesn't work.
 
       # Social.
       telegram-desktop # _64gram
