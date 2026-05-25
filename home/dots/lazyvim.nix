@@ -15,7 +15,10 @@ in {
   programs.lazyvim = {
     enable = true;
     extras = { "lang/nix".enable = true; } // (builtins.listToAttrs (map mkLang [
-      "json" "nix" "python" "rust" "go" "lua" "clang"
+      "json" "nix"
+      "python" "lua"
+      "rust" "go"
+      "cmake" # "clangd" # Doesn't seem to exist (C++)
     ]));
   };
   xdg.configFile."nvim/lua/plugins/colorscheme.lua".source = sym "theme.lua";
