@@ -62,3 +62,8 @@ warp-cli connect/disconnect
 
 ### Enabling custom Proton in Steam.
 Steam → Settings → Compatibility → Enable Steam Play for all other titles → select Proton-CachyOS from the dropdown.<br>
+
+### API key limit
+1. Create a [token](https://github.com/settings/personal-access-tokens) with default settings.
+2. Create file `~/.config/nix/nix.conf`
+3. Add `access-tokens = TOKEN`
