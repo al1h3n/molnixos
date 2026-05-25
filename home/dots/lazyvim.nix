@@ -8,7 +8,11 @@ let
     installDependencies = true;
     installRuntimeDependencies = true;
   };
-  langList = [ "python" "rust" "nix" "lua" "json" "go" "clangd" "cmake" ];
+
+  langList = [ "python" "rust" "nix" "go" "json" ];
+  # Available options are in "github.com/pfassina/lazyvim-nix/blob/main/nix/options.nix" - find lang.x
+  # "lua" "clangd" "cmake"
+
   allLangs = lib.foldl' lib.recursiveUpdate {} (map mkLangSet langList);
 in {
   programs.lazyvim = {
