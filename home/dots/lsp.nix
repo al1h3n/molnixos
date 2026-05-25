@@ -5,6 +5,6 @@
     ./lsp/go.nix
     ./lsp/lua.nix
     # ./lsp/python.nix
-    ./lsp/rust.nix
+    # ./lsp/rust.nix
   ];
 }
