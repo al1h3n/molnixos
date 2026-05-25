@@ -2,22 +2,73 @@
 { pkgs, ... }:
 let
   commonSettings = {
+    # Extensions.
     "extensions.allowPrivateBrowsingByDefault" = true;
     "extensions.autoDisableScopes" = 0; # Automatically enable extensions.
 
-      # Fission (site isolation)
-      "fission.autostart" = true;
+    # UI.
+    "browser.uidensity" = 1;
 
-      # HTTP pipelining (legacy networking tweaks)
-      "network.http.pipelining" = true;
-      "network.http.proxy.pipelining" = true;
-      "network.http.pipelining.maxrequests" = 30;
+    # Pocket.
+    "extensions.pocket.api" = "";
+    "extensions.pocket.enabled" = false;
+    "extensions.pocket.site" = "";
+    "extensions.pocket.oAuthConsumerKey" = "";
 
-      # Rendering / paint behavior
-      "nglayout.initialpaint.delay" = 0;
+    # Fullscreen.
+    "full-screen-api.transition-duration.enter" = "0";
+    "full-screen-api.transition-duration.leave" = "0";
+    "full-screen-api.warning.timeout" = 0;
 
-      # DNS
-      "network.dns.ecg" = true;
+    # Privacy.
+    "privacy.trackingprotection.enabled" = true;
+    "privacy.donottrackheader.enabled" = true;
+
+    # Fission (site isolation).
+    "fission.autostart" = true;
+
+    # HTTP pipelining (legacy networking tweaks).
+    "network.http.pipelining" = true;
+    "network.http.proxy.pipelining" = true;
+    "network.http.pipelining.maxrequests" = 30;
+
+    # Rendering.
+    "nglayout.initialpaint.delay" = 0;
+
+    # DNS.
+    "network.dns.ecg" = true;
+
+    # Telemetry.
+    "toolkit.telemetry.archive.enabled" = false;
+    "toolkit.telemetry.bhrPing.enabled" = false;
+    "toolkit.telemetry.cachedClientID" = "";
+    "toolkit.telemetry.firstShutdownPing.enabled" = false;
+    "toolkit.telemetry.hybridContent.enabled" = false;
+    "toolkit.telemetry.newProfilePing.enabled" = false;
+    "toolkit.telemetry.previousBuildID" = "";
+    "toolkit.telemetry.reportingpolicy.firstRun" = false;
+    "toolkit.telemetry.server" = "";
+    "toolkit.telemetry.server_owner" = "";
+    "toolkit.telemetry.shutdownPingSender.enabled" = false;
+    "toolkit.telemetry.unified" = false;
+    "toolkit.telemetry.updatePing.enabled" = false;
+
+    "datareporting.healthreport.infoURL" = "";
+    "datareporting.healthreport.uploadEnabled" = false;
+    "datareporting.policy.dataSubmissionEnabled" = false;
+    "datareporting.policy.firstRunURL" = "";
+
+    "browser.tabs.crashReporting.sendReport" = false;
+    "browser.tabs.crashReporting.email" = false;
+    "browser.tabs.crashReporting.emailMe" = false;
+
+    "breakpad.reportURL" = "";
+    "security.ssl.errorReporting.automatic" = false;
+    "toolkit.crashreporter.infoURL" = "";
+
+    "network.allow-experiments" = false;
+    "dom.ipc.plugins.reportCrashURL" = false;
+    "dom.ipc.plugins.flash.subprocess.crashreporter.enabled" = false;
   };
 in {
   xdg.mimeApps = {
