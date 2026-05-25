@@ -4,7 +4,7 @@
 let
   sym = rel: lib.mkForce (config.lib.file.mkOutOfStoreSymlink "${variables.shared}/lazyvim/${rel}");
   mkLang = lang: {
-    name = lang;
+    name = "lazyvim.extras.lang.${lang}";
     value = {
       enable = true;
       installDependencies = true;
