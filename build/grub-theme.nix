@@ -9,6 +9,8 @@ let
       repo = "Graphite-gtk-theme";
       rev = "57028b0bfcc0cfee1ba42273c545e4e269973433";
       hash = "sha256-62SOQb3sQCYN1XU6a48RM18EcTUBEh2x0u+S6z8xEfo=";
+      forceFetchGit = true;
+      shallow = true;
     };
 
     installPhase = ''

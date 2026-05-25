@@ -11,6 +11,8 @@ let
     repo = "plymouth-themes";
     rev = "5d8817458d764bff4ff9daae94cf1bbaabf16ede";
     hash = "sha256-e3lRgIBzDkKcWEp5yyRCzQJM6yyTjYC5XmNUZZroDuw=";
+    forceFetchGit = true;
+    shallow = true;
   };
 
   # Map each theme name to its pack folder in the repo
