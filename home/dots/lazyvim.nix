@@ -16,9 +16,9 @@ in {
     enable = true;
     extras = { "lang/nix".enable = true; } // (builtins.listToAttrs (map mkLang [
       "nix"
-      "python" "lua"
+      "python"
       "rust"
-      # "json" "go" "clangd" "cmake" # Doesn't seem to exist (C++)
+      # "lua" "json" "go" "clangd" "cmake" # Doesn't seem to exist (C++)
     ]));
   };
   xdg.configFile."nvim/lua/plugins/colorscheme.lua".source = sym "theme.lua";
