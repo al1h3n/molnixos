@@ -18,7 +18,7 @@ in {
       "json" "nix"
       "python" "lua"
       "rust" "go"
-      "cmake" # "clangd" # Doesn't seem to exist (C++)
+      # "clangd" "cmake" # Doesn't seem to exist (C++)
     ]));
   };
   xdg.configFile."nvim/lua/plugins/colorscheme.lua".source = sym "theme.lua";
