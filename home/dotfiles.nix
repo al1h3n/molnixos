@@ -30,7 +30,6 @@ let
     # "ollama"
     "associations"
     # "activity-watch"
-    "lsp"
   ];
 in {
   imports = map (name: path + "/${name}.nix") dots;
