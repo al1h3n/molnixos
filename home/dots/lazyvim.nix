@@ -6,6 +6,7 @@ let
 in {
   programs.lazyvim = {
     enable = true;
+    generateHelptags = false;
     extras = {
       lang.nix.enable = true;
       lang.python = {
