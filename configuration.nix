@@ -44,6 +44,7 @@ in {
       ./system/executables.nix
       ./system/gaming.nix
       ./system/coding.nix
+      ./system/git.nix
     ];
 
 
