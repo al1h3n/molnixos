@@ -1,6 +1,5 @@
 { ... }:{
   nix = {
-    experimental-features = [ "configurable-impure-env" ];
     settings = {
       # This globally forces Git to use blobless partial cloning AND shallow depth=1
       impure-env = [
