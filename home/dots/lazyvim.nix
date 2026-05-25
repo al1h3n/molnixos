@@ -3,22 +3,17 @@
 { lib, config, variables, ... }:
 let
   sym = rel: lib.mkForce (config.lib.file.mkOutOfStoreSymlink "${variables.shared}/lazyvim/${rel}");
-  mkLang = lang: {
-    name = "lazyvim.extras.lang.${lang}";
-    value = {
-      enable = true;
-      installDependencies = true;
-      installRuntimeDependencies = true;
-    };
+  mkLangSet = lang: lib.setAttrByPath [ "lang" lang ] {
+    enable = true;
+    installDependencies = true;
+    installRuntimeDependencies = true;
   };
+  langList = [ "python" "rust" "nix" "lua" "json" "go" "clangd" "cmake" ];
+  allLangs = lib.foldl' lib.recursiveUpdate {} (map mkLangSet langList);
 in {
   programs.lazyvim = {
     enable = true;
-    extras = builtins.listToAttrs (map mkLang [
-      "python"
-      "rust"
-      "nix" "lua" "json" "go" "clangd" "cmake" # Doesn't seem to exist (C++)
-    ]);
+    extras = allLangs;
   };
   xdg.configFile."nvim/lua/plugins/colorscheme.lua".source = sym "theme.lua";
   xdg.configFile."nvim/lua/plugins/dashboard.lua".source = sym "dashboard.lua";
