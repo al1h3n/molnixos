@@ -14,11 +14,11 @@ let
 in {
   programs.lazyvim = {
     enable = true;
-    extras = { "lang/nix".enable = true; } // (builtins.listToAttrs (map mkLang [
+    extras = builtins.listToAttrs (map mkLang [
       "python"
       "rust"
       # "nix" "lua" "json" "go" "clangd" "cmake" # Doesn't seem to exist (C++)
-    ]));
+    ]);
   };
   xdg.configFile."nvim/lua/plugins/colorscheme.lua".source = sym "theme.lua";
   xdg.configFile."nvim/lua/plugins/dashboard.lua".source = sym "dashboard.lua";
