@@ -4,7 +4,7 @@
 let
   sym = rel: lib.mkForce (config.lib.file.mkOutOfStoreSymlink "${variables.shared}/lazyvim/${rel}");
   mkLang = lang: {
-    name = "lang/${lang}";
+    name = lang;
     value = {
       enable = true;
       installDependencies = true;
@@ -17,7 +17,7 @@ in {
     extras = builtins.listToAttrs (map mkLang [
       "python"
       "rust"
-      # "nix" "lua" "json" "go" "clangd" "cmake" # Doesn't seem to exist (C++)
+      "nix" "lua" "json" "go" "clangd" "cmake" # Doesn't seem to exist (C++)
     ]);
   };
   xdg.configFile."nvim/lua/plugins/colorscheme.lua".source = sym "theme.lua";
