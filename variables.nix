@@ -29,8 +29,8 @@ rec {
   browser = "firefox";
   hosts = "${shared}/hosts";
 
-  zsh = "${shared}/.zshrc";
-  zsh_theme = "${shared}/.p10k.zsh";
+  zsh = "${shared}/zsh/.zshrc";
+  zsh_theme = "${shared}/zsh/.p10k.zsh";
 
   dunst = "${shared}/dunst";
   fastfetch = "${shared}/fastfetch.jsonc";
@@ -63,8 +63,7 @@ rec {
   prismlauncher = "${shared}/prismlauncher.cfg";
   spicetify = "${shared}/spicetify";
 
-  fish = "${shared}/config.fish";
-  fish_theme = "${shared}/tide.fish";
+  fish = "${shared}/fish/config.fish";
 
   mangohud = "${shared}/mangohud-benchmark.conf";
   yazi = "${shared}/yazi";

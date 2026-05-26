@@ -3,7 +3,6 @@
     enable = true;
     interactiveShellInit = ''
       source ${toString variables.fish}
-      source ${toString variables.fish_theme}
     '';
   };
   home = {
