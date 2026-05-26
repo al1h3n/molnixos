@@ -1,7 +1,7 @@
 { pkgs, variables, ... }: {
   programs.fish = {
     enable = true;
-    initContent = ''
+    interactiveShellInit = ''
       source ${toString variables.fish}
       source ${toString variables.fish_theme}
     '';
@@ -11,5 +11,5 @@
       tide # Theme for fish.
     ];
   };
-  
+
 }
