@@ -7,8 +7,5 @@
     ./dotfiles.nix
     # ./variable-links.nix
   ];
-  home = {
-    stateVersion = variables.version;
-    backupFileExtension = "backup";
-  };
+  home.stateVersion = variables.version;
 }
