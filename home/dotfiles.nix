@@ -9,6 +9,7 @@ let
     "icons" "icons-papirus" # "icons-custom"
     "firefox"
     "zsh"
+    "fish"
     "feh"
     "thunar"
     "peazip"

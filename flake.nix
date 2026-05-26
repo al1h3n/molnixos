@@ -100,10 +100,10 @@
     };
 
     # Another WM for old machines.
-    sxwm = {
-      url = "github:uint23/sxwm";
-      flake = false;
-    };
+    # sxwm = {
+    #   url = "github:uint23/sxwm";
+    #   flake = false;
+    # };
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nur, nix-cachyos-kernel,
@@ -127,7 +127,7 @@
           nix-cachyos-kernel.overlays.pinned
           # (final: prev: { lazyspotify = final.callPackage ./build/lazyspotify.nix { src = inputs.lazyspotify; }; })
           (final: prev: { tuilet = final.callPackage ./build/tuilet.nix { src = inputs.tuilet;}; })
-          (final: prev: { sxwm = final.callPackage ./build/sxwm.nix { src = inputs.sxwm; }; })
+          # (final: prev: { sxwm = final.callPackage ./build/sxwm.nix { src = inputs.sxwm; }; })
         ]; }
         # stylix.nixosModules.stylix
         { # Actual HM config.
