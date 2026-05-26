@@ -114,7 +114,7 @@
       modules = [
         ./configuration.nix  # nixOS system-wide configuration.
         hmSource.nixosModules.home-manager # Enables HM module.
-        inputs.minegrub-theme.nixosModules.default # Minegrub.
+        inputs.minegrub.nixosModules.default # Minegrub.
 
         { nixpkgs.overlays = [ # Overlays.
           nur.overlays.default
