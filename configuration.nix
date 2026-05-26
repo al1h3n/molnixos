@@ -82,7 +82,7 @@ in {
       description = "User account created by MolniOS configuration.";
       isNormalUser = true;
       extraGroups = [ "wheel" "plugdev" "storage" "optical" "input" "libvirtd" "lp" ];
-      shell = pkgs.zsh;
+      # shell = pkgs.zsh;
     };
   };
 
