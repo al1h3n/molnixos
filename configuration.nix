@@ -25,7 +25,6 @@ in {
       ./pkgs/hyprland.nix
       ./pkgs/minegrub.nix
       ./pkgs/niri.nix
-      ./pkgs/sxwm.nix
       # ./pkgs/plasma.nix
       # ./pkgs/gnome.nix
 

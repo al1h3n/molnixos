@@ -1,18 +1,17 @@
-{ pkgs, lib, src }:
+{ stdenv, lib, src, xorg, gnumake }:
 
-pkgs.stdenv.mkDerivation {
+stdenv.mkDerivation {
   pname = "sxwm";
   version = "unstable";
-
   inherit src;
 
-  buildInputs = with pkgs; [
+  buildInputs = [
     xorg.libX11
     xorg.libXinerama
     xorg.libXcursor
   ];
 
-  nativeBuildInputs = with pkgs; [ gnumake ];
+  nativeBuildInputs = [ gnumake ];
 
   installPhase = ''
     make install PREFIX=$out
@@ -20,8 +19,8 @@ pkgs.stdenv.mkDerivation {
 
   meta = {
     description = "A simple feature-rich dynamic tiling window manager";
-    license     = lib.licenses.gpl3Only;
-    platforms   = lib.platforms.linux;
+    license = lib.licenses.gpl3Only;
+    platforms = lib.platforms.linux;
     mainProgram = "sxwm";
   };
 }
