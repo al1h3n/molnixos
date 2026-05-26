@@ -52,6 +52,9 @@ in {
     kdePackages.breeze kdePackages.breeze-gtk
     gruvbox-dark-gtk gruvbox-kvantum
     nwg-look
+
+    # Other themes.
+    adw-gtk3 adwaita-qt6
     ]);
 
   # Stylix
