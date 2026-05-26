@@ -92,6 +92,12 @@
       url = "github:gamache/tuilet";
       flake = false;
     };
+
+    # Minegrub theme for grub2.
+    minegrub = {
+      url = "github:Lxtharia/minegrub-theme";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nur, nix-cachyos-kernel,
@@ -108,6 +114,7 @@
       modules = [
         ./configuration.nix  # nixOS system-wide configuration.
         hmSource.nixosModules.home-manager # Enables HM module.
+        inputs.minegrub-theme.nixosModules.default # Minegrub.
 
         { nixpkgs.overlays = [ # Overlays.
           nur.overlays.default

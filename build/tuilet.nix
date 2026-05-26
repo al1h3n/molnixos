@@ -1,7 +1,7 @@
 { rustPlatform, lib, src }:
 rustPlatform.buildRustPackage {
   pname = "tuilet";
-  version = "0.3.0";
+  version = "unstable";
   inherit src;
 
   cargoLock.lockFile = "${src}/Cargo.lock";
