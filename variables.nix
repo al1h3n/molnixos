@@ -46,8 +46,8 @@ rec {
 
   niri = "${shared}/niri-monolithic/niri.kdl";
 
-  kitty = "${shared}/kitty";
-  kitty_style = "${shared}/kittystyle";
+  kitty = "${shared}/kitty/kitty.conf";
+  kitty_style = "${shared}/kitty/kitty-style.conf";
 
   ly = "${shared}/ly";
   qbittorrent = "${shared}/qbittorrent.ini";
