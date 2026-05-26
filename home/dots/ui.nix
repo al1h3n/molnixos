@@ -55,6 +55,7 @@ in {
 
     # Other themes.
     adw-gtk3 adwaita-qt6
+    graphite-gtk-theme
     ]);
 
   # Stylix
