@@ -7,9 +7,8 @@ in {
     enable = true;
     theme = {
       name = variables.theme_gtk;
-      package = pkgs.gruvbox-dark-gtk;
-      # name = "Breeze-Dark";
-      # package = pkgs.kdePackages.breeze-gtk;
+      package = pkgs.adw-gtk3;
+      # find name in nwg-look.
     };
     gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
 
@@ -49,7 +48,7 @@ in {
       ])
     ++
     (with pkgs; [
-    kdePackages.breeze kdePackages.breeze-gtk
+    kdePackages.breeze
     gruvbox-dark-gtk gruvbox-kvantum
     nwg-look
 

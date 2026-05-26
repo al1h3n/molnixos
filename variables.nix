@@ -24,7 +24,7 @@ rec {
   cursors_dir = shared_root + "/cursors";
   cursor = cursors_dir + "/${cursor_name}";
   icons = "${shared}/icons/MacTahoe-dark";
-  theme_gtk = "gruvbox-dark"; # Breeze-Dark
+  theme_gtk = "adw-gtk3-dark"; # gruvbox-dark
 
   browser = "firefox";
   hosts = "${shared}/hosts";
