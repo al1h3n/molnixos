@@ -17,6 +17,7 @@ let
     "hyprland"
     "snappy-switcher"  # Only works with hyprland.
     "niri"
+    "kitty"
     "window-manager"
     "qbittorrent"
     # "polkit-hypr"
