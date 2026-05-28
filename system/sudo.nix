@@ -45,10 +45,8 @@
               options = ["NOPASSWD"];
             }
             # TLP.
-            { command = "${pkgs.tlp}/bin/tlp"; options = ["NOPASSWD"]; }
-            { command = "${pkgs.tlp}/bin/tlp-stat"; options = ["NOPASSWD"]; }
-            { command = "${pkgs.tlp}/bin/bluetooth"; options = [ "NOPASSWD" ]; }
-            { command = "${pkgs.tlp}/bin/tlp-stat"; options = [ "NOPASSWD" ]; }
+            # { command = "/run/current-system/sw/bin/tlp"; options = ["NOPASSWD"]; }
+            # { command = "/run/current-system/sw/bin/tlp-stat"; options = ["NOPASSWD"]; }
           ];
           groups = ["wheel"];
         }

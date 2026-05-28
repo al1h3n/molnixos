@@ -87,3 +87,7 @@ important-folder/*
 # Ignore everything in logs except .gitkeep
 logs/*
 !logs/.gitkeep
+
+# To-Dos
+todo
+TODO
