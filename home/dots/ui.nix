@@ -23,6 +23,10 @@ in {
       gtk-theme = variables.theme_gtk; # explicit, required by some apps
     };
   };
+  home.activation.removeGtkCss = lib.hm.dag.entryBefore ["writeBoundary"] ''
+  rm -f "${config.home.homeDirectory}/.config/gtk-4.0/gtk.css"
+  rm -f "${config.home.homeDirectory}/.config/gtk-3.0/gtk.css"
+  ''; # Fix for GTK files.
 
   # Qt
   qt = {
