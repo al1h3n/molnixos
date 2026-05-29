@@ -79,7 +79,7 @@
       # upscayl # Run "nix run github:mayjs/upscayl_nixos" if doesn't work.
 
       # Social.
-      telegram-desktop # _64gram
+      _64gram # telegram-desktop
       goofcord # Supports Vencord, Equicord and others. Optimized as well.
 
       # Notes.
