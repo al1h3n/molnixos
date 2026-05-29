@@ -33,6 +33,7 @@ let
     "associations"
     # "activity-watch"
     "lsp"
+    "wezterm"
   ];
 in {
   imports = map (name: path + "/${name}.nix") dots;

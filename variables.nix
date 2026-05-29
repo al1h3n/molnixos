@@ -47,6 +47,7 @@ rec {
   niri = "${shared}/niri-monolithic/niri.kdl";
 
   kitty = "${shared}/kitty/kitty.conf";
+  wezterm = "${shared}/wezterm/wezterm.lua";
 
   ly = "${shared}/ly";
   qbittorrent = "${shared}/qbittorrent.ini";
