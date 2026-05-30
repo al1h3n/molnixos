@@ -39,7 +39,7 @@ in {
 
   systemd.user.sessionVariables = {
     GTK_THEME = variables.theme_gtk;
-    QT_QPA_PLATFORMTHEME = "adwaita-dark"; # Use lib.mkForce if you have errors.
+    QT_QPA_PLATFORMTHEME = lib.mkForce "adwaita-dark"; # Use lib.mkForce if you have errors.
     QT_QPA_PLATFORM = "wayland;xcb";
   };
 
