@@ -1,4 +1,5 @@
 { pkgs, ... }: {
+  services.desktopManager.gnome.enable = true;
   services.gnome = {
     core-apps.enable = false;
     core-developer-tools.enable = false;
@@ -18,6 +19,6 @@
     atomix        # puzzle game
   ];
   environment.systemPackages = with pkgs; [
-    gnome-tweaks
+    gnomeExtensions
   ];
 }
