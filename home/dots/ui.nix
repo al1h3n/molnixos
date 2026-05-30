@@ -31,7 +31,7 @@ in {
   # Qt
   qt = {
     enable = true;
-    platformTheme.name = "qt6ct";
+    platformTheme.name = "Adwaita-Dark"; # qt6ct
     # QT_QPA_PLATFORMTHEME but for local. qtct sets to qt5ct for now.
   };
 
@@ -39,7 +39,7 @@ in {
 
   systemd.user.sessionVariables = {
     GTK_THEME = variables.theme_gtk;
-    QT_QPA_PLATFORMTHEME = "qt6ct"; # Use lib.mkForce if you have errors.
+    QT_QPA_PLATFORMTHEME = "Adwaita-Dark"; # qt6ct | Use lib.mkForce if you have errors.
     QT_QPA_PLATFORM = "wayland;xcb";
     QT_STYLE_OVERRIDE = "";
   };
