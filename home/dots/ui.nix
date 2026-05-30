@@ -41,6 +41,7 @@ in {
     GTK_THEME = variables.theme_gtk;
     QT_QPA_PLATFORMTHEME = "qt6ct"; # Use lib.mkForce if you have errors.
     QT_QPA_PLATFORM = "wayland;xcb";
+    QT_STYLE_OVERRIDE = "";
   };
 
   # Packages.
