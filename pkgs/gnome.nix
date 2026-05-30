@@ -18,7 +18,6 @@
     atomix        # puzzle game
   ];
   environment.systemPackages = with pkgs; [
-    gnome.gnome-tweaks
-    gnome.gnome-terminal
+    gnome-tweaks
   ];
 }
