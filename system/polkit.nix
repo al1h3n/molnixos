@@ -7,24 +7,14 @@
 
   security.polkit = {
     enable = true;
-    # extraConfig = ''
-    #   // Allow wheel group to run TLP without authentication
-    #   polkit.addRule(function(action, subject) {
-    #     if (
-    #       (action.id === "org.freedesktop.policykit.exec") &&
-    #       subject.isInGroup("wheel")
-    #     ) {
-    #       var cmd = action.lookup("command");
-    #       var tlpBin = "${pkgs.tlp}/bin/tlp";
-
-    #       if (cmd && (
-    #         cmd.indexOf(tlpBin) === 0 ||
-    #         cmd.indexOf("/run/current-system/sw/bin/tlp") === 0
-    #       )) {
-    #         return polkit.Result.YES;
-    #       }
-    #     }
-    #   });
-    # '';
+    extraConfig = ''
+      polkit.addRule(function(action, subject) {
+        if (action.id == "org.freedesktop.policykit.exec" &&
+            action.lookup("program") == "${pkgs.tlp}/bin/tlp" &&
+            subject.isInGroup("wheel")) {
+          return polkit.Result.YES;
+        }
+      });
+    '';
   };
 }
