@@ -39,9 +39,9 @@ in {
 
   systemd.user.sessionVariables = {
     GTK_THEME = variables.theme_gtk;
-    QT_QPA_PLATFORMTHEME = "Adwaita-Dark"; # qt6ct | Use lib.mkForce if you have errors.
+    QT_QPA_PLATFORMTHEME = "qt6ct"; # Use lib.mkForce if you have errors.
     QT_QPA_PLATFORM = "wayland;xcb";
-    QT_STYLE_OVERRIDE = "";
+    QT_STYLE_OVERRIDE = "adwaita-dark";
   };
 
   # Packages.
@@ -73,4 +73,15 @@ in {
   #     emoju = {};
   #   };
   # };
+
+  xdg.configFile."qt6ct/qt6ct.conf".text = ''
+  [Appearance]
+  icon_theme=Papirus-Dark
+  style=Adwaita-Dark
+  custom_palette=true
+
+  [Fonts]
+  fixed="JetBrainsMono Nerd Font Propo,11,-1,5,50,0,0,0,0,0"
+  general="SF Pro Display,11,-1,5,50,0,0,0,0,0"
+'';
 }
