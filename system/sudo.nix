@@ -44,10 +44,6 @@
               command = "/home/${variables.username}/.nix-profile/bin/home-manager";
               options = ["NOPASSWD"];
             }
-            {
-              command = "${pkgs.tlp}/bin/tlp";
-              options = ["NOPASSWD"];
-            }
           ];
           groups = ["wheel"];
         }
