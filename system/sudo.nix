@@ -44,9 +44,6 @@
               command = "/home/${variables.username}/.nix-profile/bin/home-manager";
               options = ["NOPASSWD"];
             }
-            # TLP.
-            # { command = "/run/current-system/sw/bin/tlp"; options = ["NOPASSWD"]; }
-            # { command = "/run/current-system/sw/bin/tlp-stat"; options = ["NOPASSWD"]; }
           ];
           groups = ["wheel"];
         }
