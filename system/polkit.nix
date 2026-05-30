@@ -1,6 +1,6 @@
 # polkit.nix - Polkit configuration.
 # Switch between polkit-hypr.nix and polkit-gnome.nix by commenting/uncommenting.
-{ ... }: {
+{ pkgs, ... }: {
   imports = [
     ./packages/polkit-gnome.nix
   ];
