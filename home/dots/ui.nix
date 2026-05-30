@@ -31,7 +31,7 @@ in {
   # Qt
   qt = {
     enable = true;
-    platformTheme.name = "Adwaita-Dark"; # qt6ct
+    platformTheme.name = "qt6ct";
     # QT_QPA_PLATFORMTHEME but for local. qtct sets to qt5ct for now.
   };
 
@@ -39,8 +39,9 @@ in {
 
   systemd.user.sessionVariables = {
     GTK_THEME = variables.theme_gtk;
-    QT_QPA_PLATFORMTHEME = lib.mkForce "adwaita-dark"; # Use lib.mkForce if you have errors.
+    QT_QPA_PLATFORMTHEME = lib.mkForce "qt6ct"; # Use lib.mkForce if you have errors.
     QT_QPA_PLATFORM = "wayland;xcb";
+    QT5_QPA_PLATFORMTHEME = "qt5ct";
   };
 
   # Packages.
@@ -51,13 +52,17 @@ in {
       qtwayland # For dupeguru.
       ])
     ++
+    (with pkgs.libsForQt5; [
+      qt5ct
+    ])
+    ++
     (with pkgs; [
     kdePackages.breeze
     gruvbox-dark-gtk gruvbox-kvantum
     nwg-look
 
     # Other themes.
-    adw-gtk3 adwaita-qt6
+    adw-gtk3 adwaita-qt6 adwaita-qt
     graphite-gtk-theme
     ]);
 
@@ -73,14 +78,26 @@ in {
   #   };
   # };
 
-  xdg.configFile."qt6ct/qt6ct.conf".text = ''
-  [Appearance]
-  icon_theme=Papirus-Dark
-  style=Adwaita-Dark
-  custom_palette=true
+  xdg.configFile = {
+    "qt6ct/qt6ct.conf".text = ''
+    [Appearance]
+    icon_theme=Papirus-Dark
+    style=Adwaita-Dark
+    custom_palette=true
 
-  [Fonts]
-  fixed="JetBrainsMono Nerd Font Propo,11,-1,5,50,0,0,0,0,0"
-  general="SF Pro Display,11,-1,5,50,0,0,0,0,0"
-'';
+    [Fonts]
+    fixed="JetBrainsMono Nerd Font Propo"
+    general="JetBrainsMono Nerd Font Propo"
+    '';
+    "qt5ct/qt5ct.conf".text = ''
+    [Appearance]
+    icon_theme=Papirus-Dark
+    style=Adwaita-Dark
+    custom_palette=true
+
+    [Fonts]
+    fixed="JetBrainsMono Nerd Font Propo"
+    general="JetBrainsMono Nerd Font Propo"
+    '';
+  };
 }
