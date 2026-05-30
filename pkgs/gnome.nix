@@ -18,7 +18,4 @@
     hitori        # sudoku game
     atomix        # puzzle game
   ];
-  environment.systemPackages = with pkgs; [
-    gnomeExtensions
-  ];
 }
