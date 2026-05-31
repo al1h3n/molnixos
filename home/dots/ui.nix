@@ -86,8 +86,8 @@ in {
     custom_palette=true
 
     [Fonts]
-    fixed="JetBrainsMono Nerd Font Propo"
-    general="JetBrainsMono Nerd Font Propo"
+    fixed="SF Mono Nerd Font"
+    general="SF Mono Nerd Font"
     '';
     "qt5ct/qt5ct.conf".text = ''
     [Appearance]
@@ -96,8 +96,8 @@ in {
     custom_palette=true
 
     [Fonts]
-    fixed="JetBrainsMono Nerd Font Propo"
-    general="JetBrainsMono Nerd Font Propo"
-    '';
+    fixed="SF Mono Nerd Font"
+    general="SF Mono Nerd Font"
+    ''; # JetBrainsMono Nerd Font Propo
   };
 }
