@@ -18,7 +18,7 @@ in {
     enable = true;
     extras = allLangs;
   };
-  xdg.configFile."nvim/lua/plugins/colorscheme.lua".source = sym "theme.lua";
+  xdg.configFile."nvim/lua/plugins/theme.lua".source = sym "theme.lua";
   xdg.configFile."nvim/lua/plugins/dashboard.lua".source = sym "dashboard.lua";
   xdg.configFile."nvim/lua/config/autocmds.lua".source = sym "autocmds.lua";
 }
