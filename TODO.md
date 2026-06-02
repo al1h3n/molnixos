@@ -1,1 +1,1 @@
-1. Enable activity-watch.
+1. Remove "electron-39.8.10" from permitted packages due to a bug.
