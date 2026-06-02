@@ -55,6 +55,8 @@
       dialect # Translator
       noteshrink # Convert photos of copybook to better and compressed ones.
       speedread # Read files fast from plain text.
+      zathura # PDF viewer.
+      masterpdfeditor # PDF editor.
 
       # Coding.
       vscodium
