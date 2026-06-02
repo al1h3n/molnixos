@@ -44,7 +44,7 @@ rec {
   hyprlock = "${shared}/hyprlock";
   rofi = "${shared}/rofi.rasi";
 
-  niri = "${shared}/niri/niri.kdl";
+  niri = "${shared}/niri;
 
   kitty = "${shared}/kitty/kitty.conf";
   wezterm = "${shared}/wezterm/wezterm.lua";
