@@ -31,7 +31,7 @@ let
     # "variety"
     # "ollama"
     "associations"
-    # "activity-watch"
+    "activity-watch"
     "lsp"
     "wezterm"
   ];
