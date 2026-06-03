@@ -21,7 +21,7 @@
       (tesseract5.override { enableLanguages = [ "eng" "rus" "chi_sim" ]; })
 
       # Wallpapers.
-      awww mpvpaper waypaper pywal16 wallust
+      awww mpvpaper waypaper pywal16 matugen
       # Screenshots and recorders.
       grim slurp wf-recorder satty hyprshot
 
