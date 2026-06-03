@@ -1,53 +1,42 @@
-# activitywatch.nix (home-manager module)
-{ pkgs, lib, ... }:
-
-{
-  # ── Core server + watcher services ──────────────────────────────────────
+{ pkgs, lib, config, ... }: {
   services.activitywatch = {
     enable = true;
-    package = pkgs.activitywatch;   # provides aw-server-rust
+    package = pkgs.activitywatch;
 
-    # Don't run the broken X11 watchers at all
-    # Instead we use awatcher as a custom watcher entry
     watchers = {
       aw-awatcher = {
-        package = pkgs.awatcher;    # pkgs.awatcher in nixpkgs-unstable
-        # awatcher auto-detects Hyprland/niri/Wayland and picks the right backend
+        package = pkgs.awatcher;
+        executable = "awatcher";        # ← actual binary name in the store
         settings = {
-          # idle timeout in seconds before marking AFK
-          idle-timeout-seconds = 180;
-          poll-time-idle-seconds = 4;
+          idle-timeout-seconds  = 180;
+          poll-time-idle-seconds  = 4;
           poll-time-window-seconds = 1;
-
-          # optional: filter sensitive windows
-          # filters = [
-          #   {
-          #     match-app-id  = "firefox";
-          #     match-title   = ".*[Pp]rivate.*";
-          #     replace-title = "Private Browsing";
-          #   }
-          # ];
         };
         settingsFilename = "config.toml";
       };
     };
   };
 
-  # ── aw-qt tray icon (optional, gives you the system tray menu) ──────────
-  # Must start AFTER waybar so its SNI tray is already registered.
+  # Tell aw-qt to only manage itself (no watchers) via its config file.
+  # The watchers are already managed by systemd via services.activitywatch.
+  xdg.configFile."activitywatch/aw-qt/aw-qt.toml".text = ''
+    [autostart]
+    autostart_modules = []
+  '';
+
   systemd.user.services.aw-qt = {
     Unit = {
-      Description  = "ActivityWatch tray icon";
-      # graphical-session means the compositor (Hyprland/niri) is up
-      After        = [ "graphical-session.target" "tray.target" ];
-      PartOf       = [ "graphical-session.target" ];
+      Description = "ActivityWatch tray icon";
+      After   = [ "graphical-session.target" "activitywatch.target" ];
+      PartOf  = [ "graphical-session.target" ];
     };
     Service = {
       ExecStartPre = "${pkgs.coreutils}/bin/sleep 3";
-      ExecStart = "${lib.getExe' pkgs.activitywatch "aw-qt"} --no-autostart-modules";
-      Restart    = "on-failure";
-      RestartSec = "5s";
-      Environment = [ "QT_QPA_PLATFORM=wayland" ];
+      # No flags needed — aw-qt.toml above handles module suppression
+      ExecStart    = lib.getExe' pkgs.activitywatch "aw-qt";
+      Restart      = "on-failure";
+      RestartSec   = "10s";
+      Environment  = [ "QT_QPA_PLATFORM=wayland" ];
     };
     Install.WantedBy = [ "graphical-session.target" ];
   };
