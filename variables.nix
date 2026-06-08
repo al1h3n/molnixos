@@ -31,6 +31,7 @@ rec {
 
   zsh = "${shared}/zsh/.zshrc";
   zsh_theme = "${shared}/zsh/.p10k.zsh";
+  sheldon = "${shared}/zsh/sheldon.toml";
 
   dunst = "${shared}/dunst";
   fastfetch = "${shared}/fastfetch.jsonc";

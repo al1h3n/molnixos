@@ -8,8 +8,11 @@
   };
   home = {
     packages = with pkgs;[
-      zinit zoxide
+      zoxide
+      sheldon # zinit
     ];
   };
-  
+  xdg.configFile."sheldon/plugins.toml"= {
+    source = variables.sheldon;
+  };
 }
