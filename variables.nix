@@ -46,6 +46,7 @@ rec {
   rofi = "${shared}/rofi.rasi";
 
   niri = "${shared}/niri";
+  niriconf = "${niri}/niri.kdl";
 
   kitty = "${shared}/kitty/kitty.conf";
   wezterm = "${shared}/wezterm/wezterm.lua";
