@@ -105,5 +105,7 @@ in {
     "gtk-4.0/gtk.css".text = ''
       @import "colors-dynamic.css";
     '';
+    "matugen/templates/colors.sh".source = config.lib.file.mkOutOfStoreSymlink "${variables.shared}/matugen/templates/colors.sh";
+    "matugen/templates/colors.vim".source = config.lib.file.mkOutOfStoreSymlink "${variables.shared}/matugen/templates/colors.vim";
   };
 }
