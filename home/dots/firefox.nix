@@ -69,6 +69,20 @@ let
     "network.allow-experiments" = false;
     "dom.ipc.plugins.reportCrashURL" = false;
     "dom.ipc.plugins.flash.subprocess.crashreporter.enabled" = false;
+
+    # JS JIT.
+    "javascript.options.baselinejit" = false;
+    "javascript.options.ion" = false;
+    "javascript.options.jit_trustedprincipals" = false;
+    # WebAssemply JIT.
+    "javascript.options.wasm" = false;
+    "javascript.options.wasm_trustedprincipals" = false;
+    "javascript.options.wasm_baselinejit" = false;
+    "javascript.options.optimizingjit" = false;
+    # Asm.js JIT.
+    "javascript.options.asmjs" = false;
+    "javascript.options.blinterp" = false;
+
   };
 in {
   xdg.mimeApps = {
