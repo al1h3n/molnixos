@@ -108,4 +108,9 @@ in {
     "matugen/templates/colors.sh".source = config.lib.file.mkOutOfStoreSymlink "${variables.shared}/matugen/templates/colors.sh";
     "matugen/templates/colors.vim".source = config.lib.file.mkOutOfStoreSymlink "${variables.shared}/matugen/templates/colors.vim";
   };
+  home.activation.removeMatugenTemplates =
+  lib.hm.dag.entryBefore ["checkLinkTargets"] ''
+    rm -f "${config.home.homeDirectory}/.config/matugen/templates/colors.sh"
+    rm -f "${config.home.homeDirectory}/.config/matugen/templates/colors.vim"
+  '';
 }
