@@ -7,7 +7,7 @@ let
     "fonts"
     "ui"
     "icons" "icons-papirus" # "icons-custom"
-    "firefox"
+    "firefox" # "librewolf"
     "zsh"
     "fish"
     "feh"
