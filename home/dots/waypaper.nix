@@ -3,7 +3,7 @@
     [Settings]
     folder = ${variables.media}/static
              ${variables.media}/video
-    post_command = sh ${variables.lshared}/scripts/molnipaper.sh $wallpaper $video
+    post_command = sh ${variables.lshared}/scripts/colors/molnios-colorgen.sh $wallpaper $video
     number_of_columns = 5
     swww_transition_type = random
     swww_transition_fps = 144
