@@ -2,16 +2,13 @@
 { pkgs, ... }: {
   programs.niri = {
     enable = true;
-    package = pkgs.symlinkJoin {
-      name = "niri-custom";
-      paths = [ pkgs.niri ];
-      nativeBuildInputs = [ pkgs.makeWrapper ];
-      postBuild = ''
-        rm $out/bin/niri
-        makeWrapper ${pkgs.niri}/bin/niri $out/bin/niri \
+    package = pkgs.niri.overrideAttrs (oldAttrs: {
+      postInstall = (oldAttrs.postInstall or "") + ''
+        mv $out/bin/niri $out/bin/niri-unwrapped
+        makeWrapper $out/bin/niri-unwrapped $out/bin/niri \
           --add-flags "-c /etc/nixos/shared/config/niri/niri.kdl"
       '';
-    };
+    });
   };
   # 3. Prevent systemd from falling back to default environment paths.
   systemd.user.services.niri.enableDefaultPath = false;
