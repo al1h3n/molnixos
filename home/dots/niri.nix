@@ -4,5 +4,5 @@
   #   recursive = true;
   # };
 
-  xdg.configFile."niri/config.kdl".source = variables.niriconf;
+  # xdg.configFile."niri/config.kdl".source = variables.niriconf;
 }
