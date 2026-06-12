@@ -16,4 +16,3 @@
   # 3. Prevent systemd from falling back to default environment paths.
   systemd.user.services.niri.enableDefaultPath = false;
 }
-}
