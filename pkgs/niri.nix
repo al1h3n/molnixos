@@ -3,6 +3,7 @@
   programs.niri = {
     enable = true;
     package = pkgs.niri.overrideAttrs (oldAttrs: {
+      nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [ pkgs.makeWrapper ];
       postInstall = (oldAttrs.postInstall or "") + ''
         mv $out/bin/niri $out/bin/niri-unwrapped
         makeWrapper $out/bin/niri-unwrapped $out/bin/niri \
