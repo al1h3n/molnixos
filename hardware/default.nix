@@ -5,7 +5,7 @@
     enableAllFirmware = true;
     enableRedistributableFirmware = true;
   };
-  
+
 
   # CPU.
   hardware.cpu = {
@@ -68,4 +68,8 @@
       "video"
     ];
   };
+
+  # External displays.
+  hardware.i2c.enable = true;
+  environment.systemPackages = [ pkgs.ddcutil ];
 }

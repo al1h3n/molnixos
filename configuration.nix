@@ -81,7 +81,7 @@ in {
     users.${variables.username} = {
       description = "User account created by MolniOS configuration.";
       isNormalUser = true;
-      extraGroups = [ "wheel" "plugdev" "storage" "optical" "input" "libvirtd" "lp" ];
+      extraGroups = [ "wheel" "plugdev" "storage" "optical" "input" "libvirtd" "lp" "networkmanager" "i2c" ];
       shell = pkgs.fish;
     };
   };
