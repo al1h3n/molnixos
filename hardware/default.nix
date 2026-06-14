@@ -47,12 +47,6 @@
     };
   };
 
-  # NetworkManager packages.
-  environment.systemPackages = with pkgs; [
-    networkmanagerapplet  # nm-applet tray icon.
-    libvdpau-va-gl # For spicetify GPU acceleration.
-  ];
-
   # GPU.
   hardware.graphics = {
     enable = true;
@@ -71,5 +65,14 @@
 
   # External displays.
   hardware.i2c.enable = true;
-  environment.systemPackages = [ pkgs.ddcutil ];
+
+  environment.systemPackages = with pkgs; [
+    # NetworkManager packages.
+    networkmanagerapplet  # nm-applet tray icon.
+    libvdpau-va-gl # For spicetify GPU acceleration.
+
+    # External display manager.
+    ddcutil
+  ];
+
 }
