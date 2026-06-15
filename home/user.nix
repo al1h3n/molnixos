@@ -23,11 +23,8 @@
 
       # Anifetch doesn't have some dependencies.
       (inputs.anifetch.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (old: {
-        propagatedBuildInputs = (old.propagatedBuildInputs or []) ++ (with pkgs.python3Packages; [
-          wcwidth
-          rich
-          pynput
-        ]);
+        nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ pkgs.pythonRelaxDepsHook ];
+        pythonRelaxDeps = [ "wcwidth" "rich" "pynput" ];
       }))
 
       # Cool utilities for no reason.
