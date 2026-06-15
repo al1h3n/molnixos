@@ -128,13 +128,13 @@
           # (final: prev: { lazyspotify = final.callPackage ./build/lazyspotify.nix { src = inputs.lazyspotify; }; })
           (final: prev: { tuilet = final.callPackage ./build/tuilet.nix { src = inputs.tuilet;}; })
           # (final: prev: { sxwm = final.callPackage ./build/sxwm.nix { src = inputs.sxwm; }; })
-          (final: prev: {
-            anifetch = (inputs.anifetch.packages.${final.system}.default).overrideAttrs (old: {
-              nativeBuildInputs = builtins.filter
-                (p: (p.pname or "") != "pythonRuntimeDepsCheckHook")
-                (old.nativeBuildInputs or []);
-            });
-          })
+          # (final: prev: {
+          #   anifetch = (inputs.anifetch.packages.${final.system}.default).overrideAttrs (old: {
+          #     nativeBuildInputs = builtins.filter
+          #       (p: (p.pname or "") != "pythonRuntimeDepsCheckHook")
+          #       (old.nativeBuildInputs or []);
+          #   });
+          # })
         ]; }
         # stylix.nixosModules.stylix
         { # Actual HM config.
