@@ -22,7 +22,10 @@
       bitwarden-desktop # Password manager.
 
       # Anifetch doesn't have some dependencies.
-      inputs.anifetch.packages.${pkgs.stdenv.hostPlatform.system}.default
+      (inputs.anifetch.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (old: {
+        nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ pkgs.python3Packages.pythonRelaxDepsHook ];
+        pythonRelaxDeps = [ "wcwidth" "rich" "pynput" ];
+      }))
 
       # Cool utilities for no reason.
       pokemon-colorscripts # Pokemons.
