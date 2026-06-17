@@ -34,6 +34,7 @@ let
     "activity-watch"
     "lsp"
     "wezterm"
+    "theming"
   ];
 in {
   imports = map (name: path + "/${name}.nix") dots;

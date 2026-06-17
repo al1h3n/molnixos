@@ -69,4 +69,7 @@ rec {
 
   mangohud = "${shared}/mangohud-benchmark.conf";
   yazi = "${shared}/yazi";
+
+  wallust = "${shared}/theming/wallust.toml";
+  matugen = "${shared}/theming/matugen.toml";
 }
