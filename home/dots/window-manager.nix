@@ -29,7 +29,7 @@
       wl-clipboard wl-clip-persist cliphist
 
       # Bar, action managers and notifications.
-      waybar # quickshell
+      waybar wayle # quickshell
       swaynotificationcenter
       inputs.ie-r.packages.${pkgs.stdenv.hostPlatform.system}.default # Eyedropper.
   ];
