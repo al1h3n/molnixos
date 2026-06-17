@@ -5,8 +5,8 @@
              ${variables.media}/video
     post_command = sh ${variables.lshared}/scripts/legacy/molnipaper.sh $wallpaper $video
     number_of_columns = 5
-    swww_transition_type = random
-    swww_transition_fps = 144
+    swww_transition_type = any
+    swww_transition_fps = 150
     mpvpaper_options = -s -o "--gpu-api=vulkan --loop --mute --cache=no --demuxer-max-bytes=1000000 --demuxer-max-back-bytes=0" ALL $video
     stylesheet = ${variables.lshared}/config/waypaperstyle
     fill = stretch
