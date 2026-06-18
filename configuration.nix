@@ -105,8 +105,9 @@ in {
     # For org.freedesktop.portal.Settings (also lazyspotify).
     gnome.gnome-keyring.enable = true;
 
-    tlp.enable = true; # Power profiles.
-    power-profiles-daemon.enable = false;
+    # Power profiles. TLP is more advanced but less supported.
+    tlp.enable = false;
+    power-profiles-daemon.enable = true;
   };
 
   # For org.freedesktop.portal.Settings (also lazyspotify).
