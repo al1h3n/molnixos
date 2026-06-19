@@ -27,6 +27,7 @@ in {
       ./pkgs/niri.nix
       # ./pkgs/plasma.nix
       # ./pkgs/gnome.nix
+      # ./pkgs/xfce.nix
 
       # System.
       ./system/updates.nix
