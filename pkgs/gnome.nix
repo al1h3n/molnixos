@@ -20,5 +20,8 @@
       atomix        # puzzle game
     ];
     systemPackages = [ pkgs.gnome-menus ];
+    variables = {
+      GI_TYPELIB_PATH = "/run/current-system/sw/lib/girepository-1.0";
+    };
   };
 }
