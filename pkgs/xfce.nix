@@ -5,13 +5,13 @@
     # noDesktop = true;
   };
   environment = {
-    xfce.excludePackages = with pkgs.xfce; [
-      xfce4-taskmanager
-      xfce4-terminal
+    xfce.excludePackages =
+    (with pkgs; [
       parole
       tango-icon-theme
-      rodent-icon-theme
-    ];
+      xfce4-taskmanager
+      xfce4-terminal
+    ]);
     systemPackages = with pkgs; [
       xfce4-whiskermenu-plugin
     ];
