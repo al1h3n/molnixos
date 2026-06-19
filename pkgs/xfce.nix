@@ -8,5 +8,7 @@
     xfce4-taskmanager
     xfce4-terminal
     parole
+    tango-icon-theme
+    rodent-icon-theme
   ];
 }
