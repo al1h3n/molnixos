@@ -104,10 +104,16 @@
     #   url = "github:uint23/sxwm";
     #   flake = false;
     # };
+
+    # Noctalia Shell v5.
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nur, nix-cachyos-kernel,
-  yt-x, spicetify, anifetch, setrixtui, lazyvim, ie-r, snappy-switcher, tuilet, ... }@inputs:
+  yt-x, spicetify, anifetch, setrixtui, lazyvim, ie-r, snappy-switcher, tuilet, noctalia, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;

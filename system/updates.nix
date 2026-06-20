@@ -23,17 +23,19 @@
 
       # Binary caches.
       substituters = [
-        "https://hyprland.cachix.org?priority=25"
-        "https://nix-community.cachix.org?priority=30"
-        "https://attic.xuyh0120.win/lantian?priority=31"
-        "https://cache.garnix.io?priority=32"
+        "https://hyprland.cachix.org?priority=35"
+        "https://noctalia.cachix.org?priority=36"
+        "https://nix-community.cachix.org?priority=37"
+        "https://attic.xuyh0120.win/lantian?priority=38"
+        "https://cache.garnix.io?priority=39"
         "https://cache.nixos.org" # Priority = 40.
       ];
       trusted-substituters = [
-        "https://hyprland.cachix.org?priority=25"
-        "https://nix-community.cachix.org?priority=30"
-        "https://attic.xuyh0120.win/lantian?priority=31"
-        "https://cache.garnix.io?priority=32"
+        "https://hyprland.cachix.org?priority=35"
+        "https://noctalia.cachix.org?priority=36"
+        "https://nix-community.cachix.org?priority=37"
+        "https://attic.xuyh0120.win/lantian?priority=38"
+        "https://cache.garnix.io?priority=39"
         "https://cache.nixos.org" # Priority = 40.
       ];
       trusted-public-keys = [
@@ -42,6 +44,7 @@
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
         "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+        "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
       ];
     };
   };

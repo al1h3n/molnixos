@@ -29,7 +29,8 @@
       wl-clipboard wl-clip-persist cliphist
 
       # Bar, action managers and notifications.
-      waybar wayle noctalia-shell quickshell
+      waybar wayle
+      inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default quickshell # noctalia-shell
       swaynotificationcenter
       inputs.ie-r.packages.${pkgs.stdenv.hostPlatform.system}.default # Eyedropper.
   ];
