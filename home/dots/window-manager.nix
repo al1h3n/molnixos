@@ -30,7 +30,7 @@
 
       # Bar, action managers and notifications.
       waybar # wayle
-      inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default quickshell # noctalia-shell
+      quickshell
       swaynotificationcenter
       inputs.ie-r.packages.${pkgs.stdenv.hostPlatform.system}.default # Eyedropper.
   ];
