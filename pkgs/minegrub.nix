@@ -12,7 +12,7 @@
       # "Options" / "Console" bar doesn't overlap the boot buttons.
       # Run "grep -E "menuentry " /boot/grub/grub.cfg | wc -l"
       # to count yours if unsure.
-      boot-options-count = 4;
+      boot-options-count = 5;
     };
 
     # Recommended: show the menu immediately instead of requiring ESC.

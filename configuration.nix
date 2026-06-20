@@ -169,7 +169,7 @@ in {
       curl wget git
       openssh
       font-manager libnotify killall ffmpegthumbnailer
-      fastfetch countryfetch btop neovim micro
+      fastfetch countryfetch btop neovim micro mousepad
       mpv file
       duf # Mini alternative for disks usage.
       pavucontrol pulseaudio
