@@ -1,5 +1,5 @@
-{ ... }: {
-  home.packages = with pkgs[
+{ pkgs, inputs, variables, ... }: {
+  home.packages = with pkgs; [
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default # noctalia-shell
   ];
   xdg.dataFile."noctalia/settings.toml" = {
