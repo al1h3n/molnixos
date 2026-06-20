@@ -35,6 +35,7 @@ let
     "lsp"
     "wezterm"
     "theming"
+    "noctalia"
   ];
 in {
   imports = map (name: path + "/${name}.nix") dots;
