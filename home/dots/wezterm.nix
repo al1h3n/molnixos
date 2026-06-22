@@ -1,5 +1,5 @@
 { config, variables, ... }: {
   xdg.configFile = {
-    "wezterm/wezterm.lua".source = config.lib.file.mkOutOfStoreSymlink variables.wezterm;
+    "wezterm/wezterm.lua" = lib.mkForce { source = config.lib.file.mkOutOfStoreSymlink variables.wezterm; };
   };
 }

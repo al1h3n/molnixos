@@ -10,7 +10,10 @@ in {
       package = pkgs.adw-gtk3;
       # find name in nwg-look.
     };
-    gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
+    gtk3 = {
+      extraConfig.gtk-application-prefer-dark-theme = true;
+      extraCss = ''@import "colors-dynamic.css";'';
+    }
 
     # Avoid warnings.
     gtk4.theme = config.gtk.theme;
@@ -23,10 +26,10 @@ in {
       gtk-theme = variables.theme_gtk; # explicit, required by some apps
     };
   };
-  # home.activation.removeGtkCss = lib.hm.dag.entryBefore ["checkLinkTargets"] ''
-  #   rm -f "${config.home.homeDirectory}/.config/gtk-4.0/gtk.css"
-  #   rm -f "${config.home.homeDirectory}/.config/gtk-3.0/gtk.css"
-  # ''; # Fix for GTK files.
+  home.activation.removeGtkCss = lib.hm.dag.entryBefore ["checkLinkTargets"] ''
+    rm -f "${config.home.homeDirectory}/.config/gtk-4.0/gtk.css"
+    rm -f "${config.home.homeDirectory}/.config/gtk-3.0/gtk.css"
+  ''; # Fix for GTK files.
 
   # Qt
   qt = {
@@ -99,9 +102,6 @@ in {
     fixed="SF Mono Nerd Font"
     general="SF Mono Nerd Font"
     ''; # JetBrainsMono Nerd Font Propo
-    "gtk-3.0/gtk.css".text = ''
-      @import "colors-dynamic.css";
-    '';
     "gtk-4.0/gtk.css".text = ''
       @import "colors-dynamic.css";
     '';
