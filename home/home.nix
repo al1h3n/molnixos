@@ -5,6 +5,7 @@
   imports =[
     ./user.nix
     ./dotfiles.nix
+    ./cleaner.nix
     # ./variable-links.nix
   ];
   home.stateVersion = variables.version;
