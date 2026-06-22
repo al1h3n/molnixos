@@ -13,7 +13,7 @@ in {
     gtk3 = {
       extraConfig.gtk-application-prefer-dark-theme = true;
       extraCss = ''@import "colors-dynamic.css";'';
-    }
+    };
 
     # Avoid warnings.
     gtk4.theme = config.gtk.theme;
