@@ -144,7 +144,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.${variables.username} = import ./home/home.nix;
-            # backupFileExtension = "backup"; # Add if needed.
+            backupFileExtension = "backup"; # Add if needed.
             sharedModules = [
               spicetify.homeManagerModules.spicetify
               lazyvim.homeManagerModules.default
