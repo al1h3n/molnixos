@@ -19,6 +19,7 @@ in {
       # ./hardware/vmware.nix
       # ./hardware/amd.nix
       ./hardware/gpu-gaming.nix # If you're not a gamer disable it.
+      # ./hardware/swap.nix
 
       # Pkgs
       ./pkgs/doas.nix

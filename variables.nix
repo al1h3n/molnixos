@@ -11,6 +11,7 @@ rec {
   user_description = username;
   host = "MolniPC";
   os_name_custom = "MolnixOS";
+  ram_size = 36; # RAM size in GB, add +4GB if needed.
 
   zone = "Asia/Almaty";
 
