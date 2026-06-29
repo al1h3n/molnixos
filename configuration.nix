@@ -135,9 +135,9 @@ in {
 
   nixpkgs.config = {
     allowUnfree = true;
-    # permittedInsecurePackages = [
-    #   "electron-39.8.10"
-    # ];
+    permittedInsecurePackages = [
+      "electron-39.8.10" # Required by bitwarden - https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/by-name/bi/bitwarden-desktop/package.nix#L8
+    ];
   };
 
   environment = {
