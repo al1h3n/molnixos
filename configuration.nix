@@ -8,9 +8,6 @@ let
 in {
   # 1. Import files.
   imports = [
-      # Build.
-      ./build/github.nix
-
       # Hardware.
       ./hardware-configuration.nix
       ./hardware
