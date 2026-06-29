@@ -47,6 +47,7 @@ in {
       ./system/gaming.nix
       ./system/coding.nix
       ./system/git.nix
+      ./system/rdp.nix
     ];
 
 

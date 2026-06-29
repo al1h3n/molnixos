@@ -108,6 +108,8 @@
 
       # Wallpapers.
       gowall # Doesn't fit well with waypaper.
+
+      moonlight-qt # RDP
     ];
   };
 }
