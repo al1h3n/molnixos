@@ -1,6 +1,6 @@
 # flake.nix
 {
-  description = "Local (user) configuration for MolniOS";
+  description = "Flake-based configuration for MolnixOS";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";

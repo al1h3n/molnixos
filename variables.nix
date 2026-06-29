@@ -8,6 +8,7 @@ rec {
   kernel = "zen";
 
   username = "al1h3n";
+  user_description = username;
   host = "MolniPC";
   os_name_custom = "MolnixOS";
 
