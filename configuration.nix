@@ -124,10 +124,7 @@ in {
     fish.enable = true;
     thunar = {
       enable = true;
-      plugins = with pkgs; [
-        thunar-volman
-        thunar-archive-plugin
-      ];
+      plugins = [ pkgs.thunar-volman ];
     };
     # For GVFS
     dconf.enable = true;
@@ -138,9 +135,9 @@ in {
 
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = [
-      "electron-39.8.10"
-    ];
+    # permittedInsecurePackages = [
+    #   "electron-39.8.10"
+    # ];
   };
 
   environment = {
