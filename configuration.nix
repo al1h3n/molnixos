@@ -172,6 +172,7 @@ in {
       duf # Mini alternative for disks usage.
       pavucontrol pulseaudio
       bat eza fzf ripgrep fd # fd - find, ripgrep [rg] - grep.
+      impala bluetui wiremix # Wi-Fi, BlueTooth, PipeWire.
       # superfile
       (yazi.override {
         _7zz = _7zz-rar;  # Support for RAR extraction
