@@ -103,6 +103,18 @@ in {
   programs.firefox = {
     enable = true;
     nativeMessagingHosts = [ pkgs.pywalfox-native ]; # pywal in firefox.
+    policies = {
+      DisableFirefoxStudies = true;
+      DontCheckDefaultBrowser = true;
+      UserMessaging = {
+        ExtensionRecommendations = false;
+        FeatureRecommendations = false;
+        UrlbarInterventions = false;
+        SkipOnboarding = true; # Disables the "What's New" tab.
+        MoreFromMozilla = false;
+        WhatsNew = false;
+      };
+    };
     profiles = {
       personal = {
         id = 0;
