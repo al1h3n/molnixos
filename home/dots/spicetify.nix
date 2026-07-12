@@ -41,8 +41,6 @@ in {
     ];
 
     # Snippets - nix eval --impure --json --expr 'builtins.attrNames ((builtins.getFlake "github:Gerg-L/spicetify-nix").legacyPackages.x86_64-linux.snippets)'
-    enabledSnippets = [
-      hideFriendActivityButton
-    ];
+    enabledSnippets = with spicePkgs.snippets; [ hideFriendActivityButton ];
   };
 }
