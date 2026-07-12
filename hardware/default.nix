@@ -32,10 +32,7 @@
       Experimental = true;   # Enables battery level reporting
     };
   };
-  services = {
-    blueman.enable = true;
-    mpris-proxy.enable = true; # AirPods or other media controls.
-  };
+  services.blueman.enable = true;
 
   # Wi-Fi.
   hardware.wirelessRegulatoryDatabase = true;

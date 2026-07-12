@@ -37,6 +37,7 @@ let
     "wezterm"
     "theming"
     "noctalia"
+    "airpods"
   ];
 in {
   imports = map (name: path + "/${name}.nix") dots;
