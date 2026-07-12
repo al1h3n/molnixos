@@ -33,7 +33,7 @@ in {
       copyToClipboard # Copy song name.
       copyLyrics
       history # History of playing.
-      
+
       # Irritating but useful.
       # spicyLyrics # Better lyrics.
       # sessionStats # On right side, pretty big.
@@ -41,5 +41,8 @@ in {
     ];
 
     # Snippets - nix eval --impure --json --expr 'builtins.attrNames ((builtins.getFlake "github:Gerg-L/spicetify-nix").legacyPackages.x86_64-linux.snippets)'
+    enabledSnippets = [
+      hideFriendActivityButton
+    ];
   };
 }
