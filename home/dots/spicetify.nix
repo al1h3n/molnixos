@@ -4,7 +4,7 @@ let
   spicePkgs = inputs.spicetify.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
   imports = [
-    ./spicetify-themes/theme.nix
+    # ./spicetify-themes/theme.nix
     ./spicetify-themes/gui.nix
   ];
 
@@ -15,7 +15,7 @@ in {
     enable = true;
 
     # Marketplace.
-    enabledCustomApps = with spicePkgs.apps; [ marketplace ];
+    # enabledCustomApps = with spicePkgs.apps; [ marketplace ]; # Doesn't really work.
 
     # Theme - nix eval --impure --json --expr 'builtins.attrNames ((builtins.getFlake "github:Gerg-L/spicetify-nix").legacyPackages.x86_64-linux.themes)'
     # theme = spicePkgs.themes.text;
