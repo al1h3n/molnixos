@@ -28,7 +28,7 @@
   systemd.services = {
     libvirtd.serviceConfig = {
       TimeoutStopSec = lib.mkOverride 0 "10s";
-      ExecStopPost = [ "${pkgs.libvirt}/bin/virsh net-destroy default || true" ];
+      ExecStopPost = [ "-${pkgs.libvirt}/bin/virsh net-destroy default" ];
       LoadCredentialEncrypted = lib.mkForce [];
     };
     "libvirt-guests".serviceConfig.TimeoutStopSec = lib.mkForce "10s";
