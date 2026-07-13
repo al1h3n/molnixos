@@ -6,6 +6,7 @@ in {
   imports = [
     # ./spicetify-themes/tui.nix
     ./spicetify-themes/gui.nix
+    ./spicetify-themes/gruvbox.nix
   ];
 
   # Spotify shouldn't be installed with spicetify.
@@ -41,6 +42,6 @@ in {
     ];
 
     # Snippets - nix eval --impure --json --expr 'builtins.attrNames ((builtins.getFlake "github:Gerg-L/spicetify-nix").legacyPackages.x86_64-linux.snippets)'
-    # enabledSnippets = with spicePkgs.snippets; [];
+    enabledSnippets = with spicePkgs.snippets; [ removeConnectBar removeUnusedSpace hideFriendActivityButton ];
   };
 }
