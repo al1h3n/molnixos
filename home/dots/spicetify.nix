@@ -4,8 +4,8 @@ let
   spicePkgs = inputs.spicetify.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
   imports = [
+    ./spicetify-themes/theme.nix
     ./spicetify-themes/gui.nix
-    ./spicetify-themes/themes.nix
   ];
 
   # Spotify shouldn't be installed with spicetify.
