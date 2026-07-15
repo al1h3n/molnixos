@@ -4,7 +4,8 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "nixpkgs/nixos-26.05";
+    # nixpkgs-stable.url = "nixpkgs/nixos-26.05";
+    nixpkgs-stable.follows = "nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,6 +14,7 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    home-manager-stable.follows = "home-manager";
 
     # CachyOS repository.
     nix-cachyos-kernel = {
