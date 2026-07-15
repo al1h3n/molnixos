@@ -5,7 +5,8 @@ let
 in {
   programs.spicetify = {
     enabledExtensions = with spicePkgs.extensions; [
-      powerBar # macOS bar for search. 
+      powerBar # macOS bar for search.
+      coverAmbience # Glow for lower song.
     ];
     enabledSnippets = with spicePkgs.snippets; [ sonicDancing ];
   };

@@ -33,6 +33,7 @@ in {
     #   copyToClipboard # Copy song name.
     #   copyLyrics
     #   history # History of playing.
+    #   betterGenres
 
     #   # Irritating but useful.
     #   # spicyLyrics # Better lyrics.
@@ -41,6 +42,6 @@ in {
     # ];
 
     # Snippets - nix eval --impure --json --expr 'builtins.attrNames ((builtins.getFlake "github:Gerg-L/spicetify-nix").legacyPackages.x86_64-linux.snippets)'
-    # enabledSnippets = with spicePkgs.snippets; [ removeConnectBar removeUnusedSpace hideFriendActivityButton ];
+    enabledSnippets = with spicePkgs.snippets; [ removeConnectBar removeUnusedSpace hideFriendActivityButton ];
   };
 }
