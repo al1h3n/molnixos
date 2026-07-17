@@ -8,7 +8,7 @@
 
       # Multimedia.
       songrec obs-studio
-      imagemagickBig
+      imagemagickBigg
       nsxiv geeqie # gthumb uses pixbuf, not imagemagickBig
       yt-dlp
       inputs.yt-x.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -66,12 +66,12 @@
       # protontricks - better winetricks, steam uses own Proton.
       mangohud # FPS counter, enable manually.
       protonplus # Better protonup-qt. Manage proton versions. Add portprotonqt when released.
-      heroic # Game launcher, lutris has bugs.
+      # heroic # Game launcher, lutris has bugs.
       prismlauncher
       inputs.setrixtui.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       # Art.
-      krita gimp # blender
+      gimp krita # blender
       losslesscut-bin # To remove part of videos without losing quality.
 
       # AI, upscaling.
@@ -109,7 +109,7 @@
       # Wallpapers.
       gowall # Doesn't fit well with waypaper.
 
-      moonlight-qt # RDP
+      moonlight-qt # Remote desktop.
     ];
   };
 }
