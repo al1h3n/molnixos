@@ -1,5 +1,5 @@
 # User-wide hyprland module.
-{ pkgs, config, variables, ... }: {
+{ pkgs, config, variables, inputs, ... }: {
   # Enabling Hyprland.
   wayland.windowManager.hyprland = {
     enable = true;
@@ -7,18 +7,17 @@
     xwayland.enable = true;
   };
 
-  # Add hyprmod (settings app, aur.archlinux.org/packages/hyprmod-git) when released in nixOS packages.
-  # home.packages = with pkgs; [
-  #   hyprmod
-  # ];
-
-  # xdg.configFile = {
-  #   "hypr/hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink variables.hyprland_monolithic;
-  # };
-  xdg.configFile = {
-    "hypr/hyprland.lua".source = config.lib.file.mkOutOfStoreSymlink variables.hyprland;
-    force = true;
-  };
-
+  # Packages.
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  home.packages = with pkgs; [
+    inputs.hyprmod.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ];
+
+  # Files.
+  xdg.configFile = {
+    "hypr/hyprland.lua" = {
+      source = config.lib.file.mkOutOfStoreSymlink variables.hyprland;
+      force = true;
+    };
+  };
 }

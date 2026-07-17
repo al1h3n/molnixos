@@ -112,10 +112,16 @@
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Hyprmod - settings app for hyprland.
+    hyprmod = {
+      url = "github:BlueManCZ/hyprmod";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nur, nix-cachyos-kernel,
-  yt-x, spicetify, anifetch, setrixtui, lazyvim, ie-r, snappy-switcher, tuilet, noctalia, ... }@inputs:
+  yt-x, spicetify, anifetch, setrixtui, lazyvim, ie-r, snappy-switcher, tuilet, noctalia, hyprmod, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;
