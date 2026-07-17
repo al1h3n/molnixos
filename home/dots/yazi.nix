@@ -37,3 +37,4 @@
     source = config.lib.file.mkOutOfStoreSymlink "${variables.yazi}/theme.toml";
     force = true;
   };
+}
