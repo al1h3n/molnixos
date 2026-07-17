@@ -17,7 +17,7 @@ let
     "prismlauncher"
     "hyprland"
     "snappy-switcher"  # Only works with hyprland.
-    "niri"
+    # "niri"
     "kitty"
     "window-manager"
     "qbittorrent"

@@ -69,9 +69,7 @@ Pay attention that most of the games might not even launch.
 2. Create file `~/.config/nix/nix.conf`
 3. Add `access-tokens = TOKEN`
 
-### Home-manager fail?
-I hadn't found how to fix this yet.
-`rm -f ~/.config/yazi/theme.toml.backup ~/.config/hypr/hyprland.lua.backup ~/.config/wezterm/wezterm.lua.backup`
-
 ### libvirtd.service error
-`sudo rm -f /var/lib/libvirt/secrets/secrets-encryption-key`
+```
+sudo rm -f /var/lib/libvirt/secrets/secrets-encryption-key
+```

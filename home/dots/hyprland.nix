@@ -17,6 +17,7 @@
   # };
   xdg.configFile = {
     "hypr/hyprland.lua".source = config.lib.file.mkOutOfStoreSymlink variables.hyprland;
+    force = true;
   };
 
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
