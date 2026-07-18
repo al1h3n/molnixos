@@ -8,7 +8,7 @@
 
       # Multimedia.
       songrec obs-studio
-      imagemagickBigg
+      imagemagickBig
       nsxiv geeqie # gthumb uses pixbuf, not imagemagickBig
       yt-dlp
       inputs.yt-x.packages.${pkgs.stdenv.hostPlatform.system}.default
