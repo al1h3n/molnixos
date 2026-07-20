@@ -38,6 +38,7 @@ let
     "theming"
     "noctalia"
     "airpods"
+    "xdg"
   ];
 in {
   imports = map (name: path + "/${name}.nix") dots;
