@@ -23,7 +23,7 @@
       # Wallpapers.
       awww mpvpaper waypaper pywal16 wallust matugen
       # Screenshots and recorders.
-      grim slurp wf-recorder satty hyprshot
+      grim slurp wf-recorder satty
 
       # Clipboards.
       wl-clipboard wl-clip-persist cliphist
