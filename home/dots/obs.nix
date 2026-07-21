@@ -4,7 +4,8 @@
     enable = true;
     package = pkgs.obs-studio.override {
       cudaSupport = true; # For NVIDIA GPUs.
+      ffmpeg = pkgs.ffmpeg-full;
     };
-    # plugins = with pkgs.obs-studio-plugins; [ pkgs.obs-studio-plugins.obs-vaapi ]; # For Intel GPUs.
+    # plugins = with pkgs.obs-studio-plugins; [ obs-vaapi ]; # For Intel GPUs.
   };
 }
