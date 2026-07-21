@@ -2,8 +2,8 @@
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config = {
-      common.default = "*"; # Or *, [ "gtk" ]
+    config.common = {
+      default = "*"; # Or *, [ "gtk" ]
       "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
       # "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
     };
