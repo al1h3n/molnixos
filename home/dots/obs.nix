@@ -1,0 +1,10 @@
+# OBS module - AMD supported by default.
+{ ... }: {
+  programs.obs-studio = {
+    enable = true;
+    package = pkgs.obs-studio.override {
+      cudaSupport = true; # For NVIDIA GPUs.
+    };
+    # plugins = with pkgs.obs-studio-plugins; [ pkgs.obs-studio-plugins.obs-vaapi ]; # For Intel GPUs.
+  };
+}

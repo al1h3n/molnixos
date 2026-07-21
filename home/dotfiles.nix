@@ -39,6 +39,7 @@ let
     "noctalia"
     "airpods"
     "xdg"
+    "obs"
   ];
 in {
   imports = map (name: path + "/${name}.nix") dots;

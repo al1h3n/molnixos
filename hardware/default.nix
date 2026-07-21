@@ -6,7 +6,6 @@
     enableRedistributableFirmware = true;
   };
 
-
   # CPU.
   hardware.cpu = {
     amd.updateMicrocode = true;

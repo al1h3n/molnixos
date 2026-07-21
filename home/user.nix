@@ -7,7 +7,7 @@
     packages = with pkgs; [
 
       # Multimedia.
-      songrec obs-studio
+      songrec
       imagemagickBig
       nsxiv geeqie # gthumb uses pixbuf, not imagemagickBig
       yt-dlp
