@@ -1,5 +1,5 @@
 # OBS module - AMD supported by default.
-{ ... }: {
+{ pkgs, ... }: {
   programs.obs-studio = {
     enable = true;
     package = pkgs.obs-studio.override {
