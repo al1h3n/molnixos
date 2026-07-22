@@ -10,6 +10,10 @@ in {
       package = pkgs.adw-gtk3;
       # find name in nwg-look.
     };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
     gtk3 = {
       extraConfig.gtk-application-prefer-dark-theme = true;
       extraCss = ''@import "colors-dynamic.css";'';
