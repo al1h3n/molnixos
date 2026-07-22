@@ -4,7 +4,7 @@ let
   spicePkgs = inputs.spicetify.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
   programs.spicetify = {
-    theme = spicePkgs.themes.onepunch;
+    theme = spicePkgs.themes.starryNight;
     # onepunch - gruvbox, starryNight, text - spotify-tui, defaultDynamic, retroBlur, hazy
   };
 }
