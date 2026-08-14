@@ -16,7 +16,7 @@ in {
 
       # GPU configuration.
       ./hardware/gpu-gaming.nix # If you're not a gamer disable it.
-      # ./hardware/nvidia
+      # ./hardware/nvidia # Uses propeitary drivers by default, change to nouveau one in specified directory by your needs.
       # ./hardware/vmware.nix
       # ./hardware/arc.nix
       # ./hardware/amd.nix
@@ -135,12 +135,7 @@ in {
     gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
   };
 
-  nixpkgs.config = {
-    allowUnfree = true;
-    permittedInsecurePackages = [
-      "electron-39.8.10" # Required by bitwarden - https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/by-name/bi/bitwarden-desktop/package.nix#L8
-    ];
-  };
+  nixpkgs.config.allowUnfree = true;
 
   environment = {
     variables = {
