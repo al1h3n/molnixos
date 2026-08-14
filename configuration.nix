@@ -1,4 +1,4 @@
-# configuration.nix - used tonybtw.com/tutorial/nixos-from-scratch
+# Main system-wide configuration file for MolnixOS.
 # Definitions: lambda - function without a name (literally any.nix file)
 { config, lib, pkgs, inputs, ... }:
 
@@ -12,24 +12,29 @@ in {
       ./hardware-configuration.nix
       ./hardware
       ./hardware/mouse.nix
-      ./hardware/nvidia # GPU configuration.
-      # ./hardware/vmware.nix
-      # ./hardware/amd.nix
+      ./hardware/swap.nix # Sets swap to amount of your RAM to enable proper hibernation.
+
+      # GPU configuration.
       ./hardware/gpu-gaming.nix # If you're not a gamer disable it.
-      # ./hardware/swap.nix
+      # ./hardware/nvidia
+      # ./hardware/vmware.nix
+      # ./hardware/arc.nix
+      # ./hardware/amd.nix
+      
 
       # Pkgs
       ./pkgs/doas.nix
       ./pkgs/hyprland.nix
-      ./pkgs/minegrub.nix
       ./pkgs/niri.nix
       # ./pkgs/plasma.nix
       # ./pkgs/gnome.nix
       # ./pkgs/xfce.nix
+      # ./pkgs/minegrub.nix # Theme for grub2.
 
       # System.
       ./system/updates.nix
-      ./system/grub.nix
+      # ./system/grub.nix
+      ./system/systemd-boot.nix # Better on modern systems and for UEFI bios.
       ./system/ly.nix
       ./system/logs.nix
       ./system/hosts.nix
