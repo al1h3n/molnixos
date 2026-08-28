@@ -12,6 +12,7 @@
       nsxiv geeqie # gthumb uses pixbuf, not imagemagickBig
       yt-dlp
       inputs.yt-x.packages.${pkgs.stdenv.hostPlatform.system}.default
+      cliamp # Listen to a variety of sources.
 
       # Backend.
       jq
