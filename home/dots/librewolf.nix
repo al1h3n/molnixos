@@ -78,7 +78,7 @@ let
     "javascript.options.ion" = false;
     "javascript.options.jit_trustedprincipals" = false;
     # WebAssembly JIT.
-    "javascript.options.wasm" = false;
+    # "javascript.options.wasm" = false; # Might conflict with BitWarden.
     "javascript.options.wasm_trustedprincipals" = false;
     "javascript.options.wasm_baselinejit" = false;
     "javascript.options.optimizingjit" = false;

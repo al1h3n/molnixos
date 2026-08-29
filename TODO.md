@@ -1,1 +1,1 @@
-1. Remove "electron-39.8.10" from permitted packages due to a bug.
+1. Enable "setrixtui" back when it'll be fixed.
