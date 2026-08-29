@@ -23,19 +23,17 @@
 
       # Binary caches.
       substituters = [
-        "https://hyprland.cachix.org?priority=35"
-        "https://noctalia.cachix.org?priority=36"
-        "https://nix-community.cachix.org?priority=37"
-        "https://attic.xuyh0120.win/lantian?priority=38"
-        "https://cache.garnix.io?priority=39"
+        "https://hyprland.cachix.org?priority=36"
+        "https://noctalia.cachix.org?priority=37"
+        "https://nix-community.cachix.org?priority=38"
+        "https://attic.xuyh0120.win/lantian?priority=39"
         "https://cache.nixos.org" # Priority = 40.
       ];
       trusted-substituters = [
-        "https://hyprland.cachix.org?priority=35"
-        "https://noctalia.cachix.org?priority=36"
-        "https://nix-community.cachix.org?priority=37"
-        "https://attic.xuyh0120.win/lantian?priority=38"
-        "https://cache.garnix.io?priority=39"
+        "https://hyprland.cachix.org?priority=36"
+        "https://noctalia.cachix.org?priority=37"
+        "https://nix-community.cachix.org?priority=38"
+        "https://attic.xuyh0120.win/lantian?priority=39"
         "https://cache.nixos.org" # Priority = 40.
       ];
       trusted-public-keys = [
