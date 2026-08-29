@@ -54,7 +54,7 @@
       noteshrink # Convert photos of copybook to better and compressed ones.
       speedread # Read files fast from plain text.
       zathura # PDF viewer.
-      stirling-pdf-desktop # masterpdfeditor # PDF editor.
+      # stirling-pdf-desktop # masterpdfeditor # PDF editor.
 
       # Coding.
       vscodium
