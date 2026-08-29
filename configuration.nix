@@ -20,7 +20,7 @@ in {
       # ./hardware/vmware.nix
       # ./hardware/arc.nix
       # ./hardware/amd.nix
-      
+
 
       # Pkgs
       ./pkgs/doas.nix
@@ -166,7 +166,7 @@ in {
       nurl # Fetch hash from git repos.
       curl wget git
       openssh
-      font-manager libnotify killall ffmpegthumbnailer
+      libnotify killall ffmpegthumbnailer # font-manager
       fastfetch countryfetch btop neovim micro mousepad
       mpv file
       duf # Mini alternative for disks usage.
