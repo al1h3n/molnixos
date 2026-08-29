@@ -156,6 +156,7 @@
             sharedModules = [
               spicetify.homeManagerModules.spicetify
               lazyvim.homeManagerModules.default
+              inputs.noctalia.homeManagerModules.default
             ];
           };
         }
