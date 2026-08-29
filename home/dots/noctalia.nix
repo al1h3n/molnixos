@@ -1,12 +1,8 @@
 { pkgs, inputs, variables, ... }: {
-  # home.packages = with pkgs; [
-  #   inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default # noctalia-shell
-  # ];
-  # xdg.dataFile."noctalia/settings.toml" = {
-  #   source = variables.noctalia5;
-  # };
-  programs.noctalia = {
-    enable = true;
-    settings = variables.noctalia5;
+  home.packages = with pkgs; [
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default # noctalia-shell
+  ];
+  xdg.dataFile."noctalia/config.toml" = {
+    source = variables.noctalia5;
   };
 }
