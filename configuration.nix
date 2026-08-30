@@ -16,7 +16,7 @@ in {
 
       # GPU configuration.
       ./hardware/gpu-gaming.nix # If you're not a gamer disable it.
-      # ./hardware/nvidia # Uses propeitary drivers by default, change to nouveau one in specified directory by your needs.
+      ./hardware/nvidia # Uses propeitary drivers by default, change to nouveau one in specified directory by your needs.
       # ./hardware/vmware.nix
       # ./hardware/arc.nix
       # ./hardware/amd.nix
@@ -33,8 +33,8 @@ in {
 
       # System.
       ./system/updates.nix
-      # ./system/grub.nix
-      ./system/systemd-boot.nix # Better on modern systems and for UEFI bios.
+      ./system/grub.nix # Supports dual-boot.
+      # ./system/systemd-boot.nix # Better on modern systems and for UEFI bios.
       ./system/ly.nix
       ./system/logs.nix
       ./system/hosts.nix
