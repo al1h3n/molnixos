@@ -1,4 +1,4 @@
-{ pkgs, inputs, variables, ... }: {
+{ pkgs, inputs, variables, config, ... }: {
   home.packages = with pkgs; [
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default # noctalia-shell
   ];
