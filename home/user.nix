@@ -80,7 +80,7 @@
 
       # Social.
       _64gram # telegram-desktop
-      goofcord # Supports Vencord, Equicord and others. Optimized as well.
+      dorion # goofcord # Supports Vencord, Equicord and others. Optimized as well.
 
       # Notes.
       obsidian # appflowy # notion-app only on macOS, enhanced one is write screen.
