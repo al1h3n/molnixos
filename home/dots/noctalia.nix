@@ -3,6 +3,7 @@
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default # noctalia-shell
   ];
   xdg.configFile."noctalia/config.toml" = {
-    source = variables.noctalia5;
+    source = config.lib.file.mkOutOfStoreSymlink variables.noctalia5;
+    force = true;
   };
 }
