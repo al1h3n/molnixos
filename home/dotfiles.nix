@@ -40,6 +40,7 @@ let
     "airpods"
     "xdg"
     "obs"
+    "opencode"
   ];
 in {
   imports = map (name: path + "/${name}.nix") dots;
