@@ -118,6 +118,8 @@
       url = "github:BlueManCZ/hyprmod";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # AI skills.
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nur, nix-cachyos-kernel,

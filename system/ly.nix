@@ -11,7 +11,8 @@
       margin_box_v = 0;
       input_len = 25;
 
-      animation = "dur_file";
+      # animation = "dur_file";
+      animation = "matrix";
 
       # 1.3.2. DOOM (fire)
       doom_fire_spread = 2;
