@@ -69,7 +69,7 @@
       protonplus # Better protonup-qt. Manage proton versions. Add portprotonqt when released.
       # heroic # Game launcher, lutris has bugs.
       prismlauncher
-      # inputs.setrixtui.packages.${pkgs.stdenv.hostPlatform.system}.default
+      inputs.setrixtui.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       # Art.
       gimp krita # blender

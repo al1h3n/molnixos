@@ -166,7 +166,7 @@ in {
       nurl # Fetch hash from git repos.
       curl wget git
       openssh
-      libnotify killall ffmpegthumbnailer # font-manager
+      libnotify killall ffmpegthumbnailer font-manager
       fastfetch countryfetch btop neovim micro mousepad
       mpv file
       duf # Mini alternative for disks usage.
