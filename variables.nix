@@ -75,4 +75,6 @@ rec {
   wallust = "${shared}/theming/wallust.toml";
   matugen = "${shared}/theming/matugen.toml";
   noctalia5 = "${shared}/noctalia-v5.toml";
+
+  hyprglass = "${shared_root}/external/hyprglass.so";
 }

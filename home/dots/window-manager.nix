@@ -33,5 +33,7 @@
       # quickshell
       swaynotificationcenter
       inputs.ie-r.packages.${pkgs.stdenv.hostPlatform.system}.default # Eyedropper.
+
+      wl-freeze # Freeze games.
   ];
 }

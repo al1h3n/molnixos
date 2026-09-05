@@ -1,10 +1,15 @@
 { lib, pkgs, ... }:
 let
   agents = [ "claude-code" "opencode" ];
-  skills = [
-    "vercel-labs/agent-skills"
-  ];
 
+  normalizeSkillEntry = entry:
+    if builtins.isString entry
+    then { repo = entry; skill = null; }
+    else entry;
+  skills = [
+    "vercel-labs/skills"
+    { repo = "vercel-labs/agent-skills"; skill = "frontend-design"; }
+  ];
   installSkill = { repo, skill }:
   "${pkgs.nodejs-slim.npm}/bin/npx skills add ${lib.escapeShellArg repo}"
   + lib.optionalString (skill != null) " --skill ${lib.escapeShellArg skill}"

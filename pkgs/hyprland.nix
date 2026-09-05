@@ -1,5 +1,5 @@
 # System-wide hyprland module.
-{ ... }: {
+{ pkgs, ... }: {
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
