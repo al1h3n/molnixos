@@ -69,13 +69,14 @@ let
     let
       entry = normalizeSkillEntry rawEntry;
     in
-      "${pkgs.nodejs-slim.npm}/bin/npx --yes skills add ${lib.escapeShellArg entry.repo}"
+      "${pkgs.nodejs}/bin/npx --yes skills add ${lib.escapeShellArg entry.repo}"
       + lib.concatMapStrings (s: " --skill ${lib.escapeShellArg s}") entry.skills
       + " --global"
       + lib.concatMapStrings (agent: " --agent ${lib.escapeShellArg agent}") agents
       + " --yes";
 in {
-  home.activation.installSkills = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+   home.activation.installSkills = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    export PATH="${lib.makeBinPath [ pkgs.nodejs pkgs.git ]}:$PATH"
     ${lib.concatMapStringsSep "\n" (skill: ''
       run ${installSkill skill}
     '') skills}
