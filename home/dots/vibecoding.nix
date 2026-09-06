@@ -3,13 +3,14 @@ let
   agents = [ "claude-code" "opencode" ];
   normalizeSkillEntry = entry:
     if builtins.isString entry
-    then { repo = entry; skills = [ ]; }
+    then { repo = entry; skills = [ ]; fullDepth = false; }
     else {
       repo = entry.repo;
       skills =
         if entry ? skills then (if builtins.isList entry.skills then entry.skills else [ entry.skills ])
         else if (entry.skill or null) != null then (if builtins.isList entry.skill then entry.skill else [ entry.skill ])
         else [ ];
+      fullDepth = entry.fullDepth or false;
     };
 
   skills = [
@@ -30,8 +31,12 @@ let
     }
     { repo = "addyosmani/web-quality-skills"; skill = "best-practices"; }
     { repo = "addyosmani/agent-skills"; skill = "ci-cd-and-automation"; }
-    { repo = "jwynia/agent-skills"; skill = "electron-best-practices"; }
-    { repo = "partme-ai/full-stack-skills"; skill = "electron"; }
+    {
+      repo = "https://github.com/jwynia/agent-skills/tree/main/skills/tech";
+      skill = "electron-best-practices";
+      fullDepth = true;
+    }
+    { repo = "partme-ai/full-stack-skills"; skill = "electron"; fullDepth = true; }
 
     # Matt Pocock Skills (multi-skill bundle)
     {
@@ -71,14 +76,15 @@ let
     in
       "${pkgs.nodejs}/bin/npx --yes skills add ${lib.escapeShellArg entry.repo}"
       + lib.concatMapStrings (s: " --skill ${lib.escapeShellArg s}") entry.skills
-      + " --global"
-      + lib.concatMapStrings (agent: " --agent ${lib.escapeShellArg agent}") agents
-      + " --yes";
+      + lib.optionalString entry.fullDepth " --full-depth"
+      + " -g"
+      + lib.concatMapStrings (agent: " -a ${lib.escapeShellArg agent}") agents
+      + " -y";
 in {
    home.activation.installSkills = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    export PATH="${lib.makeBinPath [ pkgs.nodejs pkgs.git ]}:$PATH"
-    ${lib.concatMapStringsSep "\n" (skill: ''
-      run ${installSkill skill}
+    export PATH="${lib.makeBinPath [ pkgs.nodejs pkgs.git pkgs.coreutils ]}:$PATH"
+    ${lib.concatMapStringsSep "\n" (rawSkill: ''
+      run ${installSkill rawSkill} || echo "warning: Failed to install skill from ${(normalizeSkillEntry rawSkill).repo}" >&2
     '') skills}
   '';
 
