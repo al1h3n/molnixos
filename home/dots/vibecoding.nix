@@ -70,22 +70,40 @@ let
     { repo = "github/awesome-copilot"; skill = "codebase-memory-mcp"; }
   ];
 
-  installSkill = rawEntry:
+  skillsHash = builtins.hashString "sha256" (builtins.toJSON skills);
+  installSkillCmd = rawEntry:
     let
       entry = normalizeSkillEntry rawEntry;
     in
       "${pkgs.nodejs}/bin/npx --yes skills add ${lib.escapeShellArg entry.repo}"
       + lib.concatMapStrings (s: " --skill ${lib.escapeShellArg s}") entry.skills
       + lib.optionalString entry.fullDepth " --full-depth"
-      + " -g"
-      + lib.concatMapStrings (agent: " -a ${lib.escapeShellArg agent}") agents
-      + " -y";
+      + " --global"
+      + lib.concatMapStrings (agent: " --agent ${lib.escapeShellArg agent}") agents
+      + " --yes";
+  installSkill = rawEntry:
+    let
+      entry = normalizeSkillEntry rawEntry;
+      cmd = installSkillCmd rawEntry;
+    in
+      if entry.skills != [ ] then ''
+        if ! (${lib.concatMapStringsSep " && " (s: "[ -d \"$HOME/.agents/skills/${s}\" ]") entry.skills}); then
+          run ${cmd} || echo "warning: Failed to install skill from ${entry.repo}" >&2
+        fi
+      '' else ''
+        run ${cmd} || echo "warning: Failed to install skill from ${entry.repo}" >&2
+      '';
 in {
    home.activation.installSkills = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     export PATH="${lib.makeBinPath [ pkgs.nodejs pkgs.git pkgs.coreutils ]}:$PATH"
-    ${lib.concatMapStringsSep "\n" (rawSkill: ''
-      run ${installSkill rawSkill} || echo "warning: Failed to install skill from ${(normalizeSkillEntry rawSkill).repo}" >&2
-    '') skills}
+    STATE_DIR="$HOME/.local/state/agent-skills"
+    HASH_FILE="$STATE_DIR/installed-skills.sha256"
+    CURRENT_HASH="${skillsHash}"
+    if [ ! -f "$HASH_FILE" ] || [ "$(< "$HASH_FILE" 2>/dev/null)" != "$CURRENT_HASH" ]; then
+      mkdir -p "$STATE_DIR"
+      ${lib.concatMapStringsSep "\n" installSkill skills}
+      echo "$CURRENT_HASH" > "$HASH_FILE"
+    fi
   '';
 
   programs = {
