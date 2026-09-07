@@ -68,7 +68,6 @@
       mangohud # FPS counter, enable manually.
       protonplus # Better protonup-qt. Manage proton versions. Add portprotonqt when released.
       # heroic # Game launcher, lutris has bugs.
-      prismlauncher
       # inputs.setrixtui.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       # Art.
