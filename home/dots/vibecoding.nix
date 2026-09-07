@@ -22,13 +22,8 @@ let
     { repo = "apollographql/skills"; skill = "rust-best-practices"; }
 
     # Web & Full-Stack Best Practices
-    {
-      repo = "vercel-labs/agent-skills";
-      skills = [
-        "frontend-design"
-        "vercel-react-best-practices"
-      ];
-    }
+    { repo = "vercel-labs/agent-skills"; skill = "vercel-react-best-practices"; }
+    { repo = "vercel-labs/agent-eval"; skill = "frontend-design"; }
     { repo = "addyosmani/web-quality-skills"; skill = "best-practices"; }
     { repo = "addyosmani/agent-skills"; skill = "ci-cd-and-automation"; }
     {
@@ -36,7 +31,7 @@ let
       skill = "electron-best-practices";
       fullDepth = true;
     }
-    { repo = "partme-ai/full-stack-skills"; skill = "electron"; fullDepth = true; }
+    { repo = "partme-ai/full-stack-skills"; skills = [ "electron" "tauri" ]; fullDepth = true; }
 
     # Matt Pocock Skills (multi-skill bundle)
     {
