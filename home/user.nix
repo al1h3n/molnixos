@@ -21,6 +21,7 @@
       cpu-x cava tealdeer zenity pay-respects piper openrgb-with-all-plugins
       dupeguru # To remove duplicated files. Add game directories to exceptions.
       bitwarden-desktop # Password manager.
+      gopeed # Fast downloader.
 
       # Anifetch doesn't have some dependencies.
       (inputs.anifetch.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (old: {
