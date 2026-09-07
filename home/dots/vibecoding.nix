@@ -166,6 +166,7 @@ in {
     opencode = {
       enable = true;
       web.enable = true;
+      settings.plugin = [ "@ex-machina/opencode-anthropic-auth" ];
     };
     claude-code = {
       enable = true;
