@@ -74,8 +74,8 @@ let
     { repo = "dietrichgebert/ponytail"; skill = "ponytail"; }
 
     # Repos / Tools / MCP
-    "https://uizze.com"
-    "rtk-ai/rtk"
+    { repo = "https://uizze.com"; skills = [ "anti-ui-slop" "ui-design" "ui-radar" ]; }
+    { repo = "rtk-ai/rtk"; skills = [ "code-simplifier" "issue-triage" "rtk-tdd" ]; }
     { repo = "github/awesome-copilot"; skill = "codebase-memory-mcp"; }
   ];
 
