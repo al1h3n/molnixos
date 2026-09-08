@@ -1,29 +1,27 @@
 { lib, pkgs, ... }:
 let
-  # Agents the skills are linked into.
+  # Agents the skills are linked into. Both are required: the `skills` CLI
+  # only picks symlink mode - and so only writes the canonical
+  # ~/.agents/skills store - when the targets resolve to more than one skills
+  # directory. With claude-code alone it switches to copy mode straight into
+  # ~/.claude/skills and never populates the store, which is the only place
+  # opencode reads from. Dropping "opencode" here hides every skill from it.
   agents = [ "claude-code" "opencode" ];
 
   # Pinned so `npx` never has to hit the npm registry to resolve a version
   # on every sync run. Bump deliberately.
   skillsCli = "skills@1.5.24"; # npm view skills version
 
-  # Canonical on-disk store the `skills` CLI writes to; agent dirs
-  # (~/.claude/skills, ~/.config/opencode/...) are symlinks into this.
+  # Canonical on-disk store the `skills` CLI writes to. ~/.claude/skills is
+  # symlinks into this, and opencode auto-loads it directly.
   # Kept unquoted here and quoted at each use site.
   skillsStore = ''$HOME/.agents/skills'';
 
-  # Accepts either a bare "owner/repo" string (install every skill it
-  # exposes) or { repo; skill | skills; }.
-  normalizeSkillEntry = entry:
-    if builtins.isString entry
-    then { repo = entry; skills = [ ]; }
-    else {
-      repo = entry.repo;
-      skills =
-        if entry ? skills then (if builtins.isList entry.skills then entry.skills else [ entry.skills ])
-        else if (entry.skill or null) != null then (if builtins.isList entry.skill then entry.skill else [ entry.skill ])
-        else [ ];
-    };
+  # Every entry names its skills explicitly, as `skill` or `skills`, either a
+  # bare string or a list.
+  skillNames = entry:
+    let names = entry.skills or entry.skill; in
+    if builtins.isList names then names else [ names ];
 
   skills = [
     # Discovery & Meta
@@ -79,9 +77,7 @@ let
     { repo = "github/awesome-copilot"; skill = "codebase-memory-mcp"; }
   ];
 
-  # Changing the manifest changes this hash, which is what triggers a
-  # re-sync (see the systemd service below).
-  skillsHash = builtins.hashString "sha256" (builtins.toJSON skills);
+  allSkillNames = lib.concatMap skillNames skills;
 
   addCmd = repo: skillList:
     "npx --yes ${skillsCli} add ${lib.escapeShellArg repo}"
@@ -92,50 +88,41 @@ let
 
   # One shell block per manifest entry. Each block is a no-op once its
   # skills exist on disk, so a retry after a partial failure only touches
-  # what is still missing. Any failure sets `failed=1`.
-  installSkill = rawEntry:
-    let
-      entry = normalizeSkillEntry rawEntry;
-      slug = lib.replaceStrings [ "/" ":" ] [ "_" "_" ] entry.repo;
-    in
-      if entry.skills != [ ] then ''
-        if ! { ${lib.concatMapStringsSep " && " (s: ''test -d "${skillsStore}/${s}"'') entry.skills}; }; then
-          echo "agent-skills: installing ${entry.repo} (${lib.concatStringsSep ", " entry.skills})"
-          ${addCmd entry.repo entry.skills} || { echo "agent-skills: FAILED ${entry.repo}" >&2; failed=1; }
-        fi
-      '' else ''
-        if [ ! -e "$STATE_DIR/markers/${slug}" ]; then
-          echo "agent-skills: installing ${entry.repo} (all skills)"
-          if ${addCmd entry.repo [ ]}; then
-            touch "$STATE_DIR/markers/${slug}"
-          else
-            echo "agent-skills: FAILED ${entry.repo}" >&2; failed=1
-          fi
-        fi
-      '';
+  # what is still missing and a steady-state run spawns no `npx` at all.
+  # Any failure sets `failed=1`.
+  installSkill = entry: ''
+    if ! { ${lib.concatMapStringsSep " && " (s: ''test -d "${skillsStore}/${s}"'') (skillNames entry)}; }; then
+      echo "agent-skills: installing ${entry.repo} (${lib.concatStringsSep ", " (skillNames entry)})"
+      ${addCmd entry.repo (skillNames entry)} || { echo "agent-skills: FAILED ${entry.repo}" >&2; failed=1; }
+    fi
+  '';
 
   syncScript = pkgs.writeShellApplication {
     name = "agent-skills-sync";
-    runtimeInputs = [ pkgs.nodejs pkgs.git pkgs.coreutils ];
+    runtimeInputs = [ pkgs.nodejs pkgs.git pkgs.coreutils pkgs.findutils ];
     text = ''
-      STATE_DIR="''${XDG_STATE_HOME:-$HOME/.local/state}/agent-skills"
-      HASH_FILE="$STATE_DIR/installed-skills.sha256"
-      CURRENT_HASH="${skillsHash}"
-      mkdir -p "$STATE_DIR/markers"
-
-      if [ -f "$HASH_FILE" ] && [ "$(cat "$HASH_FILE")" = "$CURRENT_HASH" ]; then
-        echo "agent-skills: manifest unchanged, nothing to do"
-        exit 0
-      fi
-
       failed=0
+
+      # Dropping an entry from the manifest has to actually uninstall it,
+      # otherwise the manifest can only ever grow.
+      keep=(${lib.concatStringsSep " " (map lib.escapeShellArg allSkillNames)})
+      for dir in "${skillsStore}"/*/; do
+        [ -d "$dir" ] || continue
+        name=$(basename "$dir")
+        if [[ " ''${keep[*]} " != *" $name "* ]]; then
+          echo "agent-skills: removing $name (no longer in manifest)"
+          rm -rf "$dir"
+        fi
+      done
+      # Sweep the agent links the removals above left dangling.
+      find "$HOME/.claude/skills" -maxdepth 1 -xtype l -delete 2>/dev/null || true
+
       ${lib.concatMapStringsSep "\n" installSkill skills}
 
       if [ "$failed" -eq 0 ]; then
-        printf '%s\n' "$CURRENT_HASH" > "$HASH_FILE"
-        echo "agent-skills: sync complete, manifest hash recorded"
+        echo "agent-skills: sync complete"
       else
-        echo "agent-skills: some installs failed; hash not recorded, will retry" >&2
+        echo "agent-skills: some installs failed, will retry" >&2
         exit 1
       fi
     '';
