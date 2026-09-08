@@ -1,7 +1,7 @@
 { pkgs, variables, ... }: {
-  xdg.dataFile."PrismLauncher/prismlauncher.cfg"= {
-    source = variables.prismlauncher;
-  };
+  # xdg.dataFile."PrismLauncher/prismlauncher.cfg"= {
+  #   source = variables.prismlauncher;
+  # };
   programs.prismlauncher = {
     enable = true;
     package = pkgs.prismlauncher.override {
