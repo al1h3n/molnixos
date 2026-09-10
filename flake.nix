@@ -109,7 +109,7 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nur, nix-cachyos-kernel,
-  yt-x, spicetify, anifetch, setrixtui, lazyvim, ie-r, snappy-switcher, tuilet, noctalia, hyprmod, ... }@inputs:
+  yt-x, spicetify, anifetch, setrixtui, lazyvim, ie-r, snappy-switcher, tuilet, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;
