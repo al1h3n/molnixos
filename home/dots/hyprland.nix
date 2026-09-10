@@ -10,7 +10,7 @@
   # Packages.
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   home.packages = with pkgs; [
-    inputs.hyprmod.packages.${pkgs.stdenv.hostPlatform.system}.default
+    hyprmod
     hyprmoncfg
   ];
 

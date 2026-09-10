@@ -106,20 +106,6 @@
     #   url = "github:uint23/sxwm";
     #   flake = false;
     # };
-
-    # Noctalia Shell v5.
-    noctalia = {
-      url = "github:noctalia-dev/noctalia";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Hyprmod - settings app for hyprland.
-    hyprmod = {
-      url = "github:BlueManCZ/hyprmod";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # AI skills.
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nur, nix-cachyos-kernel,
