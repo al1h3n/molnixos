@@ -16,15 +16,11 @@
   };
 
   # Fix for systemctl sleep-ish functions.
-  boot.kernelParams = [
-    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-    "nvidia.NVreg_TemporaryFilePath=/var/tmp"
-    "mem_sleep_default=s2idle"
-    "nvidia_drm.modeset=1"
-  ];
+  # mem_sleep_default=s2idle kept deliberately: this box has no working S3 with
+  # the NVIDIA driver. Drop it if `cat /sys/power/mem_sleep` shows [deep] works,
+  # since s2idle draws noticeably more power.
+  boot.kernelParams = [ "mem_sleep_default=s2idle" ];
   boot.extraModprobeConfig = ''
-    options nvidia NVreg_PreserveVideoMemoryAllocations=1
     options nvidia NVreg_TemporaryFilePath=/var/tmp
   '';
-  systemd.tmpfiles.rules = [ "d /var/tmp 1777 root root -" ];
 }

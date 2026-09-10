@@ -49,7 +49,6 @@ in {
       ./system/executables.nix
       ./system/gaming.nix
       ./system/coding.nix
-      ./system/git.nix
       ./system/rdp.nix
     ];
 
@@ -88,7 +87,9 @@ in {
     users.${variables.username} = {
       description = variables.user_description;
       isNormalUser = true;
-      extraGroups = [ "wheel" "plugdev" "storage" "optical" "input" "libvirtd" "lp" "networkmanager" "i2c" "uinput" ];
+      # "plugdev", "storage" and "optical" are Arch-isms: NixOS never creates
+      # those groups, so listing them did nothing (`id` never showed them).
+      extraGroups = [ "wheel" "input" "libvirtd" "lp" "networkmanager" "i2c" "uinput" ];
       shell = pkgs.fish;
     };
   };
@@ -147,8 +148,6 @@ in {
       L_PATH = variables.lshared;
 
       __EGL_VENDOR_LIBRARY_DIRS = "/run/opengl-driver/share/glvnd/egl_vendor.d";
-
-      WLR_NO_HARDWARE_CURSORS = "1"; # If your cursor becomes invisible.
       NIXOS_OZONE_WL = "1";
       ELECTRON_OZONE_PLATFORM_HINTS = "auto";
       NVD_BACKEND = "direct";

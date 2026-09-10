@@ -1,24 +1,52 @@
-# ui.nix - GTK + Qt theming (without icons).
+# ui.nix - GTK + Qt widget theming (icons live in icons*.nix).
+#
+# Colours are owned by Noctalia, not by this file. Enable the "GTK 3", "GTK 4"
+# and "Qt" templates in Noctalia -> Settings -> Theme -> Templates; they write:
+#   ~/.config/gtk-3.0/noctalia.css   imported by gtk.css below
+#   ~/.config/gtk-4.0/noctalia.css   imported by gtk.css below
+#   ~/.config/qt{5,6}ct/colors/noctalia.conf   selected by color_scheme_path
+# The base widget theme stays declarative: change variables.theme_gtk / the
+# qt6ct GUI, the palette follows the wallpaper on its own.
 { config, lib, pkgs, variables, ... }:
-let breezeDarkColors = "${pkgs.kdePackages.breeze}/share/color-schemes/BreezeDark.colors";
+let
+  # qt5ct and qt6ct are GUI configurators. Their config file has to stay a
+  # writable regular file, otherwise every change made in the GUI is silently
+  # discarded and the Noctalia palette can never be selected. So it is seeded
+  # once instead of being a read-only store symlink.
+  #
+  # style=Fusion on purpose: Adwaita-Dark and Kvantum hardcode their own
+  # colours and ignore custom_palette, so Noctalia's palette would not show up.
+  # Switch it in the qt6ct GUI if you prefer a fixed style over live colours.
+  qtctSeed = ct: pkgs.writeText "${ct}.conf" ''
+    [Appearance]
+    icon_theme=Papirus-Dark
+    style=Fusion
+    custom_palette=true
+    color_scheme_path=${config.xdg.configHome}/${ct}/colors/noctalia.conf
+
+    [Fonts]
+    fixed="SF Mono Nerd Font"
+    general="SF Mono Nerd Font"
+  '';
 in {
   # GTK
   gtk = {
     enable = true;
     theme = {
-      name = variables.theme_gtk;
+      name = variables.theme_gtk; # find names with nwg-look
       package = pkgs.adw-gtk3;
-      # find name in nwg-look.
     };
     gtk3 = {
       extraConfig.gtk-application-prefer-dark-theme = true;
-      extraCss = ''@import "colors-dynamic.css";'';
+      extraCss = ''@import url("noctalia.css");'';
     };
-
-    # Avoid warnings.
-    gtk4.theme = config.gtk.theme;
-
+    # GTK4 ignores gtk-theme-name, it only respects user CSS.
+    gtk4 = {
+      theme = config.gtk.theme;
+      extraCss = ''@import url("noctalia.css");'';
+    };
   };
+
   dconf = {
     enable = true;
     settings."org/gnome/desktop/interface" = {
@@ -26,90 +54,45 @@ in {
       gtk-theme = variables.theme_gtk; # explicit, required by some apps
     };
   };
-  home.activation.removeGtkCss = lib.hm.dag.entryBefore ["checkLinkTargets"] ''
-    rm -f "${config.home.homeDirectory}/.config/gtk-4.0/gtk.css"
-    rm -f "${config.home.homeDirectory}/.config/gtk-3.0/gtk.css"
-  ''; # Fix for GTK files.
+
+  # Noctalia rewrites gtk.css as a regular file when the import is missing.
+  # Drop the leftovers so checkLinkTargets does not abort on them.
+  home.activation.removeGtkCss = lib.hm.dag.entryBefore [ "checkLinkTargets" ] ''
+    rm -f "${config.xdg.configHome}/gtk-3.0/gtk.css"
+    rm -f "${config.xdg.configHome}/gtk-4.0/gtk.css"
+  '';
 
   # Qt
+  # "qtct" makes home-manager export QT_QPA_PLATFORMTHEME=qt5ct and install both
+  # configurators. qt6ct's plugin registers the "qt5ct" key too, so that single
+  # value themes Qt5 and Qt6 alike - QT_QPA_PLATFORMTHEME=qt6ct would leave
+  # every Qt5 app unthemed.
   qt = {
     enable = true;
-    platformTheme.name = "qt6ct";
-    # QT_QPA_PLATFORMTHEME but for local. qtct sets to qt5ct for now.
+    platformTheme.name = "qtct";
   };
 
-  xdg.dataFile."Kvantum/Gruvbox-Dark-Brown".source = "${pkgs.gruvbox-kvantum}/share/Kvantum/Gruvbox-Dark-Brown";
+  home.sessionVariables.QT_QPA_PLATFORM = "wayland;xcb";
+  systemd.user.sessionVariables.QT_QPA_PLATFORM = "wayland;xcb";
 
-  systemd.user.sessionVariables = {
-    GTK_THEME = variables.theme_gtk;
-    QT_QPA_PLATFORMTHEME = lib.mkForce "qt6ct"; # Use lib.mkForce if you have errors.
-    QT5_QPA_PLATFORMTHEME = "qt5ct";
-    QT_QPA_PLATFORM = "wayland;xcb";
-  };
+  home.activation.seedQtct = lib.hm.dag.entryAfter [ "writeBoundary" ] (
+    lib.concatMapStringsSep "\n" (ct: ''
+      if [ ! -e "${config.xdg.configHome}/${ct}/${ct}.conf" ]; then
+        run install -Dm644 ${qtctSeed ct} "${config.xdg.configHome}/${ct}/${ct}.conf"
+      fi
+    '') [ "qt5ct" "qt6ct" ]
+  );
 
-  # Packages.
-  home.packages =
-    (with pkgs.qt6Packages; [
-      qt6ct
-      qtstyleplugin-kvantum # If you're using Kvantum styles.
-      qtwayland # For dupeguru.
-      ])
-    ++
-    (with pkgs.libsForQt5; [
-      qt5ct
-    ])
-    ++
-    (with pkgs; [
-    kdePackages.breeze
-    gruvbox-dark-gtk gruvbox-kvantum
+  home.packages = with pkgs; [
+    qt6Packages.qtstyleplugin-kvantum
+    libsForQt5.qtstyleplugin-kvantum
+    kdePackages.qtwayland # for dupeguru
+
+    adw-gtk3
+    adwaita-qt
+    adwaita-qt6
+    gruvbox-dark-gtk
+    gruvbox-kvantum # found via XDG_DATA_DIRS, no manual symlink needed
     nwg-look
-
-    # Other themes.
-    adw-gtk3 adwaita-qt6 adwaita-qt
-    ]);
-
-  # Stylix
-  # stylix = {
-  #   enable = true;
-  #   polarity = "dark";
-  #   fonts = { # Package and name.
-  #     serif = {};
-  #     sansSerif = {};
-  #     monospace = {};
-  #     emoju = {};
-  #   };
-  # };
-
-  xdg.configFile = {
-    "qt6ct/qt6ct.conf".text = ''
-    [Appearance]
-    icon_theme=Papirus-Dark
-    style=Adwaita-Dark
-    custom_palette=true
-
-    [Fonts]
-    fixed="SF Mono Nerd Font"
-    general="SF Mono Nerd Font"
-    '';
-    "qt5ct/qt5ct.conf".text = ''
-    [Appearance]
-    icon_theme=Papirus-Dark
-    style=Adwaita-Dark
-    custom_palette=true
-
-    [Fonts]
-    fixed="SF Mono Nerd Font"
-    general="SF Mono Nerd Font"
-    ''; # JetBrainsMono Nerd Font Propo
-    "gtk-4.0/gtk.css".text = ''
-      @import "colors-dynamic.css";
-    '';
-    "matugen/templates/colors.sh".source = config.lib.file.mkOutOfStoreSymlink "${variables.shared}/matugen/templates/colors.sh";
-    "matugen/templates/colors.vim".source = config.lib.file.mkOutOfStoreSymlink "${variables.shared}/matugen/templates/colors.vim";
-  };
-  home.activation.removeMatugenTemplates =
-  lib.hm.dag.entryBefore ["checkLinkTargets"] ''
-    rm -f "${config.home.homeDirectory}/.config/matugen/templates/colors.sh"
-    rm -f "${config.home.homeDirectory}/.config/matugen/templates/colors.vim"
-  '';
+  ];
 }

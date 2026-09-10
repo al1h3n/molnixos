@@ -1,6 +1,5 @@
-# Niri with custom path for config.
-{ pkgs, ... }: {
+{ pkgs, variables, ... }: {
   programs.niri.enable = true;
-  systemd.user.services.niri.enableDefaultPath = false;
-  environment.sessionVariables.NIRI_CONFIG = "/etc/nixos/shared/config/niri/niri.kdl";
+  environment.systemPackages = [ pkgs.xwayland-satellite ];
+  environment.sessionVariables.NIRI_CONFIG = variables.niriconf;
 }

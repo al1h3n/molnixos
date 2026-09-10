@@ -70,6 +70,7 @@ let
     { repo = "https://github.com/NousResearch/hermes-agent/tree/main/optional-skills/security/godmode"; skill = "godmode"; }
     { repo = "axelfreeman/marketing-mindset"; skill = "marketing-mindset"; }
     { repo = "dietrichgebert/ponytail"; skill = "ponytail"; }
+    { repo = "ayghri/i-have-adhd"; skill = "i-have-adhd"; }
 
     # Repos / Tools / MCP
     { repo = "https://uizze.com"; skills = [ "anti-ui-slop" "ui-design" "ui-radar" ]; }
@@ -153,7 +154,12 @@ in {
     opencode = {
       enable = true;
       # web.enable = true; # just use 'opencode web' instead.
-      settings.plugin = [ "@ex-machina/opencode-anthropic-auth" ];
+      settings = {
+        plugin = [ "@ex-machina/opencode-anthropic-auth" ];
+        permission = {
+          "*" = "allow";
+        };
+      };
     };
     claude-code = {
       enable = true;

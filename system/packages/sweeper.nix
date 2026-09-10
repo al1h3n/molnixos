@@ -1,25 +1,22 @@
 # https://github.com/al1h3n/sweeper
-{ pkgs, ... }:
+# Update with `nix flake update sweeper`.
+{ pkgs, inputs, ... }:
 let
-  # Fetched at build time, cached in Nix store.
-  # Only re-downloads when you run nixos-rebuild, not on every reboot.
-  script = builtins.fetchurl {
-    url = "https://raw.githubusercontent.com/al1h3n/sweeper/refs/heads/main/sweeper.sh";
+  sweeper = pkgs.writeShellApplication {
+    name = "sweeper";
+    text = builtins.readFile "${inputs.sweeper}/sweeper.sh";
+    # The script is linted upstream; skip shellcheck to keep rebuilds cheap.
+    checkPhase = "";
   };
 in {
-  # Makes script available system-wide as a package. Saved in /nix/store/<hash>-sweeper.sh
-  environment.systemPackages = [
-    (pkgs.writeScriptBin "sweeper" (builtins.readFile script))
-  ];
-
-  # Systemd user service — runs for every user that logs in.
+  environment.systemPackages = [ sweeper ];
+  # Runs once per login session.
   systemd.user.services.sweeper = {
     description = "Sweeper cleaner by al1h3n";
     wantedBy = [ "default.target" ];
-    after = [ "network-online.target" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.bash}/bin/bash ${script}";
+      ExecStart = "${sweeper}/bin/sweeper";
       RemainAfterExit = true;
     };
   };

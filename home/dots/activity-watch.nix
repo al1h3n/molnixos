@@ -1,43 +1,48 @@
-{ pkgs, lib, config, ... }: {
-  services.activitywatch = {
-    enable = true;
-    package = pkgs.activitywatch;
+{ pkgs, lib, ... }:
+{
+  # aw-server (rust) only. The HM module's `watchers` option is deliberately
+  # unused: it writes settings to $XDG_CONFIG_HOME/activitywatch/<name>/ and
+  # orders the unit after default.target. awatcher reads
+  # $XDG_CONFIG_HOME/awatcher/config.toml and needs a live compositor, so the
+  # generated unit silently exits 0 at boot before Wayland is up.
+  services.activitywatch.enable = true;
 
-    watchers = {
-      aw-awatcher = {
-        package = pkgs.awatcher;
-        executable = "awatcher";        # ← actual binary name in the store
-        settings = {
-          idle-timeout-seconds  = 180;
-          poll-time-idle-seconds  = 4;
-          poll-time-window-seconds = 1;
-        };
-        settingsFilename = "config.toml";
-      };
-    };
-  };
-
-  # Tell aw-qt to only manage itself (no watchers) via its config file.
-  # The watchers are already managed by systemd via services.activitywatch.
-  xdg.configFile."activitywatch/aw-qt/aw-qt.toml".text = ''
-    [autostart]
-    autostart_modules = []
-  '';
-
-  systemd.user.services.aw-qt = {
+  # Window + AFK watcher for Wayland. Settings go through CLI flags.
+  systemd.user.services.awatcher = {
     Unit = {
-      Description = "ActivityWatch tray icon";
-      After   = [ "graphical-session.target" "activitywatch.target" ];
-      PartOf  = [ "graphical-session.target" ];
+      Description = "awatcher (ActivityWatch window/AFK watcher)";
+      After = [ "graphical-session.target" "activitywatch.service" ];
+      PartOf = [ "graphical-session.target" ];
     };
     Service = {
-      ExecStartPre = "${pkgs.coreutils}/bin/sleep 3";
-      # No flags needed — aw-qt.toml above handles module suppression
-      ExecStart    = lib.getExe' pkgs.activitywatch "aw-qt";
-      Restart      = "on-failure";
-      RestartSec   = "10s";
-      Environment  = [ "QT_QPA_PLATFORM=wayland" ];
+      ExecStart = "${lib.getExe pkgs.awatcher} --idle-timeout 180 --poll-time-idle 4 --poll-time-window 1";
+      # awatcher exits 0 when no compositor is reachable, so on-failure is useless.
+      Restart = "always";
+      RestartSec = 10;
     };
     Install.WantedBy = [ "graphical-session.target" ];
   };
+
+  # Optional tray icon. Not required: aw-server and awatcher run on their own,
+  # the web UI is at http://localhost:5600 and the browser extension talks to
+  # aw-server directly. Uncomment both blocks to get the systray entry back.
+  #
+  # xdg.configFile."activitywatch/aw-qt/aw-qt.toml".text = ''
+  #   [autostart]
+  #   autostart_modules = []
+  # '';
+  #
+  # systemd.user.services.aw-qt = {
+  #   Unit = {
+  #     Description = "ActivityWatch tray icon";
+  #     After = [ "graphical-session.target" "activitywatch.service" ];
+  #     PartOf = [ "graphical-session.target" ];
+  #   };
+  #   Service = {
+  #     ExecStart = lib.getExe' pkgs.activitywatch "aw-qt";
+  #     Restart = "on-failure";
+  #     RestartSec = 10;
+  #   };
+  #   Install.WantedBy = [ "graphical-session.target" ];
+  # };
 }

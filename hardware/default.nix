@@ -1,16 +1,6 @@
 # Default hardware configurations.
 { pkgs, lib, variables, ... }: {
-  # Main.
-  hardware = {
-    enableAllFirmware = true;
-    enableRedistributableFirmware = true;
-  };
-
-  # CPU.
-  hardware.cpu = {
-    amd.updateMicrocode = true;
-    intel.updateMicrocode = true;
-  };
+  hardware.enableAllFirmware = true;
 
   # Audio - PipeWire.
   services.pipewire = {
@@ -26,10 +16,7 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
-    settings.General = {
-      Enable = "Source,Sink,Media,Socket";
-      Experimental = true;   # Enables battery level reporting
-    };
+    settings.General.Experimental = true;
   };
   services.blueman.enable = true;
 
@@ -53,14 +40,10 @@
   };
 
   # Add user to groups.
-  users.users.${variables.username} = {
-    extraGroups = [
-      "networkmanager"  # Required to manage wifi without sudo
-      "bluetooth"
-      "audio"
-      "video"
-    ];
-  };
+  users.users.${variables.username}.extraGroups = [
+    "networkmanager" # Manage wifi without sudo.
+    "video"
+  ];
 
   # External displays.
   hardware.i2c.enable = true;

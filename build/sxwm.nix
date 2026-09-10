@@ -1,5 +1,4 @@
-{ stdenv, lib, src, xorg, gnumake }:
-
+{ stdenv, lib, src, xorg }:
 stdenv.mkDerivation {
   pname = "sxwm";
   version = "unstable";
@@ -11,10 +10,12 @@ stdenv.mkDerivation {
     xorg.libXcursor
   ];
 
-  nativeBuildInputs = [ gnumake ];
+  # gnumake was dropped from nativeBuildInputs: stdenv already provides GNU make.
 
   installPhase = ''
+    runHook preInstall
     make install PREFIX=$out
+    runHook postInstall
   '';
 
   meta = {

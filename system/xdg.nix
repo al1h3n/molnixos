@@ -2,16 +2,13 @@
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.common = {
-      default = [ "gtk" ]; # Or *, [ "gtk" ]
-      "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
-      # "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
-    };
+    config.common.default = [ "gtk" ];
   };
 
+  # NixOS expands these globs into every concrete MIME type, so one line covers the whole family.
   xdg.mime.defaultApplications = {
     "audio/*" = "mpv.desktop";
     "video/*" = "mpv.desktop";
-    "image/*" = "org.gnome.gThumb.desktop";
+    "image/*" = "geeqie.desktop";
   };
 }

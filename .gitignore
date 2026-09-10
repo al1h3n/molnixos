@@ -10,6 +10,8 @@ coverage/
 logs/
 tmp/
 .cache/
+claude/
+agents/
 
 # Ignore nested folders anywhere
 **/output/

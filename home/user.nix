@@ -57,9 +57,6 @@
       zathura # PDF viewer.
       # stirling-pdf-desktop # masterpdfeditor # PDF editor.
 
-      # Coding.
-      vscodium
-
       # Music.
       # lazyspotify # Only with Premium subscription.
 

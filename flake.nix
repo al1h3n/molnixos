@@ -101,6 +101,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Cleaner. Bump with `nix flake update sweeper`.
+    sweeper = {
+      url = "github:al1h3n/sweeper";
+      flake = false;
+    };
+
     # Another WM for old machines.
     # sxwm = {
     #   url = "github:uint23/sxwm";
