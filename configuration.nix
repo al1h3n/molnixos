@@ -46,6 +46,7 @@ in {
       ./system/virtualization.nix
       ./system/xdg.nix
       ./system/vpn.nix
+      ./system/syncthing.nix
       ./system/executables.nix
       ./system/gaming.nix
       ./system/coding.nix
@@ -66,6 +67,12 @@ in {
     supportedFilesystems = [ "ntfs" ];
     loader.efi.canTouchEfiVariables = true;
   };
+
+  # `supportedFilesystems.ntfs` only ships ntfsprogs-plus + the kernel ntfs3
+  # driver. udisks2 needs a mount.ntfs helper to fall back to when ntfs3
+  # refuses a dirty/hibernated volume, otherwise it reports
+  # "wrong fs type, bad option, bad superblock".
+  system.fsPackages = [ pkgs.ntfs3g ];
 
   systemd = {
     settings.Manager.DefaultTimeoutStopSec = lib.mkForce "10s";

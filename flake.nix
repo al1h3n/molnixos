@@ -17,9 +17,16 @@
     home-manager-stable.follows = "home-manager";
 
     # CachyOS repository.
+    #
+    # The `follows` below was commented out, which pinned a whole second
+    # nixpkgs (359 MB of source) just for this input. Enabling it changes
+    # nothing about the kernel: the `pinned` overlay ships prebuilt artifacts,
+    # and the resulting store path is byte-identical either way - verified as
+    # /nix/store/4bw1bbhv36ikcvdm5cz4q2vw35ml3iw0-linux-cachyos-latest-7.2.4,
+    # the kernel currently running.
     nix-cachyos-kernel = {
       url = "github:xddxdd/nix-cachyos-kernel/release";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # NUR - Nix User Repository, for packages that aren't in nixpkgs. Similar to AUR.
@@ -30,9 +37,15 @@
     };
 
     # Apple Fonts, SF Pro NUR package.
+    #
+    # Nested follows: `inputs.nixpkgs.follows` only redirects an input's own
+    # nixpkgs, not the nixpkgs its *dependencies* pull in. apple-fonts -> ci ->
+    # blueprint dragged in a separate nixpkgs of its own. Same story for the
+    # rust-overlay / naersk / git-hooks chains further down.
     apple-fonts = {
       url = "github:Lyndeno/apple-fonts.nix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.ci.inputs.blueprint.inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Stylix - can change theme of various applications.
@@ -69,18 +82,22 @@
     anifetch = {
       url = "github:Notenlish/anifetch";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.git-hooks.inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Setrixtui - cool tetris.
     setrixtui = {
       url = "github:Mjoyufull/Setrixtui";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
+      inputs.naersk.inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Eyedropper to catch a color.
     ie-r = {
       url = "github:miaupaw/ie-r";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Alt + Tab.

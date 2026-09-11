@@ -3,7 +3,7 @@
 let
   graphiteGrubTheme = pkgs.stdenvNoCC.mkDerivation {
     pname = "graphite-grub2-theme";
-    version = "unstable-2024-01-20";
+    version = "unstable-2026-08-24";
 
     # Only other/grub2 is needed; Graphite-gtk-theme is a full GTK theme repo,
     # so a sparse checkout avoids fetching the GTK assets we never look at.
@@ -13,8 +13,11 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "vinceliuice";
       repo = "Graphite-gtk-theme";
-      rev = "57028b0bfcc0cfee1ba42273c545e4e269973433";
-      hash = "sha256-HYHVoWXO5Ta0/dj8hMMAK1nGn7DEVbi5tHSLGDn3+XI=";
+      # Bumped from 57028b0 (2024-01-20) to upstream HEAD; the old pin was
+      # ~19 months behind. Verify with:
+      #   curl -s https://api.github.com/repos/vinceliuice/Graphite-gtk-theme/commits?per_page=1
+      rev = "364173f47407164948788e4abb5e2eb46600f71a";
+      hash = "sha256-RN+Tvcm7ku44Cz5nadN2lt9+JABxZjluxoALTaoEl7Q=";
       forceFetchGit = true;
       sparseCheckout = [ "other/grub2" ];
     };

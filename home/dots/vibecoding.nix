@@ -10,7 +10,7 @@ let
 
   # Pinned so `npx` never has to hit the npm registry to resolve a version
   # on every sync run. Bump deliberately.
-  skillsCli = "skills@1.5.24"; # npm view skills version
+  skillsCli = "skills@1.5.25"; # npm view skills version
 
   # Canonical on-disk store the `skills` CLI writes to. ~/.claude/skills is
   # symlinks into this, and opencode auto-loads it directly.
