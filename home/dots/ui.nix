@@ -17,16 +17,20 @@ let
   # style=Fusion on purpose: Adwaita-Dark and Kvantum hardcode their own
   # colours and ignore custom_palette, so Noctalia's palette would not show up.
   # Switch it in the qt6ct GUI if you prefer a fixed style over live colours.
+  # Icons and fonts follow the icons*.nix / fonts.nix modules, so Qt apps cannot
+  # drift away from GTK apps.
+  iconTheme = if config.gtk.iconTheme.name != null then config.gtk.iconTheme.name else "hicolor";
+  firstFont = l: fallback: lib.head (l ++ [ fallback ]);
   qtctSeed = ct: pkgs.writeText "${ct}.conf" ''
     [Appearance]
-    icon_theme=Papirus-Dark
+    icon_theme=${iconTheme}
     style=Fusion
     custom_palette=true
     color_scheme_path=${config.xdg.configHome}/${ct}/colors/noctalia.conf
 
     [Fonts]
-    fixed="SF Mono Nerd Font"
-    general="SF Mono Nerd Font"
+    fixed="${firstFont config.fonts.fontconfig.defaultFonts.monospace "monospace"}"
+    general="${firstFont config.fonts.fontconfig.defaultFonts.sansSerif "sans-serif"}"
   '';
 in {
   # GTK
