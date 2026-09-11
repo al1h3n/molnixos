@@ -10,10 +10,11 @@ let
   };
 in {
   environment.systemPackages = [ sweeper ];
-  # Runs once per login session.
-  systemd.user.services.sweeper = {
+  # Runs once per boot, as root, so the script never needs to re-exec via sudo
+  # (a user unit has no TTY and would stall on the password prompt).
+  systemd.services.sweeper = {
     description = "Sweeper cleaner by al1h3n";
-    wantedBy = [ "default.target" ];
+    wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${sweeper}/bin/sweeper";
