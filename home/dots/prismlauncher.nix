@@ -1,7 +1,5 @@
 { pkgs, variables, ... }: {
-  # xdg.dataFile."PrismLauncher/prismlauncher.cfg"= {
-  #   source = variables.prismlauncher;
-  # };
+  home.packages = [ pkgs.libxkbcommon ]; # WaylandCraft mod reads the system keymap through it.
   programs.prismlauncher = {
     enable = true;
     package = pkgs.prismlauncher.override {
@@ -12,4 +10,8 @@
       ];
     };
   };
+
+  # xdg.dataFile."PrismLauncher/prismlauncher.cfg"= {
+  #   source = variables.prismlauncher;
+  # };
 }

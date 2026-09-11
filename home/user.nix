@@ -63,7 +63,6 @@
       # Gaming.
       protontricks # Fix tool if game not working.
       # protontricks - better winetricks, steam uses own Proton.
-      mangohud # FPS counter, enable manually.
       protonplus # Better protonup-qt. Manage proton versions. Add portprotonqt when released.
       # heroic # Game launcher, lutris has bugs.
       # inputs.setrixtui.packages.${pkgs.stdenv.hostPlatform.system}.default
