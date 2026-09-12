@@ -124,6 +124,12 @@
       flake = false;
     };
 
+    # Liquid glass plugin for Hyprland.
+    hyprglass = {
+      url = "github:hyprnux/hyprglass";
+      flake = false;
+    };
+
     # Another WM for old machines.
     # sxwm = {
     #   url = "github:uint23/sxwm";
@@ -152,6 +158,10 @@
           nix-cachyos-kernel.overlays.pinned
           # (final: prev: { lazyspotify = final.callPackage ./build/lazyspotify.nix { src = inputs.lazyspotify; }; })
           (final: prev: { tuilet = final.callPackage ./build/tuilet.nix { src = inputs.tuilet;}; })
+          (final: prev: { hyprglass = final.callPackage ./build/hyprglass.nix {
+            src = inputs.hyprglass;
+            inherit (final.hyprlandPlugins) mkHyprlandPlugin;
+          }; })
         ]; }
         # stylix.nixosModules.stylix
         { # Actual HM config.

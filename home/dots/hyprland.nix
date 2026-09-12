@@ -12,6 +12,7 @@
   home.packages = with pkgs; [
     hyprmod
     hyprmoncfg
+    hyprglass
   ];
 
   # Files.
