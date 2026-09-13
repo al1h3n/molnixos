@@ -130,7 +130,10 @@
       flake = false;
     };
 
-    niri-glass.url = "github:zaroutt/Niri-glass";
+    # niri-glass = {
+    #   url = "github:zaroutt/Niri-glass";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Another WM for old machines.
     # sxwm = {
