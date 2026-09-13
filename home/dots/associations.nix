@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   home.packages = with pkgs; [ # For file previews.
     (yazi.override {
       _7zz = _7zz-rar;  # Support for RAR extraction
@@ -18,7 +18,54 @@
     enable = true;
     defaultApplications = {
       # Images & photos.
-      "image/*" = [ "geeqie.desktop" ];
+      #
+      # "image/*" = [ "geeqie.desktop" ] was two bugs at once:
+      #   1. mimeapps.list has no glob syntax. GIO - and so Thunar - reads the
+      #      key literally, finds no MIME type called "image/*", and ignores the
+      #      line. Nothing was ever set as the default for image/jpeg.
+      #   2. geeqie.desktop does not exist; the file is org.geeqie.Geeqie.desktop.
+      #
+      # With no default, GIO falls back to whoever claims the type in
+      # mimeinfo.cache - and eight apps claim image/jpeg here (feh, gimp,
+      # krita x2, nsxiv, geeqie, zathura, satty). Whichever the cache happens to
+      # list first wins, and that order changes whenever a package does. That is
+      # the "sometimes feh opens, sometimes it doesn't".
+      #
+      # Explicit types only. feh for what feh decodes, geeqie for the RAW and
+      # HDR formats it does not.
+    } // lib.genAttrs [
+      "image/bmp"
+      "image/gif"
+      "image/jpeg"
+      "image/png"
+      "image/svg+xml"
+      "image/tiff"
+      "image/webp"
+      "image/x-bmp"
+      "image/x-png"
+      "image/x-portable-anymap"
+      "image/x-portable-bitmap"
+      "image/x-portable-graymap"
+      "image/x-portable-pixmap"
+      "image/x-tga"
+      "image/x-xbitmap"
+    ] (_: [ "feh.desktop" ]) // lib.genAttrs [
+      "image/avif"
+      "image/heic"
+      "image/heif"
+      "image/jp2"
+      "image/jxl"
+      "image/vnd.adobe.photoshop"
+      "image/vnd.radiance"
+      "image/x-adobe-dng"
+      "image/x-canon-cr2"
+      "image/x-canon-cr3"
+      "image/x-exr"
+      "image/x-fuji-raf"
+      "image/x-nikon-nef"
+      "image/x-olympus-orf"
+      "image/x-sony-arw"
+    ] (_: [ "org.geeqie.Geeqie.desktop" ]) // {
 
       # Standard Archives.
       "application/zip" = [ "peazip-extract.desktop" ];

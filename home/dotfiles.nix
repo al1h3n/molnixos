@@ -43,6 +43,8 @@ let
     "xdg"
     "obs"
     "vibecoding"
+    "config-cleanup"
+    "yt-x"
   ];
 in {
   imports = map (name: path + "/${name}.nix") dots;
