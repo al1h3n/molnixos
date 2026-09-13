@@ -34,6 +34,7 @@ let
     "associations"
     # "activity-watch"
     "lsp"
+    "shells"
     "vscodium"
     "wezterm"
     "theming"

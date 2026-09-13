@@ -130,6 +130,8 @@
       flake = false;
     };
 
+    niri-glass.url = "github:zaroutt/Niri-glass";
+
     # Another WM for old machines.
     # sxwm = {
     #   url = "github:uint23/sxwm";

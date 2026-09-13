@@ -31,6 +31,8 @@ rec {
   browser = "firefox";
   hosts = "${shared}/hosts";
 
+  shells = "${shared}/shells"; # Per-language nix-shell templates.
+
   zsh = "${shared}/zsh/.zshrc";
   zsh_theme = "${shared}/zsh/.p10k.zsh";
   sheldon = "${shared}/zsh/sheldon.toml";
