@@ -178,16 +178,6 @@ in {
       };
     };
 
-    codex = {
-      enable = true;
-      settings = {
-        telemetry = false;
-        worktrees = {
-          enable = true; # Allows Codex to run parallel background task threads
-        };
-      };
-    };
-
     zed-editor.enable = true;
 
   };
@@ -196,6 +186,8 @@ in {
     # --- Google Antigravity & CLI Tooling ---
     antigravity-cli
     antigravity-ide
+
+    codex
 
     # --- Companion CLIs for cross-agent orchestration ---
     # Pairs Claude Code and Codex sessions cleanly together
