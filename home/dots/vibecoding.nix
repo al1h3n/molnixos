@@ -10,7 +10,7 @@ let
 
   # Pinned so `npx` never has to hit the npm registry to resolve a version
   # on every sync run. Bump deliberately.
-  skillsCli = "skills@1.5.25"; # npm view skills version
+  skillsCli = "skills"; # npm view skills version
 
   # Canonical on-disk store the `skills` CLI writes to. ~/.claude/skills is
   # symlinks into this, and opencode auto-loads it directly.
@@ -151,6 +151,7 @@ in {
   };
 
   programs = {
+
     opencode = {
       enable = true;
       # web.enable = true; # just use 'opencode web' instead.
@@ -161,6 +162,7 @@ in {
         };
       };
     };
+
     claude-code = {
       enable = true;
       settings = {
@@ -175,5 +177,28 @@ in {
         };
       };
     };
+
+    codex = {
+      enable = true;
+      settings = {
+        telemetry = false;
+        worktrees = {
+          enable = true; # Allows Codex to run parallel background task threads
+        };
+      };
+    };
+
+    zed-editor.enable = true;
+
   };
+
+  home.packages = with pkgs; [
+    # --- Google Antigravity & CLI Tooling ---
+    antigravity-cli
+    antigravity-ide
+
+    # --- Companion CLIs for cross-agent orchestration ---
+    # Pairs Claude Code and Codex sessions cleanly together
+    nodePackages.happy-coder
+  ];
 }
