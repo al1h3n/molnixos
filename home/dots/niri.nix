@@ -1,7 +1,7 @@
-{ variables, ... }: {
-  # xdg.configFile."niri" = {
-  #   source = variables.niri; # config.lib.file.mkOutOfStoreSymlink
-  #   recursive = true;
-  # };
-  # xdg.configFile."niri/config.kdl".source = variables.niriconf;
+{ variables, pkgs, ... }: {
+  home.packages = [ pkgs.nirimod ];
+  xdg.configFile."niri" = {
+    source = config.lib.file.mkOutOfStoreSymlink variables.niri;
+    recursive = true;
+  };
 }
