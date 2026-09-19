@@ -199,6 +199,6 @@ in {
 
     # --- Companion CLIs for cross-agent orchestration ---
     # Pairs Claude Code and Codex sessions cleanly together
-    nodePackages.happy-coder
+    happy-coder
   ];
 }
