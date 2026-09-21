@@ -59,6 +59,7 @@ let
         text = "{\n}\n"
     original = text
 
+
     def remove_customizations(text):
         start = text.find(KEY)
         if start == -1:
@@ -87,6 +88,7 @@ let
         if block_end < len(text) and text[block_end] == "\n":
             block_end += 1
         return text[:line_start] + text[block_end:]
+
 
     active = THEME_KEY + ': "' + NOCTALIA_THEME + '"' in text
     if not active:
