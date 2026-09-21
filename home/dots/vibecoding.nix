@@ -1,12 +1,13 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, inputs, ... }:
 let
-  # Agents the skills are linked into. Both are required: the `skills` CLI
+  # Agents the skills are linked into. At least two are required: the `skills` CLI
   # only picks symlink mode - and so only writes the canonical
   # ~/.agents/skills store - when the targets resolve to more than one skills
   # directory. With claude-code alone it switches to copy mode straight into
   # ~/.claude/skills and never populates the store, which is the only place
-  # opencode reads from. Dropping "opencode" here hides every skill from it.
-  agents = [ "claude-code" "opencode" ];
+  # opencode reads from. Antigravity reads its linked skills from
+  # ~/.gemini/antigravity/skills.
+  agents = [ "claude-code" "opencode" "antigravity" ];
 
   # Pinned so `npx` never has to hit the npm registry to resolve a version
   # on every sync run. Bump deliberately.
@@ -76,6 +77,9 @@ let
     { repo = "https://uizze.com"; skills = [ "anti-ui-slop" "ui-design" "ui-radar" ]; }
     { repo = "rtk-ai/rtk"; skills = [ "code-simplifier" "issue-triage" "rtk-tdd" ]; }
     { repo = "github/awesome-copilot"; skill = "codebase-memory-mcp"; }
+
+    # Obsidian
+    { repo = "al1h3n/obsidian-skills"; skills = [ "daily-brief" "analyze-connections" ]; }
   ];
 
   allSkillNames = lib.concatMap skillNames skills;
@@ -183,11 +187,8 @@ in {
   };
 
   home.packages = with pkgs; [
-    # --- Google Antigravity & CLI Tooling ---
-    antigravity-cli
-    antigravity-ide
-
-    codex
+    # Standalone Antigravity 2 app, not the legacy IDE or CLI.
+    inputs.antigravity-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # --- Companion CLIs for cross-agent orchestration ---
     # Pairs Claude Code and Codex sessions cleanly together

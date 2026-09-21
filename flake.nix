@@ -130,6 +130,18 @@
       flake = false;
     };
 
+    # Standalone Antigravity 2 agent orchestration app.
+    antigravity-nix = {
+      url = "github:jacopone/antigravity-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Patched for Noctalia's AirPods plugin; nixpkgs only has upstream.
+    librepods-noctalia = {
+      url = "github:harveywuk/librepods";
+      flake = false;
+    };
+
     # niri-glass = {
     #   url = "github:zaroutt/Niri-glass";
     #   inputs.nixpkgs.follows = "nixpkgs";

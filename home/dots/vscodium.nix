@@ -17,7 +17,7 @@
 # changes, which is the same trick home-manager's own programs.vscode module
 # uses for mutableExtensionsDir.
 #
-# After the rebuild: Ctrl+K Ctrl+T -> "NoctaliaTheme".
+# After the rebuild: Ctrl+K Ctrl+T -> "Noctalia".
 #
 # Live theme changes
 # ------------------
@@ -26,10 +26,9 @@
 # CLI to reload a window. settings.json is different: it is watched, and edits
 # apply immediately.
 #
-# So the colours are mirrored from the theme file into
-# workbench.colorCustomizations in settings.json. A systemd path unit does the
-# mirroring whenever noctalia rewrites the theme, which beats polling and does
-# not depend on noctalia's hook config.
+# When the selected workbench theme is Noctalia, colours are mirrored from the
+# generated theme file into workbench.colorCustomizations. Selecting any other
+# theme removes that generated override so its own palette can take effect.
 { pkgs, lib, config, ... }:
 let
   extRoot = ".vscode-oss/extensions";
@@ -50,18 +49,58 @@ let
     THEME = "${themeFile}"
     SETTINGS = "${settingsFile}"
     KEY = '"workbench.colorCustomizations"'
-
-    try:
-        with open(THEME) as fh:
-            colors = json.load(fh)["colors"]
-    except (OSError, ValueError, KeyError):
-        raise SystemExit(0)  # half-written or missing theme: leave settings alone
+    THEME_KEY = '"workbench.colorTheme"'
+    NOCTALIA_THEME = "Noctalia"
 
     try:
         with open(SETTINGS) as fh:
             text = fh.read()
     except OSError:
         text = "{\n}\n"
+    original = text
+
+    def remove_customizations(text):
+        start = text.find(KEY)
+        if start == -1:
+            return text
+
+        value_start = text.index("{", start)
+        depth = 0
+        for end, ch in enumerate(text[value_start:], value_start):
+            if ch == "{":
+                depth += 1
+            elif ch == "}":
+                depth -= 1
+                if depth == 0:
+                    break
+
+        line_start = text.rfind("\n", 0, start) + 1
+        block_end = end + 1
+        while block_end < len(text) and text[block_end] in " \t":
+            block_end += 1
+        if block_end < len(text) and text[block_end] == ",":
+            block_end += 1
+        else:
+            before = text[:line_start].rstrip()
+            if before.endswith(","):
+                line_start = len(before) - 1
+        if block_end < len(text) and text[block_end] == "\n":
+            block_end += 1
+        return text[:line_start] + text[block_end:]
+
+    active = THEME_KEY + ': "' + NOCTALIA_THEME + '"' in text
+    if not active:
+        updated = remove_customizations(text)
+        if updated != text:
+            with open(SETTINGS, "w") as fh:
+                fh.write(updated)
+        raise SystemExit(0)
+
+    try:
+        with open(THEME) as fh:
+            colors = json.load(fh)["colors"]
+    except (OSError, ValueError, KeyError):
+        raise SystemExit(0)  # half-written or missing theme: leave settings alone
 
     block = KEY + ": " + json.dumps(colors, indent=4, sort_keys=True)
 
@@ -86,8 +125,9 @@ let
         text = text[:start] + block + text[end + 1:]
 
     # Truncate in place rather than renaming: VSCodium watches the inode.
-    with open(SETTINGS, "w") as fh:
-        fh.write(text)
+    if text != original:
+        with open(SETTINGS, "w") as fh:
+            fh.write(text)
   '';
 
 in {
@@ -99,10 +139,11 @@ in {
       Type = "oneshot";
       ExecStart = lib.getExe syncScript;
     };
+    Install.WantedBy = [ "default.target" ];
   };
   systemd.user.paths.vscodium-noctalia = {
     Unit.Description = "Watch the Noctalia VSCodium theme file";
-    Path.PathChanged = themeFile;
+    Path.PathChanged = [ themeFile settingsFile ];
     Install.WantedBy = [ "paths.target" ];
   };
 
@@ -115,7 +156,7 @@ in {
       engines.vscode = "^1.70.0";
       categories = [ "Themes" ];
       contributes.themes = [{
-        label = "NoctaliaTheme";
+        label = "Noctalia";
         uiTheme = "vs-dark";
         path = "./themes/NoctaliaTheme-color-theme.json";
       }];
