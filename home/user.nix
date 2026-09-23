@@ -56,6 +56,7 @@
       speedread # Read files fast from plain text.
       zathura # PDF viewer.
       stirling-pdf-desktop # masterpdfeditor # PDF editor.
+      # zotero # For a big amount of PDFs, research helper.
 
       # Music.
       # lazyspotify # Only with Premium subscription.
