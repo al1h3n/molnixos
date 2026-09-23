@@ -6,5 +6,5 @@
     # package = inputs.niri-glass.packages.${pkgs.stdenv.hostPlatform.system}.niri-glass;
   };
   environment.systemPackages = [ pkgs.xwayland-satellite ];
-  environment.sessionVariables.NIRI_CONFIG = variables.niriconf;
+  environment.sessionVariables.NIRI_CONFIG = "/home/${variables.username}/.config/niri/niri.kdl";
 }

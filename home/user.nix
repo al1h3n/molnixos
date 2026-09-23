@@ -12,6 +12,7 @@
       nsxiv geeqie # gthumb uses pixbuf, not imagemagickBig
       yt-dlp
       cliamp # Listen to a variety of sources.
+      blanket # Like Elpy on Linux.
 
       # Backend.
       jq
@@ -54,7 +55,7 @@
       noteshrink # Convert photos of copybook to better and compressed ones.
       speedread # Read files fast from plain text.
       zathura # PDF viewer.
-      # stirling-pdf-desktop # masterpdfeditor # PDF editor.
+      stirling-pdf-desktop # masterpdfeditor # PDF editor.
 
       # Music.
       # lazyspotify # Only with Premium subscription.
