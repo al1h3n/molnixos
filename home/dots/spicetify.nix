@@ -25,7 +25,7 @@ in {
       autoSkipVideo
       hidePodcasts
       volumePercentage
-      betterGenres # Song genre. Dissapeared from spicetify-nix.
+      # betterGenres # Song genre. Dissapeared from spicetify-nix.
       aiBandBlocker # Skip AI slop.
       copyToClipboard # Copy song name.
       copyLyrics
