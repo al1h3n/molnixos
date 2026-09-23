@@ -1,4 +1,4 @@
-# Spicetify manages Spotify automatically - gerg-l.github.io/spicetify-nix
+# Spicetify manages Spotify automatically - https://gerg-l.github.io/spicetify-nix
 { inputs, pkgs, ... }:
 let
   spicePkgs = inputs.spicetify.legacyPackages.${pkgs.stdenv.hostPlatform.system};
@@ -25,12 +25,11 @@ in {
       autoSkipVideo
       hidePodcasts
       volumePercentage
-      betterGenres # Song genre.
+      betterGenres # Song genre. Dissapeared from spicetify-nix.
       aiBandBlocker # Skip AI slop.
       copyToClipboard # Copy song name.
       copyLyrics
       history # History of playing.
-      betterGenres
 
       # Irritating but useful.
       # spicyLyrics # Better lyrics.
