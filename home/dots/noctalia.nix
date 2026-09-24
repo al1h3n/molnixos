@@ -14,8 +14,18 @@ in {
   systemd.user.services.librepods = {
     Unit = {
       Description = "librepods AirPods daemon";
+      # Ordered after the graphical session so PipeWire/Bluetooth are up, but
+      # deliberately NOT PartOf/WantedBy=graphical-session.target: on this
+      # system graphical-session.target gets torn down transiently on every
+      # Hyprland<->Niri session switch (niri ships niri-shutdown.target with
+      # Conflicts=graphical-session.target, and nothing keeps the target
+      # "needed" once the polkit agent finishes starting - StopWhenUnneeded
+      # then kills it even while Hyprland is still the active session). A
+      # PartOf binding here made librepods get SIGTERM'd a few seconds/minutes
+      # into every Hyprland session, which is exactly the "doesn't recognize
+      # my AirPods on Hyprland" symptom. WantedBy=default.target instead ties
+      # the daemon to the whole login, independent of WM session-target churn.
       After = [ "graphical-session.target" ];
-      PartOf = [ "graphical-session.target" ];
     };
     Service = {
       ExecStart = "${lib.getExe librepods} --headless";
@@ -24,7 +34,7 @@ in {
       UMask = "0077";
       Environment = [ "QT_LOGGING_RULES=openpods.debug=false" ];
     };
-    Install.WantedBy = [ "graphical-session.target" ];
+    Install.WantedBy = [ "default.target" ];
   };
 
   xdg.configFile."noctalia/config.toml" = {

@@ -70,6 +70,13 @@ Pay attention that most of the games might not even launch.
 3. Add `access-tokens = TOKEN`
 
 ### libvirtd.service error
-```
+```bash
 sudo rm -f /var/lib/libvirt/secrets/secrets-encryption-key
+```
+
+### Dependencies check
+If you want to see which packages depend on others, run for example
+```bash
+nix why-depends --impure --all /run/current-system "nixpkgs#google-chrome"
+nix why-depends --impure --all /run/current-system "nixpkgs#electron"
 ```
