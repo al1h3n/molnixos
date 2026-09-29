@@ -1,11 +1,6 @@
+# Uses expose.nix as well.
 { ... }: {
-  services.sunshine = {
-    enable = true;
-    autoStart = true;
-    capSysAdmin = true;   # Grants required access for Wayland stream capture
-    openFirewall = true;  # Automatically configures the system firewall ports
-  };
-
-  # 3. For hardware input layer mapping hooks
-  hardware.uinput.enable = true;
+  # Niri/Hyprland support Wayland screencopy without DRM/KMS privileges.
+  # Sunshine's ports are allowed only on tailscale0 in expose.nix.
+  services.sunshine.enable = true;
 }
