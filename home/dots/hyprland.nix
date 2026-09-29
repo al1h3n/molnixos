@@ -13,6 +13,7 @@
     hyprmod
     hyprmoncfg
     hyprglass
+    # Config autocompletion - lua-language-server
   ];
 
   # Files.
