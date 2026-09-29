@@ -123,6 +123,9 @@ in {
     # Power profiles. TLP is more advanced but less supported.
     tlp.enable = false;
     power-profiles-daemon.enable = true;
+
+    # Tailscale - expose your port.
+    tailscale.enable = true;
   };
 
   # For org.freedesktop.portal.Settings (also lazyspotify).
