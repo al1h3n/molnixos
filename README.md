@@ -80,3 +80,6 @@ If you want to see which packages depend on others, run for example
 nix why-depends --impure --all /run/current-system "nixpkgs#google-chrome"
 nix why-depends --impure --all /run/current-system "nixpkgs#electron"
 ```
+
+### Tailscale: can't login
+Turn off WARP: `warp-cli disconnect`
