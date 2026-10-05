@@ -1,5 +1,5 @@
-1. Enable "setrixtui" back when it'll be fixed.
+1. Enable `setrixtui` back when it'll be fixed.
 
 ### Loop tasks
-1. Check latest skillsCli version in `vibecoding.nix`
-2. Update `rev` and `hash` in `build` directory.
+1. Update `rev` and `hash` in `build` directory.
+2. Update `hyprglass` branch in `flake.nix`.

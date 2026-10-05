@@ -4,12 +4,14 @@
 # never loads: the plugin embeds the aquamarine/hyprutils/hyprlang/hyprcursor/
 # hyprgraphics versions it was built with and refuses to load on a mismatch,
 # and nixpkgs pairs Hyprland with different versions than upstream releases do.
-{ lib, mkHyprlandPlugin, src }:
+{ lib, mkHyprlandPlugin, src, wayland-scanner }:
 
 mkHyprlandPlugin {
   pluginName = "hyprglass";
   version = "unstable";
   inherit src;
+
+  nativeBuildInputs = [ wayland-scanner ];
 
   installPhase = ''
     runHook preInstall
