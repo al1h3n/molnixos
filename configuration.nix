@@ -12,6 +12,7 @@ in {
       ./hardware-configuration.nix
       ./hardware
       ./hardware/mouse.nix
+      ./hardware/mouse-logitech.nix # Remove Logi mouse failures during boot.
       ./hardware/swap.nix # Sets swap to amount of your RAM to enable proper hibernation.
 
       # GPU configuration.

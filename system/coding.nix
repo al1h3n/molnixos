@@ -8,11 +8,9 @@
     # from compositor keybinds, so a dev shell cannot cover them.
     python3
 
-    # opencode shells out to npm to install its plugins
-    # (@ex-machina/opencode-anthropic-auth), and the fish `ag` function runs
-    # `npx --yes skills`. agent-skills-sync does NOT need this - it carries its
-    # own nodejs in runtimeInputs.
-    nodejs_24
+    # The fish `ag` helper runs `bunx --bun skills`. agent-skills-sync carries
+    # its own Bun in runtimeInputs; OpenCode installs plugins in-process.
+    bun
 
     # Removed, no caller on this machine (no ~/.cargo, ~/go, ~/.local/share/pipx,
     # and no Cargo.toml/go.mod/CMakeLists.txt/Makefile anywhere in $HOME):

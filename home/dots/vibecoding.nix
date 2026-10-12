@@ -9,9 +9,8 @@ let
   # ~/.gemini/antigravity/skills.
   agents = [ "claude-code" "opencode" "antigravity" ];
 
-  # Pinned so `npx` never has to hit the npm registry to resolve a version
-  # on every sync run. Bump deliberately.
-  skillsCli = "skills"; # npm view skills version
+  # npm package name; bunx caches the CLI between sync runs.
+  skillsCli = "skills";
 
   # Canonical on-disk store the `skills` CLI writes to. ~/.claude/skills is
   # symlinks into this, and opencode auto-loads it directly.
@@ -33,12 +32,12 @@ let
     { repo = "apollographql/skills"; skill = "rust-best-practices"; }
 
     # Web & Full-Stack Best Practices
-    { repo = "vercel-labs/agent-skills"; skills = [ "vercel-react-best-practices" "frontend-design" ]; }
+    { repo = "vercel-labs/agent-skills"; skill = "vercel-react-best-practices"; }
+    { repo = "https://github.com/anthropics/skills/tree/main/skills/frontend-design"; skill = "frontend-design"; }
     { repo = "addyosmani/web-quality-skills"; skill = "best-practices"; }
     { repo = "addyosmani/agent-skills"; skill = "ci-cd-and-automation"; }
-    # The CLI auto-discovers the skill's nested path inside the repo; no
-    # tree-URL or full clone needed.
-    { repo = "jwynia/agent-skills"; skill = "electron-best-practices"; }
+    # Direct paths for skills outside the CLI's default discovery depth.
+    { repo = "https://github.com/jwynia/agent-skills/tree/main/skills/tech/development/tooling/electron-best-practices"; skill = "electron-best-practices"; }
     # `partme-ai/full-stack-skills` no longer ships a SKILL.md. The skills
     # moved to dedicated repos under the `full-stack-skills` org.
     { repo = "full-stack-skills/electron-skills"; skill = "electron"; }
@@ -50,6 +49,10 @@ let
       skills = [
         "ask-matt"
         "diagnosing-bugs"
+        # Shared implementations used by the wrapper skills below.
+        "grilling"
+        "domain-modeling"
+        "codebase-design"
         "grill-me"
         "grill-with-docs"
         "improve-codebase-architecture"
@@ -57,7 +60,7 @@ let
     }
 
     # Code Quality, Auditing & Review
-    { repo = "cursor/plugins"; skill = "thermo-nuclear-code-quality-review"; }
+    { repo = "https://github.com/cursor/plugins/tree/main/cursor-team-kit/skills/thermo-nuclear-code-quality-review"; skill = "thermo-nuclear-code-quality-review"; }
     { repo = "shadcn/improve"; skill = "improve"; }
 
     # Roblox
@@ -80,12 +83,13 @@ let
 
     # Obsidian
     { repo = "al1h3n/obsidian-skills"; skills = [ "daily-brief" "analyze-connections" ]; }
+    { repo = "al1h3n/apple-skills"; skills = [ "liquid-glass" "ios" "apple-ui" ]; }
   ];
 
   allSkillNames = lib.concatMap skillNames skills;
 
   addCmd = repo: skillList:
-    "npx --yes ${skillsCli} add ${lib.escapeShellArg repo}"
+    "bunx --bun ${skillsCli} add ${lib.escapeShellArg repo}"
     + lib.concatMapStrings (s: " --skill ${lib.escapeShellArg s}") skillList
     + " --global"
     + lib.concatMapStrings (a: " --agent ${lib.escapeShellArg a}") agents
@@ -93,7 +97,7 @@ let
 
   # One shell block per manifest entry. Each block is a no-op once its
   # skills exist on disk, so a retry after a partial failure only touches
-  # what is still missing and a steady-state run spawns no `npx` at all.
+  # what is still missing and a steady-state run spawns no `bunx` at all.
   # Any failure sets `failed=1`.
   installSkill = entry: ''
     if ! { ${lib.concatMapStringsSep " && " (s: ''test -d "${skillsStore}/${s}"'') (skillNames entry)}; }; then
@@ -104,7 +108,7 @@ let
 
   syncScript = pkgs.writeShellApplication {
     name = "agent-skills-sync";
-    runtimeInputs = [ pkgs.nodejs pkgs.git pkgs.coreutils pkgs.findutils ];
+    runtimeInputs = [ pkgs.bun pkgs.git pkgs.coreutils pkgs.findutils ];
     text = ''
       failed=0
 
