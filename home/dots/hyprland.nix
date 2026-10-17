@@ -5,7 +5,7 @@
     enable = true;
     systemd.enable = false; # Might break hyprland autolaunch.
     xwayland.enable = true;
-    plugins = [ inputs.hypr3d.packages.${pkgs.system}.default ];
+    plugins = [ inputs.hypr3d.packages.${pkgs.stdenv.hostPlatform.system}.default ];
   };
 
   # Packages.
