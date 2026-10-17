@@ -143,10 +143,18 @@
     #   url = "github:uint23/sxwm";
     #   flake = false;
     # };
+
+    # 3D environment in hyprland.
+    hypr3d = {
+      # Use ?submodules=1 so third_party/ (Jolt physics) is cloned
+      url = "github:samine825/Hypr3D?submodules=1";
+      inputs.hyprland.follows = "hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, nixpkgs-stable, nur, nix-cachyos-kernel,
-  yt-x, spicetify, lazyvim, ... }@inputs:
+  yt-x, spicetify, lazyvim, hypr3d, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;
