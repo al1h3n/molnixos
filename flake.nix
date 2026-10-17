@@ -26,7 +26,7 @@
     # the kernel currently running.
     nix-cachyos-kernel = {
       url = "github:xddxdd/nix-cachyos-kernel/release";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # NUR - Nix User Repository, for packages that aren't in nixpkgs. Similar to AUR.
