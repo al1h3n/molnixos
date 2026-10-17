@@ -26,7 +26,7 @@
         "https://cachix.org"
         "https://cachix.org"
         "https://cachix.org"
-        "https://xuyh0120.win"
+        # "https://xuyh0120.win"
       ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
