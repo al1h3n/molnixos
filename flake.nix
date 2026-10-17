@@ -164,7 +164,6 @@
         { nixpkgs.overlays = [ # Overlays.
           nur.overlays.default
           nix-cachyos-kernel.overlays.pinned
-          # (final: prev: { lazyspotify = final.callPackage ./build/lazyspotify.nix { src = inputs.lazyspotify; }; })
           (final: prev: { tuilet = final.callPackage ./build/tuilet.nix { src = inputs.tuilet;}; })
           (final: prev: { hyprglass = final.callPackage ./build/hyprglass.nix {
             src = inputs.hyprglass;

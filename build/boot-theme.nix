@@ -66,3 +66,35 @@ in {
     initrd.systemd.enable = true; # note: global change, not just cosmetic.
   };
 }
+
+# Script to fetch latest hash
+# nix shell nixpkgs#nix-prefetch-git nixpkgs#git nixpkgs#jq -c bash -c '
+# REPO="https://github.com/adi1090x/plymouth-themes.git"
+# REV=$(git ls-remote "$REPO" HEAD | cut -f1)
+
+# echo "Latest revision: $REV"
+# echo
+
+# for theme in \
+#   pack_1/abstract_ring \
+#   pack_2/green_blocks \
+#   pack_2/dna
+# do
+#   name="${theme##*/}"
+#   echo "Fetching $name..."
+
+#   hash=$(nix-prefetch-git \
+#     --url "$REPO" \
+#     --rev "$REV" \
+#     --sparse-checkout "$theme" \
+#     --quiet | jq -r ".sha256")
+
+#   sri=$(nix hash convert --hash-algo sha256 --to sri "$hash")
+
+#   echo "$name = {"
+#   echo "  path = \"$theme\";"
+#   echo "  hash = \"$sri\";"
+#   echo "};"
+#   echo
+# done
+# '
