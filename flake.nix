@@ -3,31 +3,22 @@
   description = "Flake-based configuration for MolnixOS";
 
   inputs = {
+    # Follow the latest channel revision, promoted after Hydra build checks.
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    # nixpkgs-stable.url = "nixpkgs/nixos-26.05";
+    # nixpkgs-stable.url = "nixpkgs/nixos-26.11";
     nixpkgs-stable.follows = "nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # home-manager-stable = {
-    #   url = "github:nix-community/home-manager/release-26.05";
+    #   url = "github:nix-community/home-manager/release-26.11";
     #   inputs.nixpkgs.follows = "nixpkgs-stable";
     # };
     home-manager-stable.follows = "home-manager";
 
-    # CachyOS repository.
-    #
-    # The `follows` below was commented out, which pinned a whole second
-    # nixpkgs (359 MB of source) just for this input. Enabling it changes
-    # nothing about the kernel: the `pinned` overlay ships prebuilt artifacts,
-    # and the resulting store path is byte-identical either way - verified as
-    # /nix/store/4bw1bbhv36ikcvdm5cz4q2vw35ml3iw0-linux-cachyos-latest-7.2.4,
-    # the kernel currently running.
-    nix-cachyos-kernel = {
-      url = "github:xddxdd/nix-cachyos-kernel/release";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # CachyOS release branch, refreshed with the other inputs each day.
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
     # NUR - Nix User Repository, for packages that aren't in nixpkgs. Similar to AUR.
     # Used for Firefox extensions.
@@ -54,7 +45,7 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-    # yt-x to watch YouTube in shell. Do NOT accept updates.
+    # yt-x to watch YouTube in shell.
     yt-x = {
       url = "github:Benexl/yt-x";
       inputs.nixpkgs.follows = "nixpkgs";

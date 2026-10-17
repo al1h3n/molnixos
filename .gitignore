@@ -27,6 +27,7 @@ agents/
 *.cache
 *.pid
 *.lock
+!/flake.lock
 
 # Images (optional — remove if needed)
 *.png

@@ -83,3 +83,8 @@ nix why-depends --impure --all /run/current-system "nixpkgs#electron"
 
 ### Tailscale: can't login
 Turn off WARP: `warp-cli disconnect`
+
+### Updating lock files
+```bash
+nix flake update
+```
