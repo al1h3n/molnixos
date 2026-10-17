@@ -148,7 +148,6 @@
     hypr3d = {
       # Use ?submodules=1 so third_party/ (Jolt physics) is cloned
       url = "github:samine825/Hypr3D?submodules=1";
-      inputs.hyprland.follows = "hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
