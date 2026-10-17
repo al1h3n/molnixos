@@ -1,4 +1,4 @@
-{ lib, pkgs, inputs, ... }:
+{ lib, pkgs, inputs, config, ... }:
 let
   # Agents the skills are linked into. At least two are required: the `skills` CLI
   # only picks symlink mode - and so only writes the canonical
@@ -7,7 +7,10 @@ let
   # ~/.claude/skills and never populates the store, which is the only place
   # opencode reads from. Antigravity reads its linked skills from
   # ~/.gemini/antigravity/skills.
-  agents = [ "claude-code" "opencode" "antigravity" ];
+  agents = [ "claude-code" "opencode" ]; # antigravity still points to old IDE so run:
+  # home.file.".gemini/config/skills".source =
+  # config.lib.file.mkOutOfStoreSymlink
+  #   "${config.home.homeDirectory}/.agents/skills";
 
   # npm package name; bunx caches the CLI between sync runs.
   skillsCli = "skills";
@@ -78,7 +81,7 @@ let
 
     # Repos / Tools / MCP
     { repo = "https://uizze.com"; skills = [ "anti-ui-slop" "ui-design" "ui-radar" ]; }
-    { repo = "rtk-ai/rtk"; skills = [ "code-simplifier" "issue-triage" "rtk-tdd" ]; }
+    { repo = "edm115/skills"; skill = "rtk"; }
     { repo = "github/awesome-copilot"; skill = "codebase-memory-mcp"; }
 
     # Obsidian
@@ -159,7 +162,7 @@ in {
   };
 
   programs = {
-
+    # zed-editor.enable = true;
     opencode = {
       enable = true;
       # web.enable = true; # just use 'opencode web' instead.
@@ -170,7 +173,6 @@ in {
         };
       };
     };
-
     claude-code = {
       enable = true;
       settings = {
@@ -185,17 +187,24 @@ in {
         };
       };
     };
-
-    zed-editor.enable = true;
-
   };
 
-  home.packages = with pkgs; [
-    # Standalone Antigravity 2 app, not the legacy IDE or CLI.
-    inputs.antigravity-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
+  home = {
+    home.file.".gemini/config/skills" = {
+      source = config.lib.file.mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/.agents/skills";
+      recursive = false;
+    };
 
-    # --- Companion CLIs for cross-agent orchestration ---
-    # Pairs Claude Code and Codex sessions cleanly together
-    happy-coder
-  ];
+    packages = with pkgs; [
+      # Skills related
+      rtk
+
+      # Standalone Antigravity 2 app, not the legacy IDE or CLI.
+      inputs.antigravity-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
+
+      # Pairs Claude Code and Codex sessions cleanly together
+      happy-coder
+    ];
+  };
 }

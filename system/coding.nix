@@ -8,7 +8,7 @@
     # from compositor keybinds, so a dev shell cannot cover them.
     python3
 
-    # The fish `ag` helper runs `bunx --bun skills`. agent-skills-sync carries
+    # The shell `ag` helper runs `bunx --bun skills`. agent-skills-sync carries
     # its own Bun in runtimeInputs; OpenCode installs plugins in-process.
     bun
 
