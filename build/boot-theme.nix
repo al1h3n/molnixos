@@ -40,7 +40,7 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "adi1090x";
       repo = "plymouth-themes";
-      rev = "5d8817458d764bff4ff9daae94cf1bbaabf16ede";
+      rev = "master";
       inherit (theme) hash;
       forceFetchGit = true;
       sparseCheckout = [ theme.path ];
