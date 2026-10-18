@@ -1,0 +1,121 @@
+diff --git a/src/Render/MapModel.hpp b/src/Render/MapModel.hpp
+--- a/src/Render/MapModel.hpp
++++ b/src/Render/MapModel.hpp
+@@ -145,6 +145,8 @@
+         unsigned int vao = 0, vbo = 0, ebo = 0;
+         int          count = 0;   // index count (or vertex count unindexed)
+         bool         indexed = false;
+         unsigned int texture = 0; // 0 = untextured (white fallback)
++        unsigned int textureSampler = 0;
++        int minFilter = 0, magFilter = 0, wrapS = 0, wrapT = 0;
+         float        color[4] = {1.f, 1.f, 1.f, 1.f};
+         unsigned int emissiveTex = 0;
+diff --git a/src/Render/MapModel.cpp b/src/Render/MapModel.cpp
+--- a/src/Render/MapModel.cpp
++++ b/src/Render/MapModel.cpp
+@@ -435,4 +435,11 @@
+                 out_.baseImage     = IMAGE(SPEC_GLOSS ? SG.diffuse_texture :
+                                                        PBR.base_color_texture);
+                 out_.emissiveImage = IMAGE(prim->material->emissive_texture);
++                const auto* TEX0 = SPEC_GLOSS ? SG.diffuse_texture.texture : PBR.base_color_texture.texture;
++                if (TEX0 && TEX0->sampler) {
++                    out.minFilter = TEX0->sampler->min_filter;
++                    out.magFilter = TEX0->sampler->mag_filter;
++                    out.wrapS = TEX0->sampler->wrap_s;
++                    out.wrapT = TEX0->sampler->wrap_t;
++                }
+             }
+@@ -676,6 +683,13 @@
+     for (auto& P : DECODED->prims) {
+         SPrimitive out = P.params;
+         out.texture     = P.baseImage >= 0 ? TEXTURES[P.baseImage] : 0;
+         out.emissiveTex = P.emissiveImage >= 0 ? TEXTURES[P.emissiveImage] : 0;
++        if (out.texture && (out.minFilter || out.magFilter || out.wrapS || out.wrapT)) {
++            glGenSamplers(1, &out.textureSampler);
++            glSamplerParameteri(out.textureSampler, GL_TEXTURE_MIN_FILTER, out.minFilter ? out.minFilter : GL_LINEAR_MIPMAP_LINEAR);
++            glSamplerParameteri(out.textureSampler, GL_TEXTURE_MAG_FILTER, out.magFilter ? out.magFilter : GL_LINEAR);
++            glSamplerParameteri(out.textureSampler, GL_TEXTURE_WRAP_S, out.wrapS ? out.wrapS : GL_REPEAT);
++            glSamplerParameteri(out.textureSampler, GL_TEXTURE_WRAP_T, out.wrapT ? out.wrapT : GL_REPEAT);
++        }
+ 
+         glGenVertexArrays(1, &out.vao);
+@@ -745,6 +759,8 @@
+     for (const auto& P : m_primitives) {
++        if (P.textureSampler)
++            glDeleteSamplers(1, &P.textureSampler);
+         if (P.ebo)
+             glDeleteBuffers(1, &P.ebo);
+         if (P.vbo)
+             glDeleteBuffers(1, &P.vbo);
+         if (P.vao)
+@@ -997,6 +1013,7 @@
+         glActiveTexture(GL_TEXTURE1);
+         glBindTexture(GL_TEXTURE_2D, P.emissiveTex);
+         glActiveTexture(GL_TEXTURE0);
++        glBindSampler(0, P.textureSampler);
+         glBindTexture(GL_TEXTURE_2D, P.texture);
+ 
+         glBindVertexArray(P.vao);
+@@ -1054,6 +1071,7 @@
+     glBindVertexArray(0);
++    glBindSampler(0, 0);
+     glBindTexture(GL_TEXTURE_2D, 0);
+     glDepthMask(GL_TRUE);
+ }
+ 
+ } // namespace H3D
+diff --git a/src/Render/PlayerModel.hpp b/src/Render/PlayerModel.hpp
+--- a/src/Render/PlayerModel.hpp
++++ b/src/Render/PlayerModel.hpp
+@@ -205,6 +205,7 @@
+         unsigned int vao = 0, vbo = 0, ebo = 0;
+         int          count = 0;
+         bool         indexed = false;
+         unsigned int texture = 0;
++        unsigned int textureSampler = 0;
+         float        color[4] = {1.f, 1.f, 1.f, 1.f};
+         int          node = -1;
+diff --git a/src/Render/PlayerModel.cpp b/src/Render/PlayerModel.cpp
+--- a/src/Render/PlayerModel.cpp
++++ b/src/Render/PlayerModel.cpp
+@@ -906,6 +906,15 @@
+                 if (M.pbr_metallic_roughness.base_color_texture.texture &&
+-                    M.pbr_metallic_roughness.base_color_texture.texture->image)
++                    M.pbr_metallic_roughness.base_color_texture.texture->image) {
+                     P.texture = uploadTexture(
+                         MODEL_DIR,
+                         M.pbr_metallic_roughness.base_color_texture.texture->image);
++                    const auto* S = M.pbr_metallic_roughness.base_color_texture.texture->sampler;
++                    if (P.texture && S) {
++                        glGenSamplers(1, &P.textureSampler);
++                        glSamplerParameteri(P.textureSampler, GL_TEXTURE_MIN_FILTER, S->min_filter ? S->min_filter : GL_LINEAR_MIPMAP_LINEAR);
++                        glSamplerParameteri(P.textureSampler, GL_TEXTURE_MAG_FILTER, S->mag_filter ? S->mag_filter : GL_LINEAR);
++                        glSamplerParameteri(P.textureSampler, GL_TEXTURE_WRAP_S, S->wrap_s ? S->wrap_s : GL_REPEAT);
++                        glSamplerParameteri(P.textureSampler, GL_TEXTURE_WRAP_T, S->wrap_t ? S->wrap_t : GL_REPEAT);
++                    }
++                }
+             }
+@@ -1051,6 +1060,8 @@
+     for (auto& P : m_prims) {
++        if (P.textureSampler)
++            glDeleteSamplers(1, &P.textureSampler);
+         if (P.ebo)
+             glDeleteBuffers(1, &P.ebo);
+         if (P.vbo)
+             glDeleteBuffers(1, &P.vbo);
+         if (P.vao)
+@@ -1126,6 +1137,7 @@
+                     P.color[2] * m_emissiveScale, P.color[3]);
+         glUniform1i(m_uHasTex, P.texture != 0);
++        glBindSampler(0, P.textureSampler);
+         glBindTexture(GL_TEXTURE_2D, P.texture);
+         glBindVertexArray(P.vao);
+         if (P.indexed)
+             glDrawElements(GL_TRIANGLES, P.count, GL_UNSIGNED_INT, nullptr);
+@@ -1135,5 +1147,6 @@
+ 
+     glBindVertexArray(0);
++    glBindSampler(0, 0);
+     glBindTexture(GL_TEXTURE_2D, 0);
+ }
+ 

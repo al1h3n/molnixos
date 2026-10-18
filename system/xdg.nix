@@ -2,7 +2,7 @@
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.common.default = [ "gtk" ];
+    config.common.default = "*";
   };
 
   # NixOS expands these globs into every concrete MIME type, so one line covers the whole family.

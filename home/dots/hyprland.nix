@@ -1,11 +1,10 @@
 # User-wide hyprland module.
-{ pkgs, config, variables, inputs, ... }: {
+{ pkgs, config, variables, ... }: {
   # Enabling Hyprland.
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false; # Might break hyprland autolaunch.
     xwayland.enable = true;
-    plugins = [ inputs.hypr3d.packages.${pkgs.stdenv.hostPlatform.system}.default ];
   };
 
   # Packages.
@@ -14,6 +13,7 @@
     hyprmod
     hyprmoncfg
     hyprglass
+    hypr3d # Loaded by the shared Lua config from the Home Manager profile.
     # Config autocompletion - lua-language-server
   ];
 

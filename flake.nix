@@ -146,14 +146,13 @@
 
     # 3D environment in hyprland.
     hypr3d = {
-      # Use ?submodules=1 so third_party/ (Jolt physics) is cloned
-      url = "github:samine825/Hypr3D?submodules=1";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:samine825/Hypr3D";
+      flake = false;
     };
   };
 
   outputs = { nixpkgs, nixpkgs-stable, nur, nix-cachyos-kernel,
-  yt-x, spicetify, lazyvim, hypr3d, ... }@inputs:
+  yt-x, spicetify, lazyvim, ... }@inputs:
   let
     variables = import ./variables.nix;
     pkgsSource = if variables.channel == "stable" then nixpkgs-stable else nixpkgs;
@@ -174,6 +173,10 @@
           (final: prev: { tuilet = final.callPackage ./build/tuilet.nix { src = inputs.tuilet;}; })
           (final: prev: { hyprglass = final.callPackage ./build/hyprglass.nix {
             src = inputs.hyprglass;
+            inherit (final.hyprlandPlugins) mkHyprlandPlugin;
+          }; })
+          (final: prev: { hypr3d = final.callPackage ./build/hypr3d.nix {
+            src = inputs.hypr3d;
             inherit (final.hyprlandPlugins) mkHyprlandPlugin;
           }; })
         ]; }

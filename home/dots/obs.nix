@@ -6,6 +6,9 @@
       cudaSupport = true; # For NVIDIA GPUs.
       ffmpeg = pkgs.ffmpeg-full;
     };
-    # plugins = with pkgs.obs-studio-plugins; [ obs-vaapi ]; # For Intel GPUs.
+    plugins = with pkgs.obs-studio-plugins; [
+      # obs-vaapi # For Intel GPUs.
+      obs-pipewire-audio-capture
+    ];
   };
 }
