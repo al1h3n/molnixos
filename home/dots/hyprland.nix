@@ -1,9 +1,15 @@
 # User-wide hyprland module.
-{ pkgs, config, variables, ... }: {
+{ pkgs, variables, ... }: {
   # Enabling Hyprland.
   wayland.windowManager.hyprland = {
     enable = true;
-    systemd.enable = false; # Might break hyprland autolaunch.
+    # Keeps graphical-session.target active, as required by the capture portal.
+    systemd.enable = true;
+    configType = "lua";
+    # Let Home Manager generate session hooks while loading the live shared config.
+    extraConfig = ''
+      dofile(${builtins.toJSON variables.hyprland})
+    '';
     xwayland.enable = true;
   };
 
@@ -16,12 +22,4 @@
     hypr3d # Loaded by the shared Lua config from the Home Manager profile.
     # Config autocompletion - lua-language-server
   ];
-
-  # Files.
-  xdg.configFile = {
-    "hypr/hyprland.lua" = {
-      source = config.lib.file.mkOutOfStoreSymlink variables.hyprland;
-      force = true;
-    };
-  };
 }

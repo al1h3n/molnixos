@@ -8,7 +8,7 @@
     };
     plugins = with pkgs.obs-studio-plugins; [
       # obs-vaapi # For Intel GPUs.
-      obs-pipewire-audio-capture
+      # obs-pipewire-audio-capture # Optional: per-application audio, not screen/window capture.
     ];
   };
 }
