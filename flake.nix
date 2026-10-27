@@ -170,10 +170,6 @@
         { nixpkgs.overlays = [ # Overlays.
           nur.overlays.default
           nix-cachyos-kernel.overlays.pinned
-          # (final: prev: {
-          #   # Match module aggregation to the pinned kernel's signing format. Remove when signing is updated.
-          #   aggregateModules = nix-cachyos-kernel.inputs.nixpkgs.legacyPackages.${final.stdenv.hostPlatform.system}.aggregateModules;
-          # })
           (final: prev: { tuilet = final.callPackage ./build/tuilet.nix { src = inputs.tuilet;}; })
           (final: prev: { hyprglass = final.callPackage ./build/hyprglass.nix {
             src = inputs.hyprglass;
