@@ -1,7 +1,6 @@
 { ... }: {
   boot = {
     consoleLogLevel = 4;
-    initrd.verbose = false;
     kernelParams = [
       "quiet"
       "rd.systemd.show_status=false"
