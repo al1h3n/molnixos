@@ -21,11 +21,7 @@
       (tesseract5.override { enableLanguages = [ "eng" "rus" "chi_sim" ]; })
 
       # Wallpapers.
-      awww mpvpaper waypaper
-      # Split wrapper flags until nixpkgs fixes pywal16's makeWrapperArgs.
-      (pywal16.overrideAttrs (old: {
-        makeWrapperArgs = pkgs.lib.concatMap (pkgs.lib.splitString " ") old.makeWrapperArgs;
-      }))
+      awww mpvpaper waypaper pywal16
       wallust matugen
       # Screenshots and recorders.
       grim slurp wf-recorder satty

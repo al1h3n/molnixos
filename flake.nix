@@ -77,12 +77,12 @@
     };
 
     # Setrixtui - cool tetris.
-    setrixtui = {
-      url = "github:Mjoyufull/Setrixtui";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
-      inputs.naersk.inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # setrixtui = {
+    #   url = "github:Mjoyufull/Setrixtui";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.naersk.inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Eyedropper to catch a color.
     ie-r = {
