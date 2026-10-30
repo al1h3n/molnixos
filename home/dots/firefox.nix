@@ -1,44 +1,34 @@
-# Firefox
 { pkgs, ... }:
-let
-  commonSettings = {
-    # Extensions.
-    "extensions.allowPrivateBrowsingByDefault" = true;
-    "extensions.autoDisableScopes" = 0; # Automatically enable extensions.
 
-    # UI.
+let
+  # SHARED SETTINGS
+  commonSettings = {
+    # Extensions
+    "extensions.allowPrivateBrowsingByDefault" = true;
+    "extensions.autoDisableScopes" = 0;
+
+    # UI
     "browser.uidensity" = 1;
 
-    # Pocket.
+    # Pocket
     "extensions.pocket.api" = "";
     "extensions.pocket.enabled" = false;
     "extensions.pocket.site" = "";
     "extensions.pocket.oAuthConsumerKey" = "";
 
-    # Fullscreen.
+    # Fullscreen
     "full-screen-api.transition-duration.enter" = "0";
     "full-screen-api.transition-duration.leave" = "0";
     "full-screen-api.warning.timeout" = 0;
 
-    # Privacy.
+    # Tracking protection
     "privacy.trackingprotection.enabled" = true;
     "privacy.donottrackheader.enabled" = true;
 
-    # Fission (site isolation).
+    # Site isolation
     "fission.autostart" = true;
 
-    # HTTP pipelining (legacy networking tweaks).
-    "network.http.pipelining" = true;
-    "network.http.proxy.pipelining" = true;
-    "network.http.pipelining.maxrequests" = 30;
-
-    # Rendering.
-    "nglayout.initialpaint.delay" = 0;
-
-    # DNS.
-    "network.dns.ecg" = true;
-
-    # Telemetry.
+    # Telemetry
     "toolkit.telemetry.archive.enabled" = false;
     "toolkit.telemetry.bhrPing.enabled" = false;
     "toolkit.telemetry.cachedClientID" = "";
@@ -53,41 +43,90 @@ let
     "toolkit.telemetry.unified" = false;
     "toolkit.telemetry.updatePing.enabled" = false;
 
+    # Data reporting
     "datareporting.healthreport.infoURL" = "";
     "datareporting.healthreport.uploadEnabled" = false;
     "datareporting.policy.dataSubmissionEnabled" = false;
     "datareporting.policy.firstRunURL" = "";
 
+    # Crash reporting
     "browser.tabs.crashReporting.sendReport" = false;
     "browser.tabs.crashReporting.email" = false;
     "browser.tabs.crashReporting.emailMe" = false;
-
     "breakpad.reportURL" = "";
     "security.ssl.errorReporting.automatic" = false;
     "toolkit.crashreporter.infoURL" = "";
 
+    # Experiments
     "network.allow-experiments" = false;
     "dom.ipc.plugins.reportCrashURL" = false;
     "dom.ipc.plugins.flash.subprocess.crashreporter.enabled" = false;
+  };
 
-    # JS JIT.
+  # PROFILE 1: PRIVACY
+  privacySettings = {
+    # Firefox Account & Sync
+    "identity.fxaccounts.enabled" = false;
+    "services.sync.enabled" = false;
+
+    # Fingerprinting protection
+    "privacy.resistFingerprinting" = true;
+
+    # WebGL
+    "webgl.disabled" = true;
+
+    # JavaScript JIT
     "javascript.options.baselinejit" = false;
     "javascript.options.ion" = false;
     "javascript.options.jit_trustedprincipals" = false;
-    # WebAssemply JIT.
+
+    # WebAssembly
     "javascript.options.wasm" = false;
     "javascript.options.wasm_trustedprincipals" = false;
     "javascript.options.wasm_baselinejit" = false;
-    "javascript.options.optimizingjit" = false;
-    # Asm.js JIT.
+    "javascript.options.wasm_optimizingjit" = false;
+
+    # asm.js
     "javascript.options.asmjs" = false;
     "javascript.options.blinterp" = false;
-
   };
+
+  # PROFILE 2: PROJECTS
+  projectsSettings = {
+    # Firefox Account & Sync
+    "identity.fxaccounts.enabled" = true;
+    "services.sync.enabled" = true;
+
+    # Fingerprinting protection
+    "privacy.resistFingerprinting" = false;
+
+    # WebGL
+    "webgl.disabled" = false;
+
+    # WebGPU
+    "dom.webgpu.enabled" = true;
+
+    # JavaScript JIT
+    "javascript.options.baselinejit" = true;
+    "javascript.options.ion" = true;
+    "javascript.options.jit_trustedprincipals" = false;
+
+    # WebAssembly
+    "javascript.options.wasm" = true;
+    "javascript.options.wasm_trustedprincipals" = false;
+    "javascript.options.wasm_baselinejit" = true;
+    "javascript.options.wasm_optimizingjit" = true;
+
+    # asm.js
+    "javascript.options.asmjs" = true;
+    "javascript.options.blinterp" = true;
+  };
+
 in {
+  # MIME associations
   xdg.mimeApps = {
-  enable = true;
-  defaultApplications = {
+    enable = true;
+    defaultApplications = {
       "text/html" = "firefox.desktop";
       "x-scheme-handler/http" = "firefox.desktop";
       "x-scheme-handler/https" = "firefox.desktop";
@@ -96,57 +135,72 @@ in {
     };
   };
 
+  # Pywalfox
   home.packages = [
     pkgs.pywalfox-native
   ];
 
   programs.firefox = {
     enable = true;
-    nativeMessagingHosts = [ pkgs.pywalfox-native ]; # pywal in firefox.
+
+    nativeMessagingHosts = [
+      pkgs.pywalfox-native
+    ];
+
     policies = {
       DisableFirefoxStudies = true;
       DontCheckDefaultBrowser = true;
+
       UserMessaging = {
         ExtensionRecommendations = false;
         FeatureRecommendations = false;
         UrlbarInterventions = false;
-        SkipOnboarding = true; # Disables the "What's New" tab.
+        SkipOnboarding = true;
         MoreFromMozilla = false;
         WhatsNew = false;
       };
     };
+
     profiles = {
-      personal = {
+      # PROFILE 1: PRIVACY
+      privacy = {
         id = 0;
-        name = "Personal";
-        settings = commonSettings;
-        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-          # Privacy and slop
-          ublock-origin canvasblocker privacy-badger smart-referer
-          # skip-redirect # Irritating sometimes.
+        name = "Privacy";
 
-          # Perfomance
-          onetab
+        settings = commonSettings // privacySettings;
 
-          # YouTube
-          enhancer-for-youtube return-youtube-dislikes sponsorblock videospeed
+        extensions.packages =
+          with pkgs.nur.repos.rycee.firefox-addons; [
+            # Privacy
+            ublock-origin
+            canvasblocker
+            privacy-badger
+            smart-referer
 
-          # Style
-          nighttab darkreader
-        ];
+            # Performance
+            onetab
+
+            # Style
+            nighttab
+            darkreader
+          ];
       };
 
-      # PROFILE 2: WORK
-      work = {
+      # PROFILE 2: PROJECTS
+      projects = {
         id = 1;
-        name = "Education";
-        settings = commonSettings;
-        # settings = commonSettings // {
-        #   "browser.startup.homepage" = "https://google.com";
-        # };
-        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-          ublock-origin canvasblocker privacy-badger smart-referer darkreader
-        ];
+        name = "Projects";
+
+        settings = commonSettings // projectsSettings;
+
+        extensions.packages =
+          with pkgs.nur.repos.rycee.firefox-addons; [
+            ublock-origin
+            canvasblocker
+            privacy-badger
+            smart-referer
+            darkreader
+          ];
       };
     };
   };
