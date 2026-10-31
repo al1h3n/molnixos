@@ -145,10 +145,10 @@
     # };
 
     # 3D environment in hyprland.
-    hypr3d = {
-      url = "github:samine825/Hypr3D";
-      flake = false;
-    };
+    # hypr3d = {
+    #   url = "github:samine825/Hypr3D";
+    #   flake = false;
+    # };
   };
 
   outputs = { nixpkgs, nixpkgs-stable, nur, nix-cachyos-kernel,
@@ -175,10 +175,10 @@
             src = inputs.hyprglass;
             inherit (final.hyprlandPlugins) mkHyprlandPlugin;
           }; })
-          (final: prev: { hypr3d = final.callPackage ./build/hypr3d.nix {
-            src = inputs.hypr3d;
-            inherit (final.hyprlandPlugins) mkHyprlandPlugin;
-          }; })
+          # (final: prev: { hypr3d = final.callPackage ./build/hypr3d.nix {
+          #   src = inputs.hypr3d;
+          #   inherit (final.hyprlandPlugins) mkHyprlandPlugin;
+          # }; })
         ]; }
         # stylix.nixosModules.stylix
         { # Actual HM config.

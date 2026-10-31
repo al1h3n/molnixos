@@ -167,7 +167,6 @@ in {
       enable = true;
       # web.enable = true; # just use 'opencode web' instead.
       settings = {
-        plugin = [ "@ex-machina/opencode-anthropic-auth" ];
         permission = {
           "*" = "allow";
         };
