@@ -324,34 +324,19 @@
         "type": "github"
       }
     },
-    "hypr3d": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1791381331,
-        "narHash": "sha256-vrg1mtBXWuf7vuIRpJp/0tgvuXw2Fti9jRdqdCeNAeg=",
-        "owner": "samine825",
-        "repo": "Hypr3D",
-        "rev": "9301dcf6d0625daf632d5be04f2a3cefabec1769",
-        "type": "github"
-      },
-      "original": {
-        "owner": "samine825",
-        "repo": "Hypr3D",
-        "type": "github"
-      }
-    },
     "hyprglass": {
       "flake": false,
       "locked": {
-        "lastModified": 1793386986,
-        "narHash": "sha256-wNVPevkmK3Pgb69SnvG8dvMvHCmpwuMu79ekOsveffg=",
+        "lastModified": 1793386578,
+        "narHash": "sha256-Jq47p3kJ3N/qw8E83lIewjg9hp7oJw9iIYzMT+YPXic=",
         "owner": "hyprnux",
         "repo": "hyprglass",
-        "rev": "37355a1fcee55e30571d3ae0b44ca2e3ea62d863",
+        "rev": "85b8a8ed8431d7b6f1ef8dad8ae0470d8ea7f291",
         "type": "github"
       },
       "original": {
         "owner": "hyprnux",
+        "ref": "hyprland-0.57",
         "repo": "hyprglass",
         "type": "github"
       }
@@ -508,11 +493,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793417248,
-        "narHash": "sha256-LuvOS725YzumGn/D1SYKQ8I1o5Coa/+tPoAPYUvXQbQ=",
+        "lastModified": 1793420149,
+        "narHash": "sha256-DGyMgUly2OAwRtGww4O7raBJXQ/DYYyK13a1Epoq0vY=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "fe2209b80a78567b1c8b07384c6dd647d103bd31",
+        "rev": "39b31b2f9dcbd77cf72f8d97d00ac5fde1acc6cf",
         "type": "github"
       },
       "original": {
@@ -542,7 +527,6 @@
         "home-manager-stable": [
           "home-manager"
         ],
-        "hypr3d": "hypr3d",
         "hyprglass": "hyprglass",
         "ie-r": "ie-r",
         "lazyvim": "lazyvim",

@@ -19,7 +19,7 @@
     hyprmod
     hyprmoncfg
     hyprglass
-    hypr3d # Loaded by the shared Lua config from the Home Manager profile.
+    # hypr3d # Loaded by the shared Lua config from the Home Manager profile.
     # Config autocompletion - lua-language-server
   ];
 }
