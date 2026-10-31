@@ -117,7 +117,7 @@
 
     # Match pkgs.hyprland's release API; upstream main targets hyprland-git.
     hyprglass = {
-      url = "github:hyprnux/hyprglass";
+      url = "github:hyprnux/hyprglass/hyprland-0.57";
       flake = false;
     };
 
