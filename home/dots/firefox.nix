@@ -3,6 +3,10 @@
 let
   # SHARED SETTINGS
   commonSettings = {
+    # Firefox Account & Sync
+    "identity.fxaccounts.enabled" = false;
+    "services.sync.enabled" = false;
+
     # Extensions
     "extensions.allowPrivateBrowsingByDefault" = true;
     "extensions.autoDisableScopes" = 0;
@@ -65,10 +69,6 @@ let
 
   # PROFILE 1: PRIVACY
   privacySettings = {
-    # Firefox Account & Sync
-    "identity.fxaccounts.enabled" = false;
-    "services.sync.enabled" = false;
-
     # Fingerprinting protection
     "privacy.resistFingerprinting" = true;
 
@@ -93,10 +93,6 @@ let
 
   # PROFILE 2: PROJECTS
   projectsSettings = {
-    # Firefox Account & Sync
-    "identity.fxaccounts.enabled" = true;
-    "services.sync.enabled" = true;
-
     # Fingerprinting protection
     "privacy.resistFingerprinting" = false;
 
